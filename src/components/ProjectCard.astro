@@ -1,8 +1,9 @@
 ---
+import { url } from '../lib/url';
 interface Props { slug: string; title: string; summary: string; role: string; year: string; tags: string[]; }
 const { slug, title, summary, role, year, tags } = Astro.props;
 ---
-<a class="card" href={`/work/${slug}/`}>
+<a class="card" href={url(`/work/${slug}/`)}>
   <div class="placeholder thumb">Project image</div>
   <div class="meta"><span>{role}</span><span>{year}</span></div>
   <h3>{title}</h3>

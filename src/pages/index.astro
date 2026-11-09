@@ -1,4 +1,5 @@
 ---
+import { url } from '../lib/url';
 import Base from '../layouts/Base.astro';
 import ProjectGrid from '../components/ProjectGrid.astro';
 ---
@@ -7,7 +8,7 @@ import ProjectGrid from '../components/ProjectGrid.astro';
     <p class="eyebrow">[Your role] · [City]</p>
     <h1>Hi, I'm [Your Name]. I design <em>[what you do]</em> for <em>[who]</em>.</h1>
     <p class="lead">A one or two sentence pitch goes here: what you care about and what you're looking for next.</p>
-    <a class="btn" href="/work/">See my work</a>
+    <a class="btn" href={url("/work/")}>See my work</a>
   </section>
   <section class="wrap">
     <h2 class="section-title">Selected work</h2>

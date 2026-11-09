@@ -1,6 +1,7 @@
 ---
+import { url } from '../lib/url';
 import Base from '../layouts/Base.astro';
 ---
 <Base title="Not found">
-  <section class="wrap"><h1>Page not found.</h1><p><a href="/">Back home</a></p></section>
+  <section class="wrap"><h1>Page not found.</h1><p><a href={url("/")}>Back home</a></p></section>
 </Base>

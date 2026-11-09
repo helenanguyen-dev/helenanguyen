@@ -1,4 +1,5 @@
 ---
+import { url } from '../lib/url';
 import '../styles/global.css';
 interface Props { title?: string; description?: string; }
 const { title, description = 'Portfolio of [Your Name], [your role].' } = Astro.props;
@@ -19,19 +20,19 @@ const nav = [
     <meta name="description" content={description} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href={url("/favicon.svg")} type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
   </head>
   <body>
     <header class="site-header wrap">
-      <a href="/" class="logo">[Your Name]<span>.</span></a>
+      <a href={url("/")} class="logo">[Your Name]<span>.</span></a>
       <nav aria-label="Main">
         {nav.map((item) => (
-          <a href={item.href} aria-current={path.startsWith(item.href) ? 'page' : undefined}>{item.label}</a>
+          <a href={url(item.href)} aria-current={path.startsWith(url(item.href)) ? 'page' : undefined}>{item.label}</a>
         ))}
-        <a href="/resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <a href={url("/resume.pdf")} target="_blank" rel="noopener">Resume</a>
       </nav>
     </header>
     <main><slot /></main>
