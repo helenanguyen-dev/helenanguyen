@@ -1,16 +1,26 @@
 ---
 import Base from '../layouts/Base.astro';
+import { url } from '../lib/url';
+// Career entries. Set `project` to a case-study slug (file name in src/content/projects) to make the entry clickable.
 const career = [
-  { years: '2024 – now', role: '[Role]', org: '[Company]' },
-  { years: '2022 – 2024', role: '[Role]', org: '[Company]' },
-  { years: '2020 – 2022', role: '[Role]', org: '[School or company]' },
+  { when: 'Currently', org: '[Company or program]', text: 'What you do there in one or two sentences.', project: 'project-1' },
+  { when: 'Previously', org: '[Company]', text: 'What you helped build or achieve, ideally with a number.', project: 'project-2' },
+  { when: 'Before that', org: '[Company or lab]', text: 'Where the biochemistry-to-data story started.', project: 'project-3' },
 ];
 const hobbies = [
   { label: 'Cooking', caption: "A dish I'm proud of" },
   { label: 'Traveling', caption: 'Somewhere I got lost (on purpose)' },
   { label: 'Learning', caption: 'The latest skill I picked up' },
 ];
-const skills = ['Skill one', 'Skill two', 'Skill three', 'Skill four', 'Skill five', 'Skill six'];
+// Skills. Add a `project` slug to link a skill to the case study that shows it best.
+const skills: { name: string; project?: string }[] = [
+  { name: 'Product Management', project: 'project-1' },
+  { name: 'Data Analysis', project: 'project-2' },
+  { name: 'AI Strategy', project: 'project-3' },
+  { name: 'SQL & Python' },
+  { name: 'Experimentation' },
+  { name: 'Stakeholder Management' },
+];
 ---
 <Base title="About">
   <section class="wrap intro">
@@ -25,16 +35,30 @@ const skills = ['Skill one', 'Skill two', 'Skill three', 'Skill four', 'Skill fi
   </section>
   <section class="wrap two-col">
     <div>
-      <h2>Career so far</h2>
-      <ol class="timeline">
-        {career.map((c) => (
-          <li><span class="years">{c.years}</span><strong>{c.role}</strong><span>{c.org}</span></li>
-        ))}
+      <h2>My career so far</h2>
+      <ol class="career">
+        {career.map((c) => {
+          const Tag = c.project ? 'a' : 'div';
+          return (
+            <li>
+              <Tag class="entry" href={c.project ? url(`/work/${c.project}/`) : undefined}>
+                <span class="when">{c.when}</span>
+                <strong class="org">{c.org}</strong>
+                <span class="text">{c.text}</span>
+                {c.project && <span class="more">See the project <span aria-hidden="true">→</span></span>}
+              </Tag>
+            </li>
+          );
+        })}
       </ol>
     </div>
     <div>
-      <h2>Skills</h2>
-      <ul class="skills">{skills.map((s) => <li>{s}</li>)}</ul>
+      <h2 class="visually-hidden">Skills</h2>
+      <ul class="skills">
+        {skills.map((sk) => (
+          <li>{sk.project ? <a href={url(`/work/${sk.project}/`)}>{sk.name}</a> : <span>{sk.name}</span>}</li>
+        ))}
+      </ul>
     </div>
   </section>
   <section class="wrap hobbies">
@@ -54,14 +78,22 @@ const skills = ['Skill one', 'Skill two', 'Skill three', 'Skill four', 'Skill fi
   h1 { font-size: clamp(40px, 6vw, 72px); margin: 12px 0 24px; }
   .intro p:not(.eyebrow) { font-size: 19px; max-width: 52ch; }
   .portrait { aspect-ratio: 4 / 5; }
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 96px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; margin-top: 96px; }
   h2 { font-size: 30px; }
-  .timeline { list-style: none; padding: 0; margin: 0; border-left: 2px solid var(--line); }
-  .timeline li { position: relative; display: grid; padding: 0 0 28px 24px; }
-  .timeline li::before { content: ''; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
-  .years { font-size: 13px; color: var(--muted); }
-  .skills { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
-  .skills li { padding: 8px 16px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+  .career { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  .entry { display: grid; gap: 4px; padding: 20px; margin: 0 -20px; border-radius: var(--radius); text-decoration: none; transition: background .2s; }
+  a.entry:hover { background: var(--surface); }
+  .when { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .org { font-size: 20px; }
+  .text { color: var(--muted); }
+  .more { font-size: 14px; color: var(--accent); opacity: 0; transform: translateX(-6px); transition: opacity .2s, transform .2s; }
+  a.entry:hover .more, a.entry:focus-visible .more { opacity: 1; transform: none; }
+  @media (hover: none) { .more { opacity: 1; transform: none; } }
+  .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .skills { list-style: none; padding: 0; margin: 72px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 20px 32px; align-content: start; }
+  .skills li { font-family: var(--font-display); font-size: clamp(24px, 3vw, 36px); line-height: 1.15; color: var(--muted); }
+  .skills a { text-decoration: none; color: var(--text); background: linear-gradient(var(--accent), var(--accent)) 0 100% / 0 2px no-repeat; transition: background-size .3s, color .2s; }
+  .skills a:hover { color: var(--accent); background-size: 100% 2px; }
   .hobbies { margin-top: 96px; }
   .hobby-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
   figure { margin: 0; }
@@ -71,5 +103,5 @@ const skills = ['Skill one', 'Skill two', 'Skill three', 'Skill four', 'Skill fi
   figure:hover .hobby-img { transform: rotate(0) scale(1.02); }
   figcaption { display: grid; margin-top: 12px; }
   figcaption span { color: var(--muted); font-size: 15px; }
-  @media (max-width: 760px) { .intro, .two-col, .hobby-grid { grid-template-columns: 1fr; } .two-col { margin-top: 56px; } }
+  @media (max-width: 760px) { .intro, .two-col, .hobby-grid { grid-template-columns: 1fr; } .two-col { margin-top: 56px; } .entry { margin: 0 -12px; padding: 16px 12px; } .skills { margin-top: 8px; } }
 </style>
