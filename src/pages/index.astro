@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import ProjectGrid from '../components/ProjectGrid.astro';
+---
+<Base>
+  <section class="hero wrap">
+    <p class="eyebrow">[Your role] · [City]</p>
+    <h1>Hi, I'm [Your Name]. I design <em>[what you do]</em> for <em>[who]</em>.</h1>
+    <p class="lead">A one or two sentence pitch goes here: what you care about and what you're looking for next.</p>
+    <a class="btn" href="/work/">See my work</a>
+  </section>
+  <section class="wrap">
+    <h2 class="section-title">Selected work</h2>
+    <ProjectGrid limit={3} />
+  </section>
+</Base>
+<style>
+  .hero { padding-top: clamp(48px, 10vw, 120px); padding-bottom: clamp(48px, 8vw, 96px); }
+  h1 { font-size: clamp(40px, 7vw, 84px); max-width: 16ch; margin: 16px 0 24px; }
+  h1 em { font-style: italic; color: var(--accent); }
+  .lead { font-size: clamp(18px, 2vw, 21px); color: var(--muted); max-width: 52ch; margin-bottom: 32px; }
+  .section-title { font-size: 32px; margin-bottom: 24px; }
+</style>

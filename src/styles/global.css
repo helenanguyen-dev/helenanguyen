@@ -1,0 +1,44 @@
+/* Design tokens: placeholder direction, replaced once Helena picks a look */
+:root {
+  --bg: #f6f3ee;
+  --surface: #ffffff;
+  --text: #1c1b19;
+  --muted: #6b675f;
+  --line: #e2ddd3;
+  --accent: #e8562a;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --max: 1120px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --radius: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141311;
+    --surface: #1e1d1a;
+    --text: #f1ede6;
+    --muted: #a39e94;
+    --line: #2f2d29;
+    --accent: #ff7a4d;
+  }
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.1; letter-spacing: -0.01em; }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+.eyebrow { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.placeholder { background: repeating-linear-gradient(45deg, var(--line) 0 2px, transparent 2px 12px); border: 1px dashed var(--muted); border-radius: var(--radius); display: grid; place-items: center; color: var(--muted); font-size: 14px; }
+.btn { display: inline-block; padding: 12px 22px; border-radius: 999px; background: var(--text); color: var(--bg); text-decoration: none; font-weight: 500; transition: transform .2s, background .2s; }
+.btn:hover { background: var(--accent); transform: translateY(-2px); }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }

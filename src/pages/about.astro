@@ -1,0 +1,49 @@
+---
+import Base from '../layouts/Base.astro';
+const career = [
+  { years: '2024 – now', role: '[Role]', org: '[Company]' },
+  { years: '2022 – 2024', role: '[Role]', org: '[Company]' },
+  { years: '2020 – 2022', role: '[Role]', org: '[School or company]' },
+];
+const skills = ['Skill one', 'Skill two', 'Skill three', 'Skill four', 'Skill five', 'Skill six'];
+---
+<Base title="About">
+  <section class="wrap intro">
+    <div>
+      <p class="eyebrow">About</p>
+      <h1>Hey there!</h1>
+      <p>Bio paragraph one: who you are, what you do, and what drives your work.</p>
+      <p>Bio paragraph two: something personal, such as where you're from, what you love outside work, and what you're looking for next.</p>
+    </div>
+    <div class="placeholder portrait">Portrait photo</div>
+  </section>
+  <section class="wrap two-col">
+    <div>
+      <h2>Career so far</h2>
+      <ol class="timeline">
+        {career.map((c) => (
+          <li><span class="years">{c.years}</span><strong>{c.role}</strong><span>{c.org}</span></li>
+        ))}
+      </ol>
+    </div>
+    <div>
+      <h2>Skills</h2>
+      <ul class="skills">{skills.map((s) => <li>{s}</li>)}</ul>
+    </div>
+  </section>
+</Base>
+<style>
+  .intro { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: center; padding-top: 48px; }
+  h1 { font-size: clamp(40px, 6vw, 72px); margin: 12px 0 24px; }
+  .intro p:not(.eyebrow) { font-size: 19px; max-width: 52ch; }
+  .portrait { aspect-ratio: 4 / 5; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 96px; }
+  h2 { font-size: 30px; }
+  .timeline { list-style: none; padding: 0; margin: 0; border-left: 2px solid var(--line); }
+  .timeline li { position: relative; display: grid; padding: 0 0 28px 24px; }
+  .timeline li::before { content: ''; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
+  .years { font-size: 13px; color: var(--muted); }
+  .skills { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+  .skills li { padding: 8px 16px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+  @media (max-width: 760px) { .intro, .two-col { grid-template-columns: 1fr; } .two-col { margin-top: 56px; } }
+</style>

@@ -1,0 +1,21 @@
+---
+interface Props { slug: string; title: string; summary: string; role: string; year: string; tags: string[]; }
+const { slug, title, summary, role, year, tags } = Astro.props;
+---
+<a class="card" href={`/work/${slug}/`}>
+  <div class="placeholder thumb">Project image</div>
+  <div class="meta"><span>{role}</span><span>{year}</span></div>
+  <h3>{title}</h3>
+  <p>{summary}</p>
+  <ul>{tags.map((t) => <li>{t}</li>)}</ul>
+</a>
+<style>
+  .card { display: block; text-decoration: none; padding: 16px; border-radius: calc(var(--radius) + 6px); background: var(--surface); border: 1px solid var(--line); transition: transform .25s, border-color .25s; }
+  .card:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .thumb { aspect-ratio: 4 / 3; }
+  .meta { display: flex; justify-content: space-between; margin-top: 16px; font-size: 13px; color: var(--muted); }
+  h3 { font-size: 24px; margin: 8px 0; }
+  p { margin: 0 0 12px; color: var(--muted); }
+  ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  li { font-size: 12px; padding: 3px 10px; border: 1px solid var(--line); border-radius: 999px; }
+</style>

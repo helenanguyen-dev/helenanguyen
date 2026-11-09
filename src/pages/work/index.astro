@@ -1,0 +1,15 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProjectGrid from '../../components/ProjectGrid.astro';
+---
+<Base title="Work">
+  <section class="wrap">
+    <h1>Work</h1>
+    <p class="lead">Case studies from my recent projects.</p>
+    <ProjectGrid />
+  </section>
+</Base>
+<style>
+  h1 { font-size: clamp(40px, 6vw, 64px); margin: 48px 0 8px; }
+  .lead { color: var(--muted); margin-bottom: 40px; }
+</style>

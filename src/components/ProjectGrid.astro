@@ -1,0 +1,13 @@
+---
+import { getCollection } from 'astro:content';
+import ProjectCard from './ProjectCard.astro';
+interface Props { limit?: number; }
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const shown = Astro.props.limit ? projects.slice(0, Astro.props.limit) : projects;
+---
+<div class="grid">
+  {shown.map((p) => <ProjectCard slug={p.id} {...p.data} />)}
+</div>
+<style>
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 24px; }
+</style>
