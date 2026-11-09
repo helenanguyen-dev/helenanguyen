@@ -1,11 +1,91 @@
-<!DOCTYPE html><html lang="en" data-astro-cid-hkbrpulz><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AWS hackathon: GreatSchools · Helena Nguyen</title><meta name="description" content="Building a solution for GreatSchools with a team at the AWS hackathon."><meta property="og:title" content="AWS hackathon: GreatSchools · Helena Nguyen"><meta property="og:description" content="Building a solution for GreatSchools with a team at the AWS hackathon."><link rel="icon" href="/helenanguyen/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500&display=swap" rel="stylesheet"><style>.back[data-astro-cid-pznzci7v]{color:var(--muted);margin-top:32px;font-size:15px;text-decoration:none;display:inline-block}h1[data-astro-cid-pznzci7v]{max-width:18ch;margin:24px 0 16px;font-size:clamp(40px,6vw,72px)}.lead[data-astro-cid-pznzci7v]{color:var(--muted);max-width:55ch;font-size:21px}.facts[data-astro-cid-pznzci7v]{border-top:1px solid var(--line);border-bottom:1px solid var(--line);flex-wrap:wrap;gap:40px;margin:32px 0;padding:24px 0;display:flex}dt[data-astro-cid-pznzci7v]{text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-size:13px}dd[data-astro-cid-pznzci7v]{margin:4px 0 0}.cover[data-astro-cid-pznzci7v]{aspect-ratio:16/9;margin-bottom:48px}.body[data-astro-cid-pznzci7v]{max-width:68ch}.body[data-astro-cid-pznzci7v] h2{margin-top:48px;font-size:30px}
+<!DOCTYPE html><html lang="en" data-astro-cid-hkbrpulz><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>GreatSchools Guided Agent · Helena Nguyen</title><meta name="description" content="An AI agent, built at an AWS hackathon, that turns a parent's plain-language question into ranked, evidence-backed school options."><meta property="og:title" content="GreatSchools Guided Agent · Helena Nguyen"><meta property="og:description" content="An AI agent, built at an AWS hackathon, that turns a parent's plain-language question into ranked, evidence-backed school options."><link rel="icon" href="/helenanguyen/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500&display=swap" rel="stylesheet"><style>.back[data-astro-cid-pznzci7v]{color:var(--muted);margin-top:32px;font-size:15px;text-decoration:none;display:inline-block}h1[data-astro-cid-pznzci7v]{max-width:18ch;margin:24px 0 16px;font-size:clamp(40px,6vw,72px)}.lead[data-astro-cid-pznzci7v]{color:var(--muted);max-width:55ch;font-size:21px}.facts[data-astro-cid-pznzci7v]{border-top:1px solid var(--line);border-bottom:1px solid var(--line);flex-wrap:wrap;gap:40px;margin:32px 0;padding:24px 0;display:flex}dt[data-astro-cid-pznzci7v]{text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-size:13px}dd[data-astro-cid-pznzci7v]{margin:4px 0 0}.cover[data-astro-cid-pznzci7v]{aspect-ratio:16/9;margin-bottom:48px}.body[data-astro-cid-pznzci7v]{max-width:68ch}.body[data-astro-cid-pznzci7v] h2{margin-top:48px;font-size:30px}.body[data-astro-cid-pznzci7v] table{border-collapse:collapse;width:100%;margin:24px 0;font-size:16px;display:block;overflow-x:auto}.body[data-astro-cid-pznzci7v] th,.body[data-astro-cid-pznzci7v] td{text-align:left;border-bottom:1px solid var(--line);vertical-align:top;padding:10px 14px 10px 0}.body[data-astro-cid-pznzci7v] th{letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-size:13px;font-weight:500}.body[data-astro-cid-pznzci7v] blockquote{border-left:3px solid var(--accent);color:var(--muted);margin:24px 0;padding-left:20px}
 :root{--bg:#f6f3ee;--surface:#fff;--text:#1c1b19;--muted:#6b675f;--line:#e2ddd3;--accent:#e8562a;--font-display:"Fraunces", Georgia, serif;--font-body:"Inter", system-ui, -apple-system, sans-serif;--max:1120px;--gutter:clamp(16px, 4vw, 40px);--radius:14px}@media (prefers-color-scheme:dark){:root{--bg:#141311;--surface:#1e1d1a;--text:#f1ede6;--muted:#a39e94;--line:#2f2d29;--accent:#ff7a4d}}*,:before,:after{box-sizing:border-box}html{-webkit-text-size-adjust:100%}body{background:var(--bg);color:var(--text);font-family:var(--font-body);margin:0;font-size:17px;line-height:1.6}img{max-width:100%;display:block}a{color:inherit}a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}h1,h2,h3{font-family:var(--font-display);letter-spacing:-.01em;font-weight:600;line-height:1.1}.wrap{max-width:var(--max);padding:0 var(--gutter);margin:0 auto}.eyebrow{letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-size:13px}.placeholder{background:repeating-linear-gradient(45deg, var(--line) 0 2px, transparent 2px 12px);border:1px dashed var(--muted);border-radius:var(--radius);color:var(--muted);place-items:center;font-size:14px;display:grid}.btn{background:var(--text);color:var(--bg);border-radius:999px;padding:12px 22px;font-weight:500;text-decoration:none;transition:transform .2s,background .2s;display:inline-block}.btn:hover{background:var(--accent);transform:translateY(-2px)}@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}.site-header[data-astro-cid-hkbrpulz]{flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding-top:24px;padding-bottom:24px;display:flex}.logo[data-astro-cid-hkbrpulz]{font-family:var(--font-display);font-size:22px;font-weight:600;text-decoration:none}.logo[data-astro-cid-hkbrpulz] span[data-astro-cid-hkbrpulz]{color:var(--accent)}nav[data-astro-cid-hkbrpulz]{gap:clamp(14px,3vw,28px);display:flex}nav[data-astro-cid-hkbrpulz] a[data-astro-cid-hkbrpulz]{color:var(--muted);font-size:15px;text-decoration:none;transition:color .2s}nav[data-astro-cid-hkbrpulz] a[data-astro-cid-hkbrpulz]:hover,nav[data-astro-cid-hkbrpulz] a[data-astro-cid-hkbrpulz][aria-current=page]{color:var(--text)}main[data-astro-cid-hkbrpulz]{min-height:70vh}.site-footer[data-astro-cid-hkbrpulz]{border-top:1px solid var(--line);color:var(--muted);flex-wrap:wrap;justify-content:space-between;gap:8px;margin-top:96px;padding-top:24px;padding-bottom:40px;font-size:14px;display:flex}
-</style></head><body data-astro-cid-hkbrpulz><header class="site-header wrap" data-astro-cid-hkbrpulz><a href="/helenanguyen/" class="logo" data-astro-cid-hkbrpulz>Helena Nguyen<span data-astro-cid-hkbrpulz>.</span></a><nav aria-label="Main" data-astro-cid-hkbrpulz><a href="/helenanguyen/work/" aria-current="page" data-astro-cid-hkbrpulz>Work</a><a href="/helenanguyen/blog/" data-astro-cid-hkbrpulz>Blog</a><a href="/helenanguyen/about/" data-astro-cid-hkbrpulz>About</a><a href="/helenanguyen/contact/" data-astro-cid-hkbrpulz>Contact</a><a href="/helenanguyen/resume.pdf" target="_blank" rel="noopener" data-astro-cid-hkbrpulz>Resume</a></nav></header><main data-astro-cid-hkbrpulz><article class="wrap" data-astro-cid-pznzci7v><a class="back" href="/helenanguyen/work/" data-astro-cid-pznzci7v>← All work</a><h1 data-astro-cid-pznzci7v>AWS hackathon: GreatSchools</h1><p class="lead" data-astro-cid-pznzci7v>Building a solution for GreatSchools with a team at the AWS hackathon.</p><dl class="facts" data-astro-cid-pznzci7v><div data-astro-cid-pznzci7v><dt data-astro-cid-pznzci7v>Role</dt><dd data-astro-cid-pznzci7v>[Your role on the team]</dd></div><div data-astro-cid-pznzci7v><dt data-astro-cid-pznzci7v>Year</dt><dd data-astro-cid-pznzci7v>2026</dd></div><div data-astro-cid-pznzci7v><dt data-astro-cid-pznzci7v>Focus</dt><dd data-astro-cid-pznzci7v>AI, Hackathon, Education</dd></div></dl><div class="placeholder cover" data-astro-cid-pznzci7v>Cover image</div><div class="body" data-astro-cid-pznzci7v><h2 id="overview">Overview</h2>
-<p>[The challenge GreatSchools brought to the AWS hackathon, the team, and the time you had.]</p>
+</style></head><body data-astro-cid-hkbrpulz><header class="site-header wrap" data-astro-cid-hkbrpulz><a href="/helenanguyen/" class="logo" data-astro-cid-hkbrpulz>Helena Nguyen<span data-astro-cid-hkbrpulz>.</span></a><nav aria-label="Main" data-astro-cid-hkbrpulz><a href="/helenanguyen/work/" aria-current="page" data-astro-cid-hkbrpulz>Work</a><a href="/helenanguyen/blog/" data-astro-cid-hkbrpulz>Blog</a><a href="/helenanguyen/about/" data-astro-cid-hkbrpulz>About</a><a href="/helenanguyen/contact/" data-astro-cid-hkbrpulz>Contact</a><a href="/helenanguyen/resume.pdf" target="_blank" rel="noopener" data-astro-cid-hkbrpulz>Resume</a></nav></header><main data-astro-cid-hkbrpulz><article class="wrap" data-astro-cid-pznzci7v><a class="back" href="/helenanguyen/work/" data-astro-cid-pznzci7v>← All work</a><h1 data-astro-cid-pznzci7v>GreatSchools Guided Agent</h1><p class="lead" data-astro-cid-pznzci7v>An AI agent, built at an AWS hackathon, that turns a parent&#39;s plain-language question into ranked, evidence-backed school options.</p><dl class="facts" data-astro-cid-pznzci7v><div data-astro-cid-pznzci7v><dt data-astro-cid-pznzci7v>Role</dt><dd data-astro-cid-pznzci7v>[Your role on the team]</dd></div><div data-astro-cid-pznzci7v><dt data-astro-cid-pznzci7v>Year</dt><dd data-astro-cid-pznzci7v>2026</dd></div><div data-astro-cid-pznzci7v><dt data-astro-cid-pznzci7v>Focus</dt><dd data-astro-cid-pznzci7v>AI Agents, Amazon Bedrock, EdTech, Hackathon</dd></div></dl><div class="placeholder cover" data-astro-cid-pznzci7v>Cover image</div><div class="body" data-astro-cid-pznzci7v><h2 id="overview">Overview</h2>
+<p>GreatSchools is a 25-year-old national nonprofit and one of the most used school-information platforms in the US, with 150,000+ school profiles and 850,000+ community reviews used by about 40 million families a year. At an AWS Breaking Barriers hackathon, our team built a prototype of its next step: a <strong>Guided Agent</strong> that helps parents explore their options instead of just filtering a list.</p>
+<p><strong>Team:</strong> [team size and roles] · <strong>Time:</strong> [hackathon length] · <strong>My role:</strong> [what you owned]</p>
 <h2 id="the-problem">The problem</h2>
-<p>[Who was affected and why it mattered.]</p>
-<h2 id="what-we-built">What we built</h2>
-<p>[The solution, the AWS services used, and your part in it. Add screenshots or a demo link.]</p>
+<p>School choice has become a maze. Public, charter, private and microschools sit alongside vouchers, education savings accounts and tax-credit scholarships, and a new federal tax credit arrives in 2027.</p>
+<p>Today’s search tools make parents filter by blunt criteria like location, grade and test scores, and they assume parents already know what those terms mean. Families with resources rely on their networks. Lower-income families face a lasting information gap, and because satisfaction with school choice is linked to better outcomes for kids, they lose the most.</p>
+<p>GreatSchools already has the data. The challenge was to move parents from a narrow, one-time search into an <strong>explore mode</strong> where they ask questions, learn, and find options that fit better-informed criteria.</p>
+<h2 id="the-approach-we-investigate-you-decide">The approach: “We investigate. You decide.”</h2>
+<p>GreatSchools frames agentic search in three levels. We focused on Level 2.</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Name</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Assistive</td>
+<td>The parent drives; the tool returns matching schools with explanations</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td><strong>Guided Agent</strong></td>
+<td>The agent asks clarifying questions, spots gaps, and investigates on the parent’s behalf</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Proactive Agent</td>
+<td>Reaches parents who haven’t searched yet (stretch goal)</td>
+</tr>
+</tbody>
+</table>
+<p>A parent types something like <em>“middle school in Woodstock with STEM and after-school care.”</em> The agent pulls out their criteria as editable chips (require, prefer, avoid), asks a trade-off question such as <em>“after-school care ends at 5pm, is that workable?”</em>, and returns ranked schools. Each result shows which criteria are <strong>confirmed, partial, or need attention</strong>, with the evidence behind it. The agent flags stale or missing data instead of guessing. The parent can then compare two schools and save favorites to a list.</p>
+<p>We prioritized ruthlessly so we’d always have something working:</p>
+<ol>
+<li><strong>Clarify and expand the query</strong> into ranked, evidence-backed results</li>
+<li><strong>Compare two schools</strong> side by side</li>
+<li><strong>Explain detail</strong> from a school’s profile</li>
+<li><strong>Answer questions</strong> about education terms and GreatSchools’ quality framework</li>
+</ol>
+<h2 id="how-its-built">How it’s built</h2>
+<table>
+<thead>
+<tr>
+<th>Piece</th>
+<th>Choice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Foundation models</td>
+<td>Amazon Bedrock ([model])</td>
+</tr>
+<tr>
+<td>Search</td>
+<td>Amazon OpenSearch Service (keyword + vector)</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>Synthetic school, program and review data in Amazon S3 (no real or student data)</td>
+</tr>
+<tr>
+<td>Agent</td>
+<td>[Strands Agents / LangGraph / custom]</td>
+</tr>
+<tr>
+<td>Hosting</td>
+<td>[Lambda / Fargate / local]</td>
+</tr>
+<tr>
+<td>Frontend</td>
+<td>[framework]</td>
+</tr>
+</tbody>
+</table>
+<p>[Add a screenshot of the search box with criteria chips, and one of the ranked result cards.]</p>
 <h2 id="outcome">Outcome</h2>
-<p>[Demo, judging result, or feedback from GreatSchools.]</p>
+<p>[What you demoed, how far you got through the priorities, judging results, and feedback from GreatSchools.]</p>
+<h2 id="measuring-success">Measuring success</h2>
+<p>GreatSchools’ main metric is the <strong>saves-to-searches ratio</strong>: how often a search ends with a parent saving a school. Supporting signals are result relevance (thumbs up/down) and the number of criteria captured per search.</p>
+<p>[Your targets or early results here.]</p>
+<h2 id="whats-next">What’s next</h2>
+<p>[Future goals: for example, capturing the parent’s final choice and a first review, and a Level 3 preview that reaches parents before they search.]</p>
+<h2 id="what-i-learned">What I learned</h2>
+<p>[One or two lessons about building responsible AI products.]</p>
 </div></article></main><footer class="site-footer wrap" data-astro-cid-hkbrpulz><p data-astro-cid-hkbrpulz>© 2026 Helena Nguyen</p><p data-astro-cid-hkbrpulz><a href="mailto:you@example.com" data-astro-cid-hkbrpulz>Email</a> ·<a href="https://www.linkedin.com/" target="_blank" rel="noopener" data-astro-cid-hkbrpulz>LinkedIn</a></p></footer></body></html>
