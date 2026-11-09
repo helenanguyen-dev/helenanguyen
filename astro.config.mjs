@@ -2,5 +2,5 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://multibytedev.github.io',
+  site: 'https://helenanguyen-dev.github.io',
 });
