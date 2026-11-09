@@ -1,72 +1,84 @@
 ---
-title: "GreatSchools Guided Agent"
-summary: "An AI agent, built at an AWS hackathon, that turns a parent's plain-language question into ranked, evidence-backed school options."
-role: "[Your role on the team]"
+title: "Atlas: agent-guided school search"
+summary: "A GreatSchools x AWS hackathon prototype that turns a parent's own words into a ranked, evidence-checked list of schools they can trust."
+cover: ../../assets/greatschools-guided-search.jpg
+coverAlt: "Atlas guided search: priority chips, an AI school guide, and a ranked school card showing which priorities matched"
+role: "Product Manager"
 year: "2026"
-tags: ["AI Agents", "Amazon Bedrock", "EdTech", "Hackathon"]
+tags: ["AI Agents", "Amazon Bedrock", "EdTech"]
 order: 2
 ---
 
 ## Overview
 
-GreatSchools is a 25-year-old national nonprofit and one of the most used school-information platforms in the US, with 150,000+ school profiles and 850,000+ community reviews used by about 40 million families a year. At an AWS Breaking Barriers hackathon, our team built a prototype of its next step: a **Guided Agent** that helps parents explore their options instead of just filtering a list.
+GreatSchools is a nonprofit whose 150,000+ school profiles help about 40 million families a year choose schools. At a GreatSchools x AWS hackathon, our four-person team, **Team Atlas**, spent three days on one question: *how do you turn a parent's real priorities into a list they can trust?*
 
-**Team:** [team size and roles] · **Time:** [hackathon length] · **My role:** [what you owned]
+**My role:** Product Manager, on a team with two software engineers and a search and data engineer. **Built in:** 3 days on AWS.
+
+## Meet Maria
+
+We designed around one parent. Maria works two jobs and lives in Riverview. Her son Leo starts middle school next fall. He loves drawing and painting, plays soccer on weekends, and needs teachers who notice him.
+
+At 9 PM, after her shift, her question isn't "which school has an 8/10?" It's **"Where will Leo do well?"**
 
 ## The problem
 
-School choice has become a maze. Public, charter, private and microschools sit alongside vouchers, education savings accounts and tax-credit scholarships, and a new federal tax credit arrives in 2027.
+GreatSchools has the data. Parents still need the right terms and filters to reach it.
 
-Today's search tools make parents filter by blunt criteria like location, grade and test scores, and they assume parents already know what those terms mean. Families with resources rely on their networks. Lower-income families face a lasting information gap, and because satisfaction with school choice is linked to better outcomes for kids, they lose the most.
+1. **Filters, not fit.** Parents think in sentences, but search makes them translate needs into filters and jargon like "CTE."
+2. **A rating isn't a reason.** An 8/10 says how a school scores, not whether it has the arts program your kid loves.
+3. **Hard to trust.** Details sit across tabs, and parents can't tell what's confirmed, outdated, or missing.
 
-GreatSchools already has the data. The challenge was to move parents from a narrow, one-time search into an **explore mode** where they ask questions, learn, and find options that fit better-informed criteria.
+The families with the least access to clear information lose the most.
 
-## The approach: "We investigate. You decide."
+## The solution: guided search
 
-GreatSchools frames agentic search in three levels. We focused on Level 2.
+Atlas lets parents ask in their own words.
 
-| Level | Name | What it does |
-| --- | --- | --- |
-| 1 | Assistive | The parent drives; the tool returns matching schools with explanations |
-| **2** | **Guided Agent** | The agent asks clarifying questions, spots gaps, and investigates on the parent's behalf |
-| 3 | Proactive Agent | Reaches parents who haven't searched yet (stretch goal) |
+- **Understands you.** "Middle school in Riverview with arts, sports and small class sizes" becomes priority chips the parent can edit.
+- **Shows its work.** Each school card says which priorities matched, using the school's own data.
+- **Guides the next step.** A school-guide chat explains why a school fits, suggests questions for a visit, and lets parents compare and save schools to a list.
 
-A parent types something like *"middle school in Woodstock with STEM and after-school care."* The agent pulls out their criteria as editable chips (require, prefer, avoid), asks a trade-off question such as *"after-school care ends at 5pm, is that workable?"*, and returns ranked schools. Each result shows which criteria are **confirmed, partial, or need attention**, with the evidence behind it. The agent flags stale or missing data instead of guessing. The parent can then compare two schools and save favorites to a list.
+### How it works
 
-We prioritized ruthlessly so we'd always have something working:
+1. **Ask.** Different starting points for new and experienced parents.
+2. **Understand.** Amazon Nova Pro on Bedrock extracts the parent's needs.
+3. **Find and check.** OpenSearch retrieves schools and programs, and Rails checks each priority against the data.
+4. **Guide.** Ranked cards, a map, the school-guide chat, save and compare.
 
-1. **Clarify and expand the query** into ranked, evidence-backed results
-2. **Compare two schools** side by side
-3. **Explain detail** from a school's profile
-4. **Answer questions** about education terms and GreatSchools' quality framework
+## Built on AWS
 
-## How it's built
+Everything runs in us-east-1. A parent's request passes through AWS WAF and CloudFront to an internal load balancer, then to a Rails app on EC2 that talks to **OpenSearch 2.19** (schools and programs), **RDS MySQL** (search sessions) and **Amazon Bedrock** (Nova Pro).
 
-| Piece | Choice |
+**How a search is ranked:** 50% keyword match and 50% meaning match. Each priority is then checked in Ruby code against the school's record, so **the AI explains the results but never invents the facts.**
+
+| Design goal | How we met it |
 | --- | --- |
-| Foundation models | Amazon Bedrock ([model]) |
-| Search | Amazon OpenSearch Service (keyword + vector) |
-| Data | Synthetic school, program and review data in Amazon S3 (no real or student data) |
-| Agent | [Strands Agents / LangGraph / custom] |
-| Hosting | [Lambda / Fargate / local] |
-| Frontend | [framework] |
+| Fast | A full search took about 2 seconds in our demo |
+| Trustworthy | Facts come from GreatSchools' data and are checked in code; the model only explains |
+| Light to run | Managed AWS services, so a nonprofit team runs code, not servers |
 
-[Add a screenshot of the search box with criteria chips, and one of the ranked result cards.]
+**Trade-off:** always-on infrastructure plus usage charges, including Bedrock tokens. We kept token use low by calling the model only where language understanding is needed.
 
-## Outcome
+## Results
 
-[What you demoed, how far you got through the priorities, judging results, and feedback from GreatSchools.]
+We ran 20 parent-style queries against the live app. 16 had valid matches in the sample data, and 4 were expected to return none.
 
-## Measuring success
+| What we measured | Result |
+| --- | --- |
+| Priorities captured per search | 23 of 24 |
+| Test queries with a relevant top result | 15 of 16 |
+| Missing or outdated data flagged correctly | 54 of 54 |
+| Search response time | 1.98s median, 2.24s average |
 
-GreatSchools' main metric is the **saves-to-searches ratio**: how often a search ends with a parent saving a school. Supporting signals are result relevance (thumbs up/down) and the number of criteria captured per search.
-
-[Your targets or early results here.]
+[Impact: what GreatSchools said, judging results, and how this could move their saves-to-searches ratio.]
 
 ## What's next
 
-[Future goals: for example, capturing the parent's final choice and a first review, and a Level 3 preview that reaches parents before they search.]
+- **Now:** guided search, evidence checks, save and compare.
+- **Next:** GreatSchools' full school data and reviews, side-by-side compare, and plain-language school terms.
+- **Later:** saved searches that tell parents when a new matching program opens. [Voice call feature: coming soon.]
 
 ## What I learned
 
-[One or two lessons about building responsible AI products.]
+[One or two lessons from leading product on an AI build, for example keeping the model out of the facts.]

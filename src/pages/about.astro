@@ -1,11 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
 import { url } from '../lib/url';
+import { Image } from 'astro:assets';
+import portrait from '../assets/helena-portrait.jpg';
 // Career entries. Set `project` to a case-study slug (file name in src/content/projects) to make the entry clickable.
 const career = [
   { when: 'Currently', org: 'University of Washington', text: "Finishing my master's in Information Management, focused on AI, business intelligence, and product and program management." },
   { when: 'Currently', org: 'FIUTS · Data Intern', text: 'At this nonprofit that fosters intercultural connection to strengthen international diplomacy, I analyze its data strategy and reimagine how data is collected and analyzed to improve future events.', project: 'fiuts-data-strategy' },
-  { when: 'Recently', org: 'AWS Hackathon · GreatSchools', text: 'Built a prototype AI agent that guides parents from a plain-language question to ranked, evidence-backed school options, using Amazon Bedrock and OpenSearch.', project: 'aws-hackathon-greatschools' },
+  { when: 'Recently', org: 'GreatSchools x AWS Hackathon · Product Manager', text: 'Led product for Atlas, an AI agent that turns a parent’s own words into a ranked, evidence-checked list of schools. Built in 3 days with a team of 4.', project: 'aws-hackathon-greatschools' },
   { when: 'Previously', org: 'Fred Hutch Cancer Center', text: 'Helped accelerate research on CD8+KIR+ cells and the role of neutrophils in lung cancer. Learned data modeling and built dashboards and visualizations for grant applications.', project: 'fred-hutch-research' },
   { when: 'Previously', org: 'COPE Health Scholars', text: 'Optimized and streamlined admin processes for a community of 45,000+ alumni.' },
 ];
@@ -33,7 +35,7 @@ const skills: { name: string; project?: string }[] = [
       <p>Today I'm focused on helping companies adopt AI responsibly and effectively, and on rethinking what they can do with the data they already have.</p>
       <p>Growing up across languages and cultures taught me to adapt fast and to work well with very different people. Outside work and school, I'm usually cooking, planning the next trip, or picking up a new skill. I care deeply about technology that gives people more time for the things they love.</p>
     </div>
-    <div class="placeholder portrait">Portrait photo</div>
+    <Image class="portrait portrait-img" src={portrait} alt="Helena Nguyen" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 440px" />
   </section>
   <section class="wrap two-col">
     <div>
@@ -81,6 +83,7 @@ const skills: { name: string; project?: string }[] = [
   h1 { font-size: clamp(40px, 6vw, 72px); margin: 12px 0 24px; }
   .intro p:not(.eyebrow) { font-size: 19px; max-width: 52ch; }
   .portrait { aspect-ratio: 4 / 5; }
+  .portrait-img { width: 100%; height: auto; object-fit: cover; border-radius: var(--radius); }
   .two-col { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; margin-top: 96px; }
   h2 { font-size: 30px; }
   .career { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }

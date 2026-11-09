@@ -2,6 +2,7 @@
 import { url } from '../../lib/url';
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -9,7 +10,7 @@ export async function getStaticPaths() {
 }
 const { project } = Astro.props;
 const { Content } = await render(project);
-const { title, summary, role, year, tags } = project.data;
+const { title, summary, role, year, tags, cover, coverAlt } = project.data;
 ---
 <Base title={title} description={summary}>
   <article class="wrap">
@@ -21,7 +22,7 @@ const { title, summary, role, year, tags } = project.data;
       <div><dt>Year</dt><dd>{year}</dd></div>
       <div><dt>Focus</dt><dd>{tags.join(', ')}</dd></div>
     </dl>
-    <div class="placeholder cover">Cover image</div>
+    {cover ? <Image class="cover cover-img" src={cover} alt={coverAlt ?? ''} widths={[800, 1400, 2000]} sizes="(max-width: 1120px) 100vw, 1080px" /> : <div class="placeholder cover">Cover image</div>}
     <div class="body"><Content /></div>
   </article>
 </Base>
@@ -33,6 +34,7 @@ const { title, summary, role, year, tags } = project.data;
   dt { font-size: 13px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
   dd { margin: 4px 0 0; }
   .cover { aspect-ratio: 16 / 9; margin-bottom: 48px; }
+  .cover-img { width: 100%; height: auto; aspect-ratio: auto; border-radius: var(--radius); border: 1px solid var(--line); }
   .body { max-width: 68ch; }
   .body :global(h2) { font-size: 30px; margin-top: 48px; }
   .body :global(table) { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 16px; display: block; overflow-x: auto; }

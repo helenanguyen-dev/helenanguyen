@@ -1,10 +1,12 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import { url } from '../lib/url';
-interface Props { slug: string; title: string; summary: string; role: string; year: string; tags: string[]; }
-const { slug, title, summary, role, year, tags } = Astro.props;
+interface Props { slug: string; title: string; summary: string; role: string; year: string; tags: string[]; cover?: ImageMetadata; coverAlt?: string; }
+const { slug, title, summary, role, year, tags, cover, coverAlt } = Astro.props;
 ---
 <a class="card" href={url(`/work/${slug}/`)}>
-  <div class="placeholder thumb">Project image</div>
+  {cover ? <Image class="thumb thumb-img" src={cover} alt={coverAlt ?? ''} width={800} /> : <div class="placeholder thumb">Project image</div>}
   <div class="meta"><span>{role}</span><span>{year}</span></div>
   <h3>{title}</h3>
   <p>{summary}</p>
@@ -14,6 +16,7 @@ const { slug, title, summary, role, year, tags } = Astro.props;
   .card { display: block; text-decoration: none; padding: 16px; border-radius: calc(var(--radius) + 6px); background: var(--surface); border: 1px solid var(--line); transition: transform .25s, border-color .25s; }
   .card:hover { transform: translateY(-4px); border-color: var(--accent); }
   .thumb { aspect-ratio: 4 / 3; }
+  .thumb-img { width: 100%; height: auto; object-fit: cover; object-position: left top; border-radius: var(--radius); }
   .meta { display: flex; justify-content: space-between; margin-top: 16px; font-size: 13px; color: var(--muted); }
   h3 { font-size: 24px; margin: 8px 0; }
   p { margin: 0 0 12px; color: var(--muted); }
