@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { url } from '../../lib/url';
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
+---
+<Base title="Blog" description="Notes and thoughts.">
+  <section class="wrap">
+    <h1>Blog</h1>
+    <p class="lead">Notes on design, product and whatever I'm learning.</p>
+    <ul class="posts">
+      {posts.map((p) => (
+        <li>
+          <a href={url(`/blog/${p.id}/`)}>
+            <time datetime={p.data.date.toISOString()}>{fmt(p.data.date)}</time>
+            <h2>{p.data.title}</h2>
+            <p>{p.data.description}</p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Base>
+<style>
+  h1 { font-size: clamp(40px, 6vw, 64px); margin: 48px 0 8px; }
+  .lead { color: var(--muted); margin-bottom: 40px; }
+  .posts { list-style: none; padding: 0; margin: 0; max-width: 760px; }
+  .posts li { border-top: 1px solid var(--line); }
+  .posts a { display: block; padding: 28px 0; text-decoration: none; transition: padding-left .25s; }
+  .posts a:hover { padding-left: 12px; }
+  .posts a:hover h2 { color: var(--accent); }
+  time { font-size: 13px; color: var(--muted); }
+  h2 { font-size: 28px; margin: 6px 0 8px; transition: color .2s; }
+  .posts p { margin: 0; color: var(--muted); }
+</style>
