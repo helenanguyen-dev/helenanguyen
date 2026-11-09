@@ -2,8 +2,8 @@
 import { url } from '../lib/url';
 import '../styles/global.css';
 interface Props { title?: string; description?: string; }
-const { title, description = 'Portfolio of [Your Name], [your role].' } = Astro.props;
-const pageTitle = title ? `${title} · [Your Name]` : '[Your Name]';
+const { title, description = 'Portfolio of Helena Nguyen, product manager and data analyst.' } = Astro.props;
+const pageTitle = title ? `${title} · Helena Nguyen` : 'Helena Nguyen';
 const path = Astro.url.pathname;
 const nav = [
   { href: '/work/', label: 'Work' },
@@ -28,7 +28,7 @@ const nav = [
   </head>
   <body>
     <header class="site-header wrap">
-      <a href={url("/")} class="logo">[Your Name]<span>.</span></a>
+      <a href={url("/")} class="logo">Helena Nguyen<span>.</span></a>
       <nav aria-label="Main">
         {nav.map((item) => (
           <a href={url(item.href)} aria-current={path.startsWith(url(item.href)) ? 'page' : undefined}>{item.label}</a>
@@ -38,7 +38,7 @@ const nav = [
     </header>
     <main><slot /></main>
     <footer class="site-footer wrap">
-      <p>© {new Date().getFullYear()} [Your Name]</p>
+      <p>© {new Date().getFullYear()} Helena Nguyen</p>
       <p>
         <a href="mailto:you@example.com">Email</a> ·
         <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>

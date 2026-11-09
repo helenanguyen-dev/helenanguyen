@@ -5,15 +5,21 @@ const career = [
   { years: '2022 – 2024', role: '[Role]', org: '[Company]' },
   { years: '2020 – 2022', role: '[Role]', org: '[School or company]' },
 ];
+const hobbies = [
+  { label: 'Cooking', caption: "A dish I'm proud of" },
+  { label: 'Traveling', caption: 'Somewhere I got lost (on purpose)' },
+  { label: 'Learning', caption: 'The latest skill I picked up' },
+];
 const skills = ['Skill one', 'Skill two', 'Skill three', 'Skill four', 'Skill five', 'Skill six'];
 ---
 <Base title="About">
   <section class="wrap intro">
     <div>
-      <p class="eyebrow">About</p>
-      <h1>Hey there!</h1>
-      <p>Bio paragraph one: who you are, what you do, and what drives your work.</p>
-      <p>Bio paragraph two: something personal, such as where you're from, what you love outside work, and what you're looking for next.</p>
+      <p class="eyebrow">Hey there!</p>
+      <h1>I'm Helena.</h1>
+      <p>I'm a product manager and data analyst who started in biochemistry, where I fell in love with data and what it can reveal. Since then I've helped ship products and projects across consumer, life sciences and technology.</p>
+      <p>Today I'm focused on helping companies adopt AI responsibly and effectively, and on rethinking what they can do with the data they already have.</p>
+      <p>Growing up across languages and cultures taught me to adapt fast and to work well with very different people. Outside work and school, I'm usually cooking, planning the next trip, or picking up a new skill. I care deeply about technology that gives people more time for the things they love.</p>
     </div>
     <div class="placeholder portrait">Portrait photo</div>
   </section>
@@ -31,6 +37,17 @@ const skills = ['Skill one', 'Skill two', 'Skill three', 'Skill four', 'Skill fi
       <ul class="skills">{skills.map((s) => <li>{s}</li>)}</ul>
     </div>
   </section>
+  <section class="wrap hobbies">
+    <h2>Outside work</h2>
+    <div class="hobby-grid">
+      {hobbies.map((h) => (
+        <figure>
+          <div class="placeholder hobby-img">{h.label} photo</div>
+          <figcaption><strong>{h.label}</strong><span>{h.caption}</span></figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
 </Base>
 <style>
   .intro { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: center; padding-top: 48px; }
@@ -45,5 +62,14 @@ const skills = ['Skill one', 'Skill two', 'Skill three', 'Skill four', 'Skill fi
   .years { font-size: 13px; color: var(--muted); }
   .skills { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
   .skills li { padding: 8px 16px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
-  @media (max-width: 760px) { .intro, .two-col { grid-template-columns: 1fr; } .two-col { margin-top: 56px; } }
+  .hobbies { margin-top: 96px; }
+  .hobby-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  figure { margin: 0; }
+  .hobby-img { aspect-ratio: 1; transition: transform .3s; }
+  figure:nth-child(2) .hobby-img { transform: rotate(1.5deg); }
+  figure:nth-child(odd) .hobby-img { transform: rotate(-1.5deg); }
+  figure:hover .hobby-img { transform: rotate(0) scale(1.02); }
+  figcaption { display: grid; margin-top: 12px; }
+  figcaption span { color: var(--muted); font-size: 15px; }
+  @media (max-width: 760px) { .intro, .two-col, .hobby-grid { grid-template-columns: 1fr; } .two-col { margin-top: 56px; } }
 </style>
