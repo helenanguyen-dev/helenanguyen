@@ -3,9 +3,11 @@ import Base from '../layouts/Base.astro';
 import { url } from '../lib/url';
 // Career entries. Set `project` to a case-study slug (file name in src/content/projects) to make the entry clickable.
 const career = [
-  { when: 'Currently', org: '[Company or program]', text: 'What you do there in one or two sentences.', project: 'project-1' },
-  { when: 'Previously', org: '[Company]', text: 'What you helped build or achieve, ideally with a number.', project: 'project-2' },
-  { when: 'Before that', org: '[Company or lab]', text: 'Where the biochemistry-to-data story started.', project: 'project-3' },
+  { when: 'Currently', org: 'University of Washington', text: "Finishing my master's in Information Management, focused on AI, business intelligence, and product and program management." },
+  { when: 'Currently', org: 'FIUTS · Data Intern', text: 'At this nonprofit that fosters intercultural connection to strengthen international diplomacy, I analyze its data strategy and reimagine how data is collected and analyzed to improve future events.', project: 'fiuts-data-strategy' },
+  { when: 'Recently', org: 'AWS Hackathon · GreatSchools', text: 'Built a solution for GreatSchools with a team at the AWS hackathon.', project: 'aws-hackathon-greatschools' },
+  { when: 'Previously', org: 'Fred Hutch Cancer Center', text: 'Helped accelerate research on CD8+KIR+ cells and the role of neutrophils in lung cancer. Learned data modeling and built dashboards and visualizations for grant applications.', project: 'fred-hutch-research' },
+  { when: 'Previously', org: 'COPE Health Scholars', text: 'Optimized and streamlined admin processes for a community of 45,000+ alumni.' },
 ];
 const hobbies = [
   { label: 'Cooking', caption: "A dish I'm proud of" },
@@ -14,9 +16,9 @@ const hobbies = [
 ];
 // Skills. Add a `project` slug to link a skill to the case study that shows it best.
 const skills: { name: string; project?: string }[] = [
-  { name: 'Product Management', project: 'project-1' },
-  { name: 'Data Analysis', project: 'project-2' },
-  { name: 'AI Strategy', project: 'project-3' },
+  { name: 'Product Management', project: 'fiuts-data-strategy' },
+  { name: 'Data Analysis', project: 'fred-hutch-research' },
+  { name: 'AI Strategy', project: 'aws-hackathon-greatschools' },
   { name: 'SQL & Python' },
   { name: 'Experimentation' },
   { name: 'Stakeholder Management' },
@@ -51,6 +53,7 @@ const skills: { name: string; project?: string }[] = [
           );
         })}
       </ol>
+      <p class="why">My work at FIUTS showed me how much impact a great product can make, and now I want to build those products myself.</p>
     </div>
     <div>
       <h2 class="visually-hidden">Skills</h2>
@@ -89,6 +92,7 @@ const skills: { name: string; project?: string }[] = [
   .more { font-size: 14px; color: var(--accent); opacity: 0; transform: translateX(-6px); transition: opacity .2s, transform .2s; }
   a.entry:hover .more, a.entry:focus-visible .more { opacity: 1; transform: none; }
   @media (hover: none) { .more { opacity: 1; transform: none; } }
+  .why { font-family: var(--font-display); font-size: 22px; line-height: 1.35; margin-top: 24px; max-width: 34ch; }
   .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .skills { list-style: none; padding: 0; margin: 72px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 20px 32px; align-content: start; }
   .skills li { font-family: var(--font-display); font-size: clamp(24px, 3vw, 36px); line-height: 1.15; color: var(--muted); }
