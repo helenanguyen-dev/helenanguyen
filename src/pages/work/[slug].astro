@@ -35,4 +35,8 @@ const { title, summary, role, year, tags } = project.data;
   .cover { aspect-ratio: 16 / 9; margin-bottom: 48px; }
   .body { max-width: 68ch; }
   .body :global(h2) { font-size: 30px; margin-top: 48px; }
+  .body :global(table) { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 16px; display: block; overflow-x: auto; }
+  .body :global(th), .body :global(td) { text-align: left; padding: 10px 14px 10px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .body :global(th) { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .body :global(blockquote) { border-left: 3px solid var(--accent); margin: 24px 0; padding-left: 20px; color: var(--muted); }
 </style>
