@@ -2,7 +2,7 @@
 title: "Atlas: agent-guided school search"
 summary: "A GreatSchools x AWS hackathon prototype that turns a parent's own words into best-fit school recommendations, each with a confidence level and evidence they can check."
 cover: ../../assets/atlas-cover.png
-coverAlt: "Atlas logo, a folded map with a route to a location pin, beside a parent's question, a best-fit school card with matched priorities and a high confidence level, and a reach-goal card where Atlas calls the school once on behalf of many parents"
+coverAlt: "Atlas logo, a folded map with a route to a location pin, above the Atlas guided-search screen: priority chips, the AI school guide, and a matching school card"
 role: "Product Manager"
 year: "2026"
 tags: ["AI Agents", "Amazon Bedrock", "EdTech"]
