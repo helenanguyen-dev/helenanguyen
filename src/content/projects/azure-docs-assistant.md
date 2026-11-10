@@ -7,6 +7,8 @@ role: "Builder and product owner"
 year: "2026"
 tags: ["RAG", "MCP", "Responsible AI"]
 order: 4
+tileBg: "linear-gradient(135deg, #7aa7f7 0%, #4b6fe0 100%)"
+tileStyle: browser
 ---
 
 ## Overview

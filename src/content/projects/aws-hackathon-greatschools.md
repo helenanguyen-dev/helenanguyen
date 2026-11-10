@@ -7,6 +7,10 @@ role: "Product Manager"
 year: "2026"
 tags: ["AI Agents", "Amazon Bedrock", "EdTech"]
 order: 2
+tileBg: "linear-gradient(140deg, #4a68b8 0%, #2f4a8a 100%)"
+tileStyle: logo
+tileImage: ../../assets/atlas-logo.svg
+tileText: "Atlas"
 ---
 
 ## Overview

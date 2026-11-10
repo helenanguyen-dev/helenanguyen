@@ -7,6 +7,8 @@ role: "Data Intern"
 year: "2026"
 tags: ["Data Strategy", "Dashboards", "Nonprofit"]
 order: 1
+tileBg: "linear-gradient(135deg, #f3c47e 0%, #e9846c 100%)"
+tileStyle: browser
 ---
 
 ## Overview

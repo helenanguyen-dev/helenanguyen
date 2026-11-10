@@ -2,24 +2,44 @@
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import { url } from '../lib/url';
-interface Props { slug: string; title: string; summary: string; role: string; year: string; tags: string[]; cover?: ImageMetadata; coverAlt?: string; }
-const { slug, title, summary, role, year, tags, cover, coverAlt } = Astro.props;
+interface Props {
+  slug: string; title: string; cover?: ImageMetadata; coverAlt?: string;
+  tileBg: string; tileStyle: 'browser' | 'logo'; tileImage?: ImageMetadata; tileText?: string;
+}
+const { slug, title, cover, coverAlt, tileBg, tileStyle, tileImage, tileText } = Astro.props;
+const img = tileImage ?? cover;
 ---
 <a class="card" href={url(`/work/${slug}/`)}>
-  {cover ? <Image class="thumb thumb-img" src={cover} alt={coverAlt ?? ''} width={800} /> : <div class="placeholder thumb">Project image</div>}
-  <div class="meta"><span>{role}</span><span>{year}</span></div>
+  <div class="tile" style={`background: ${tileBg}`}>
+    {tileStyle === 'logo' && img ? (
+      <div class="logo-lockup">
+        <Image class="logo" src={img} alt="" width={160} height={160} />
+        {tileText && <span class="wordmark">{tileText}</span>}
+      </div>
+    ) : img ? (
+      <div class="browser" aria-hidden="true">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <Image class="screen" src={img} alt="" width={900} />
+      </div>
+    ) : (
+      <span class="empty">Project image</span>
+    )}
+  </div>
   <h3>{title}</h3>
-  <p>{summary}</p>
-  <ul>{tags.map((t) => <li>{t}</li>)}</ul>
 </a>
 <style>
-  .card { display: block; text-decoration: none; padding: 16px; border-radius: calc(var(--radius) + 6px); background: var(--surface); border: 1px solid var(--line); transition: transform .25s, border-color .25s; }
-  .card:hover { transform: translateY(-4px); border-color: var(--accent); }
-  .thumb { aspect-ratio: 4 / 3; }
-  .thumb-img { width: 100%; height: auto; object-fit: cover; object-position: left top; border-radius: var(--radius); }
-  .meta { display: flex; justify-content: space-between; margin-top: 16px; font-size: 13px; color: var(--muted); }
-  h3 { font-size: 24px; margin: 8px 0; }
-  p { margin: 0 0 12px; color: var(--muted); }
-  ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
-  li { font-size: 12px; padding: 3px 10px; border: 1px solid var(--line); border-radius: 999px; }
+  .card { display: block; text-decoration: none; color: inherit; }
+  .tile { position: relative; aspect-ratio: 4 / 3; overflow: hidden; display: grid; place-items: center; border-radius: 4px; }
+  .tile::after { content: ''; position: absolute; inset: 0; background: radial-gradient(120% 80% at 80% 0%, rgba(255,255,255,.18), transparent 60%); pointer-events: none; }
+  .browser { width: 74%; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 24px 50px -18px rgba(20, 20, 40, .45); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+  .bar { display: flex; gap: 6px; padding: 9px 12px; background: #f1f1f3; border-bottom: 1px solid #e4e4e8; }
+  .bar i { width: 8px; height: 8px; border-radius: 50%; background: #d3d3d9; }
+  .screen { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; }
+  .logo-lockup { display: flex; align-items: center; gap: clamp(14px, 2.5vw, 26px); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+  .logo { width: clamp(64px, 9vw, 112px); height: auto; border-radius: 22%; box-shadow: 0 18px 40px -16px rgba(10, 20, 60, .5); }
+  .wordmark { font-family: var(--font-display); font-weight: 400; font-size: clamp(40px, 6vw, 76px); color: #fff; letter-spacing: -0.01em; }
+  .empty { color: rgba(255,255,255,.85); font-size: 14px; }
+  .card:hover .browser, .card:hover .logo-lockup { transform: translateY(-6px) scale(1.02); }
+  h3 { font-family: var(--font-display); font-weight: 300; font-size: clamp(20px, 2.2vw, 26px); text-align: center; margin: 22px 0 0; transition: color .2s; }
+  .card:hover h3 { color: var(--accent); }
 </style>

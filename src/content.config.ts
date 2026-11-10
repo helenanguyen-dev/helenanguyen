@@ -8,6 +8,11 @@ const projects = defineCollection({
     summary: z.string(),
     cover: image().optional(),
     coverAlt: z.string().optional(),
+    // Work-card tile: a colored background with a screen or a logo centered on it.
+    tileBg: z.string().default('linear-gradient(135deg, #f0c27b 0%, #e8836b 100%)'),
+    tileStyle: z.enum(['browser', 'logo']).default('browser'),
+    tileImage: image().optional(),
+    tileText: z.string().optional(),
     role: z.string(),
     year: z.string(),
     tags: z.array(z.string()).default([]),

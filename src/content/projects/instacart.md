@@ -7,6 +7,9 @@ role: "Product Manager"
 year: "2025"
 tags: ["Product Thinking", "Product Strategy", "AI"]
 order: 3
+tileBg: "linear-gradient(135deg, #7cc68f 0%, #2f8a57 100%)"
+tileStyle: browser
+tileImage: ../../assets/instacart-meal-plan-recipe.jpg
 ---
 
 ## Overview
