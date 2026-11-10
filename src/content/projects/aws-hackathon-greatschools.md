@@ -1,8 +1,8 @@
 ---
 title: "Atlas: agent-guided school search"
-summary: "A GreatSchools x AWS hackathon prototype that turns a parent's own words into a ranked, evidence-checked list of schools they can trust."
-cover: ../../assets/greatschools-guided-search.jpg
-coverAlt: "Atlas guided search: priority chips, an AI school guide, and a ranked school card showing which priorities matched"
+summary: "A GreatSchools x AWS hackathon prototype that turns a parent's own words into best-fit school recommendations, each with a confidence level and evidence they can check."
+cover: ../../assets/atlas-cover.png
+coverAlt: "Atlas logo, a folded map with a route to a location pin, above the Atlas guided-search screen: priority chips, the AI school guide, and a matching school card"
 role: "Product Manager"
 year: "2026"
 tags: ["AI Agents", "Amazon Bedrock", "EdTech"]
@@ -39,18 +39,19 @@ Atlas lets parents ask in their own words.
 - **Shows its work.** Each school card says which priorities matched, using the school's own data.
 - **Guides the next step.** A school-guide chat explains why a school fits, suggests questions for a visit, and lets parents compare and save schools to a list.
 
+
 ### How it works
 
 1. **Ask.** Different starting points for new and experienced parents.
 2. **Understand.** Amazon Nova Pro on Bedrock extracts the parent's needs.
 3. **Find and check.** OpenSearch retrieves schools and programs, and Rails checks each priority against the data.
-4. **Guide.** Ranked cards, a map, the school-guide chat, save and compare.
+4. **Guide.** Best-fit cards with a confidence level, a map, the school-guide chat, save and compare.
 
 ## Built on AWS
 
 Everything runs in us-east-1. A parent's request passes through AWS WAF and CloudFront to an internal load balancer, then to a Rails app on EC2 that talks to **OpenSearch 2.19** (schools and programs), **RDS MySQL** (search sessions) and **Amazon Bedrock** (Nova Pro).
 
-**How a search is ranked:** 50% keyword match and 50% meaning match. Each priority is then checked in Ruby code against the school's record, so **the AI explains the results but never invents the facts.**
+**How schools are matched:** 50% keyword match and 50% meaning match. Each priority is then checked in Ruby code against the school's record, so **the AI explains the results but never invents the facts.**
 
 | Design goal | How we met it |
 | --- | --- |
@@ -77,7 +78,8 @@ We ran 20 parent-style queries against the live app. 16 had valid matches in the
 
 - **Now:** guided search, evidence checks, save and compare.
 - **Next:** GreatSchools' full school data and reviews, side-by-side compare, and plain-language school terms.
-- **Later:** saved searches that tell parents when a new matching program opens. [Voice call feature: coming soon.]
+- **Later:** saved searches that tell parents when a new matching program opens.
+- **Reach goal:** an agent that calls a school to check a detail, like when soccer practice is, then shares the answer with every parent who asks. Ten parents don't have to make the same call.
 
 ## What I learned
 
