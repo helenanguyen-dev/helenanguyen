@@ -39,7 +39,6 @@ Atlas lets parents ask in their own words.
 - **Shows its work.** Each school card says which priorities matched, using the school's own data.
 - **Guides the next step.** A school-guide chat explains why a school fits, suggests questions for a visit, and lets parents compare and save schools to a list.
 
-![Atlas guided search: priority chips, an AI school guide, and a school card showing which priorities matched](../../assets/greatschools-guided-search.jpg)
 
 ### How it works
 
