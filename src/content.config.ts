@@ -12,6 +12,8 @@ const projects = defineCollection({
     year: z.string(),
     tags: z.array(z.string()).default([]),
     order: z.number().default(0),
+    // Set draft: true to hide a case study from the site without deleting it.
+    draft: z.boolean().default(false),
   }),
 });
 

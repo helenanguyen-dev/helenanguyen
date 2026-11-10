@@ -5,6 +5,8 @@ role: "[Your role]"
 year: "[Years]"
 tags: ["Data Modeling", "Visualization", "Life Sciences"]
 order: 3
+# Hidden for now; set to false (or delete this line) to bring it back.
+draft: true
 ---
 
 ## Overview
