@@ -1,8 +1,8 @@
 ---
 title: "Atlas: agent-guided school search"
 summary: "A GreatSchools x AWS hackathon prototype that turns a parent's own words into a ranked, evidence-checked list of schools they can trust."
-cover: ../../assets/greatschools-guided-search.jpg
-coverAlt: "Atlas guided search: priority chips, an AI school guide, and a ranked school card showing which priorities matched"
+cover: ../../assets/atlas-cover.png
+coverAlt: "Atlas logo, a folded map with a route to a location pin, beside a parent's question and a top-ranked school card showing which priorities matched"
 role: "Product Manager"
 year: "2026"
 tags: ["AI Agents", "Amazon Bedrock", "EdTech"]
@@ -38,6 +38,8 @@ Atlas lets parents ask in their own words.
 - **Understands you.** "Middle school in Riverview with arts, sports and small class sizes" becomes priority chips the parent can edit.
 - **Shows its work.** Each school card says which priorities matched, using the school's own data.
 - **Guides the next step.** A school-guide chat explains why a school fits, suggests questions for a visit, and lets parents compare and save schools to a list.
+
+![Atlas guided search: priority chips, an AI school guide, and a ranked school card showing which priorities matched](../../assets/greatschools-guided-search.jpg)
 
 ### How it works
 
