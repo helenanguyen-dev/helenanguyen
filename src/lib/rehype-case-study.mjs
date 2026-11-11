@@ -40,6 +40,25 @@ function sections(tree) {
     }
   }
   tree.children = out;
+  // The heading sticks beside the text only until the first wide block
+  // (figure, number panel, image pair or pull quote), so it never slides over it.
+  // To do that, the heading and the text before that block share a wrapper,
+  // and a sticky element can't leave its wrapper.
+  for (const sec of out) {
+    if (sec.tagName !== 'section') continue;
+    const [heading, ...rest] = sec.children;
+    let cut = rest.findIndex(isWide);
+    if (cut === -1) cut = rest.length;
+    const lead = { type: 'element', tagName: 'div', properties: { className: ['cs-lead'] }, children: [heading, ...rest.slice(0, cut)] };
+    sec.children = [lead, ...rest.slice(cut)];
+  }
+}
+
+function isWide(n) {
+  if (n.type !== 'element' && n.type !== 'raw') return false;
+  if (n.type === 'raw') return /class="(stats|pair)"/.test(n.value) || /^\s*<blockquote/.test(n.value);
+  const cls = [].concat(n.properties?.className || []);
+  return n.tagName === 'figure' || n.tagName === 'blockquote' || cls.includes('stats') || cls.includes('pair');
 }
 
 export default function rehypeCaseStudy() {
