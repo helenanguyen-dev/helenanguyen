@@ -10,6 +10,7 @@ tools: "Flowise, Supabase (pgvector), OpenAI embeddings, Microsoft Learn MCP"
 year: "2026"
 tags: ["RAG", "MCP", "Responsible AI"]
 order: 4
+tileLogo: ../../assets/azure-logo.png
 # Bright yellow to match this project's tile.
 statsTheme:
   bg: "#ffd84d"
