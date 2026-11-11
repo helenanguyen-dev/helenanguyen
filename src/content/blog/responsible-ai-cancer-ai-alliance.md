@@ -31,7 +31,7 @@ Everyone involved wants CAIA to succeed, but they want different things along th
 
 - **Speed vs. validation.** Leadership talks about cutting discovery time from years to months, and even a pilot lead called the timeline very ambitious. A fairness and validation standard adds weeks to each project. Researchers feel that cost first. Patients and regulators feel the harm if it's skipped.
 - **Cooperation vs. competition.** The four centers compete for patients, grants and talent. A shared standard and shared oversight means each one gives up some control, and that is the biggest barrier to an alliance-level accountability body.
-- **Research use vs. patient expectations.** Data is de-identified and used under IRB protocols, but patients mostly aren't told how it's handled. After a recent data breach at the Hutch, that gap in trust matters even more.
+- **Research use vs. patient expectations.** Data is de-identified and used under IRB protocols, but patients mostly aren't told how it's handled. In healthcare, where trust is hard to win back, that gap matters.
 
 The good news is that every group loses the same way. If a CAIA model turns out to be biased, or privacy fails, the whole value of the alliance (trusted collaboration) goes with it. That shared risk is the lever for getting everyone to agree on guardrails.
 
