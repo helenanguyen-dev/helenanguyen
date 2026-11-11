@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import { url } from '../lib/url';
 import { Image } from 'astro:assets';
 import portrait from '../assets/helena-portrait.jpg';
-import brokenRice from '../assets/cooking-broken-rice.jpg';
+import sushiBake from '../assets/cooking-sushi-bake-ribs.jpg';
 import diamondHead from '../assets/hawaii-diamond-head.jpg';
 import ContactSection from '../components/ContactSection.astro';
 // Career entries. Set `project` to a case-study slug (file name in src/content/projects) to make the entry clickable.
@@ -17,7 +17,7 @@ const career = [
 ];
 // Hobbies. Add a `photo` to replace the placeholder tile.
 const hobbies: { label: string; caption: string; photo?: { src: ImageMetadata; alt: string } }[] = [
-  { label: 'Cooking', caption: 'Vietnamese broken rice', photo: { src: brokenRice, alt: 'Vietnamese broken rice with grilled short ribs, cucumber and cherry tomatoes' } },
+  { label: 'Cooking', caption: 'Sushi bake and glazed ribs', photo: { src: sushiBake, alt: 'A baked sushi casserole in a glass dish behind a plate of glazed pork ribs topped with green onion' } },
   { label: 'Traveling', caption: 'Hawaii, April ’25', photo: { src: diamondHead, alt: 'Diamond Head seen from a boat off Waikiki' } },
   { label: 'Learning', caption: 'The latest skill I picked up' },
 ];
