@@ -4,9 +4,17 @@ summary: "A feedback system that shows a small nonprofit team which events work,
 cover: ../../assets/fiuts-dashboard-participants.jpg
 coverAlt: "Wireframe of the Participant experience dashboard: response, rating and return scorecards, agreement bars, a monthly rating trend, and a table of written comments"
 role: "Data Intern"
+team: "FIUTS program staff"
+tools: "Google Forms, Google Sheets, Looker Studio"
 year: "2026"
 tags: ["Data Strategy", "Dashboards", "Nonprofit"]
 order: 1
+# Matches the FIUTS progress update: dark green cards with light-green numbers.
+statsTheme:
+  bg: "#003d28"
+  number: "#a6dc8c"
+  label: "rgba(255,255,255,.82)"
+  weight: 800
 tileBg: "linear-gradient(135deg, #f3c47e 0%, #e9846c 100%)"
 tileStyle: browser
 ---
@@ -14,8 +22,6 @@ tileStyle: browser
 ## Overview
 
 FIUTS is a Seattle nonprofit that builds intercultural connection between international students and the wider community through trips, dinners, leadership programs and volunteering. As a data intern, I'm redesigning how FIUTS collects and uses feedback from its events, so every event can learn from the last one.
-
-**My role:** Data Intern, working with FIUTS program staff. **Tools:** Google Forms, Google Sheets, Looker Studio.
 
 ## The problem
 
@@ -25,7 +31,9 @@ FIUTS runs many events a term, and people fill out feedback forms after them. Tu
 2. **Two sides of every event.** Participants and the facilitators who run events see the same event differently, and there was no way to put both views side by side.
 3. **Turnover.** Staff and student roles change often. Anything that depends on one person's account, formulas or memory quietly breaks when they leave.
 
-So the real question wasn't "what dashboard should we build?" It was **"what can a small, changing team keep running without a data person?"**
+So the real question wasn't "what dashboard should we build?" It was this:
+
+> What can a small, changing team keep running without a data person?
 
 ## Starting from the questions
 
@@ -35,11 +43,25 @@ Before choosing any charts, I wrote down what FIUTS actually needs to know, and 
 
 **Facilitator survey.** Whether facilitators had the information, materials, budget and staff support they needed, how the event went by role (staff, student volunteer, community volunteer), whether they'd facilitate again, and a headcount of attendees. That headcount is small but important: it's what makes response rates possible.
 
+<div class="pair">
+
+![The FIUTS participant feedback form in Google Forms](../../assets/fiuts-participant-survey.jpg "Participant survey: how people experience an event, and whether they'd come back.")
+
+![The FIUTS facilitator feedback form in Google Forms](../../assets/fiuts-facilitator-survey.jpg "Facilitator survey: support, confidence by role, and an attendee headcount.")
+
+</div>
+
 Every question maps to a chart. If a question didn't feed a decision, it didn't make the survey.
 
 ## Designing for zero upkeep
 
 I chose a simple pipeline: **Google Forms → one Google Sheet → Looker Studio.** It's free, needs no installs or licenses, and updates itself as responses come in.
+
+<div class="stats">
+  <div><strong>$0</strong><span>No installs or licenses</span></div>
+  <div><strong>15 min</strong><span>Of upkeep, once a term</span></div>
+  <div><strong>10 min</strong><span>For a new staff member to take it over</span></div>
+</div>
 
 The design choices are about surviving turnover:
 
@@ -60,9 +82,13 @@ Three pages, each answering one question, each with date and event filters at th
 2. **Facilitator support:** do our facilitators have what they need? Support and confidence by role, leadership growth, and what facilitators said worked and what they need.
 3. **Event comparison:** which events work best, and do facilitators and participants agree? The two surveys are joined on event date, so every event shows attendance, response rate, and both ratings side by side.
 
-![Wireframe of the Event comparison page: events with feedback, average response rate and total attendance, a table of every event, and facilitator vs participant ratings side by side](../../assets/fiuts-dashboard-events.jpg)
+<div class="pair">
 
-Values in the wireframes are placeholders, not real results.
+![Wireframe of the Participant experience page: response, rating and return scorecards, agreement bars, a monthly rating trend, and written comments](../../assets/fiuts-dashboard-participants.jpg "Page 1, Participant experience. Values are placeholders, not real results.")
+
+![Wireframe of the Event comparison page: events with feedback, average response rate and total attendance, a table of every event, and facilitator vs participant ratings side by side](../../assets/fiuts-dashboard-events.jpg "Page 3, Event comparison. Both surveys joined on event date.")
+
+</div>
 
 ## Privacy by design
 

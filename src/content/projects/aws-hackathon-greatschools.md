@@ -3,11 +3,22 @@ title: "Atlas: agent-guided school search"
 summary: "A GreatSchools x AWS hackathon prototype that turns a parent's own words into best-fit school recommendations, each with a confidence level and evidence they can check."
 cover: ../../assets/atlas-cover.png
 coverAlt: "Atlas logo, a folded map with a route to a location pin, above the Atlas guided-search screen: priority chips, the AI school guide, and a matching school card"
+heroImage: ../../assets/greatschools-guided-search.jpg
+heroAlt: "Atlas guided search on GreatSchools: priority chips from a parent's sentence, the AI school guide, and a matching school card"
 role: "Product Manager"
+team: "Two software engineers, a search and data engineer, and me"
+timeline: "3 days, 2026"
+tools: "Amazon Bedrock, OpenSearch, Rails on EC2"
 year: "2026"
 tags: ["AI Agents", "Amazon Bedrock", "EdTech"]
 order: 2
-tileBg: "linear-gradient(140deg, #4a68b8 0%, #2f4a8a 100%)"
+# Matches the Team Atlas deck: deep navy cards with white numbers.
+statsTheme:
+  bg: "#1b2440"
+  number: "#ffffff"
+  label: "rgba(255,255,255,.78)"
+  weight: 800
+tileBg: "linear-gradient(135deg, #2342a8 0%, #0e1f63 100%)"
 tileStyle: logo
 tileImage: ../../assets/atlas-logo.svg
 tileText: "Atlas"
@@ -15,15 +26,23 @@ tileText: "Atlas"
 
 ## Overview
 
-GreatSchools is a nonprofit whose 150,000+ school profiles help about 40 million families a year choose schools. At a GreatSchools x AWS hackathon, our four-person team, **Team Atlas**, spent three days on one question: *how do you turn a parent's real priorities into a list they can trust?*
+GreatSchools is a nonprofit whose 150,000+ school profiles help about 40 million families a year choose schools. At a GreatSchools x AWS hackathon, our four-person team, **Team Atlas**, spent three days on one question: how do you turn a parent's real priorities into a list they can trust?
 
-**My role:** Product Manager, on a team with two software engineers and a search and data engineer. **Built in:** 3 days on AWS.
+<div class="stats">
+  <div><strong>150,000+</strong><span>School profiles on GreatSchools</span></div>
+  <div><strong>~40M</strong><span>Families who use it each year</span></div>
+  <div><strong>3 days</strong><span>To build Atlas, as a team of four</span></div>
+</div>
 
 ## Meet Maria
 
 We designed around one parent. Maria works two jobs and lives in Riverview. Her son Leo starts middle school next fall. He loves drawing and painting, plays soccer on weekends, and needs teachers who notice him.
 
-At 9 PM, after her shift, her question isn't "which school has an 8/10?" It's **"Where will Leo do well?"**
+![Maria's persona card: works two jobs, lives in Riverview, her son starts middle school next fall. What matters for Leo: arts programs, sports programs, small class sizes](../../assets/atlas-maria.jpg "The persona we designed around, from our hackathon deck.")
+
+At 9 PM, after her shift, her question isn't "which school has an 8/10?" It's this:
+
+> "Where will Leo do well?"
 
 ## The problem
 
@@ -55,6 +74,8 @@ Atlas lets parents ask in their own words.
 
 Everything runs in us-east-1. A parent's request passes through AWS WAF and CloudFront to an internal load balancer, then to a Rails app on EC2 that talks to **OpenSearch 2.19** (schools and programs), **RDS MySQL** (search sessions) and **Amazon Bedrock** (Nova Pro).
 
+![Architecture: parent's browser, AWS WAF, CloudFront, an internal load balancer, then Rails on EC2, which talks to OpenSearch 2.19, RDS MySQL and Amazon Bedrock](../../assets/atlas-architecture.jpg "Everything runs in us-east-1 inside one VPC.")
+
 **How schools are matched:** 50% keyword match and 50% meaning match. Each priority is then checked in Ruby code against the school's record, so **the AI explains the results but never invents the facts.**
 
 | Design goal | How we met it |
@@ -69,12 +90,12 @@ Everything runs in us-east-1. A parent's request passes through AWS WAF and Clou
 
 We ran 20 parent-style queries against the live app. 16 had valid matches in the sample data, and 4 were expected to return none.
 
-| What we measured | Result |
-| --- | --- |
-| Priorities captured per search | 23 of 24 |
-| Test queries with a relevant top result | 15 of 16 |
-| Missing or outdated data flagged correctly | 54 of 54 |
-| Search response time | 1.98s median, 2.24s average |
+<div class="stats">
+  <div><strong>23 / 24</strong><span>Priorities captured per search</span></div>
+  <div><strong>15 / 16</strong><span>Test queries with a relevant top result</span></div>
+  <div><strong>54 / 54</strong><span>Missing or outdated data flagged correctly</span></div>
+  <div><strong>1.98s</strong><span>Median search response time (2.24s average)</span></div>
+</div>
 
 [Impact: what GreatSchools said, judging results, and how this could move their saves-to-searches ratio.]
 
