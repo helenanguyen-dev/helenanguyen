@@ -66,7 +66,10 @@ const img = tileImage ?? cover;
   .card:hover .phone-stack:has(:global(.brand)) { transform: translateY(-6px) scale(1.02); }
   .card:hover .phone-stack:has(:global(.brand)) .phone { transform: none; }
   .browser-stack { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5%; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
-  .browser-stack .browser { flex: none; width: 66%; }
+  /* Show the whole screenshot: the window takes its height from the tile and its width from the image */
+  .tile:has(.browser-stack) { container-type: size; }
+  .browser-stack .browser { flex: none; width: fit-content; }
+  .browser-stack .screen { height: 60cqh; width: auto; max-width: 80cqw; aspect-ratio: auto; object-fit: contain; }
   .browser-stack :global(.brand) { height: 12%; }
   .logo-stack { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9%; }
   .logo-stack :global(.partner-row) { height: 9%; font-size: clamp(10px, 1.4vw, 16px); opacity: .92; }
