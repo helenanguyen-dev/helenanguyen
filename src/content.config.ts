@@ -13,6 +13,8 @@ const projects = defineCollection({
     tileStyle: z.enum(['browser', 'phone', 'logo']).default('browser'),
     tileImage: image().optional(),
     tileText: z.string().optional(),
+    // Optional brand logo shown under the phone on a "phone" tile.
+    tileLogo: image().optional(),
     // Case study hero: a large colored panel (tileBg) with a screen on it.
     heroImage: image().optional(),
     heroAlt: z.string().optional(),
