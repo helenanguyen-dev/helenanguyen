@@ -34,6 +34,8 @@ The "green" options fall short too:
 1. **Bamboo brushes** still use nylon bristles, which have to be pulled out before composting, and bamboo farming drives land use.
 2. **PLA bioplastic brushes** only break down in industrial composters, which most people can't reach, so they end up in landfills anyway.
 
+![The ChitoClean booth: our challenge sign, trays of bamboo toothbrushes, and a black "Recycle? or trash?" board for visitors](../../assets/chitoclean-booth.jpg "Our booth at the Health Innovation Challenge: bamboo toothbrushes, the usual \"eco\" pick, on the trays, and a \"Recycle or trash?\" game for visitors.")
+
 Eco-conscious shoppers end up asking whether they're just trading one environmental problem for another.
 
 ## The solution
@@ -55,8 +57,6 @@ A team of scientists, engineers and business people can easily pull in three dir
 ## Results
 
 The plan helped carry ChitoClean to the finals of two UW startup challenges, including the 2026 Environmental Innovation Challenge. We were also chosen for 2026 prototype funding from UW's Buerk Center for Entrepreneurship, which pays for the R&D we're doing now.
-
-![The ChitoClean booth: our challenge sign, trays of toothbrush samples, and a black "Recycle? or trash?" board for visitors](../../assets/chitoclean-booth.jpg "Our booth at the Health Innovation Challenge, with a \"Recycle or trash?\" game for visitors.")
 
 ## What I learned
 
