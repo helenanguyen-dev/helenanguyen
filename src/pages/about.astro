@@ -194,7 +194,7 @@ const skills: { name: string; project?: string }[] = [
   .show-close { all: unset; cursor: pointer; font-size: 34px; line-height: 1; padding: 4px 10px; border-radius: 8px; color: #fff; }
   .show-close:focus-visible, .show-nav:focus-visible, .dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .show-stage { position: relative; height: min(680px, calc(100dvh - 190px)); touch-action: pan-y; }
-  .slide { position: absolute; inset: 0; margin: 0; display: grid; grid-template-rows: 1fr auto; gap: 12px; opacity: 0; transition: opacity .6s ease; pointer-events: none; }
+  .slide { position: absolute; inset: 0; margin: 0; display: grid; grid-template-rows: 1fr auto; gap: 12px; opacity: 0; transition: opacity .45s ease; pointer-events: none; }
   .slide[aria-hidden='false'] { opacity: 1; pointer-events: auto; }
   .slide img { width: 100%; height: 100%; min-height: 0; object-fit: contain; }
   .slide figcaption { display: grid; justify-items: center; text-align: center; gap: 2px; }
@@ -212,7 +212,7 @@ const skills: { name: string; project?: string }[] = [
   @media (max-width: 760px) { .intro, .two-col, .hobby-grid { grid-template-columns: 1fr; } .two-col { margin-top: 56px; } .entry { margin: 0 -12px; padding: 16px 12px; } .career li::before { top: 21px; } .skills { margin-top: 8px; grid-template-columns: 1fr; } }
 </style>
 <script>
-  const DELAY = 4500;
+  const DELAY = 3000;
   const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.querySelectorAll<HTMLButtonElement>('.hobby-card').forEach((card) => {
     const dlg = document.getElementById(`show-${card.dataset.show}`) as HTMLDialogElement | null;
