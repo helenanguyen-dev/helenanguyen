@@ -15,7 +15,6 @@ order: 5
 tileBg: "linear-gradient(135deg, #1f8a8c 0%, #0b4a5a 100%)"
 tileStyle: logo
 tileImage: ../../assets/chitoclean-logo.png
-tileText: "ChitoClean"
 tileRound: true
 ---
 
