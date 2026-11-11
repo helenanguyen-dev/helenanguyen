@@ -6,7 +6,7 @@ const { title, description = 'Portfolio of Helena Nguyen, product manager and da
 const pageTitle = title ? `${title} · Helena Nguyen` : 'Helena Nguyen';
 const path = Astro.url.pathname;
 const site = Astro.site ?? 'https://helenanguyen-dev.github.io';
-const ogImage = new URL(url('/og-image.png?v=1'), site).href;
+const ogImage = new URL(url('/og-image.png?v=2'), site).href;
 const canonical = new URL(path, site).href;
 const nav = [
   { href: '/work/', label: 'Work' },
