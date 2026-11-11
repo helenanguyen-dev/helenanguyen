@@ -9,11 +9,12 @@ tools: "Google Forms, Google Sheets, Looker Studio"
 year: "2026"
 tags: ["Data Strategy", "Dashboards", "Nonprofit"]
 order: 1
-# Matches the FIUTS progress update: dark green cards with light-green numbers.
+# Matches the FIUTS tile: warm orange panels with FIUTS-blue numbers.
 statsTheme:
-  bg: "#003d28"
-  number: "#a6dc8c"
-  label: "rgba(255,255,255,.82)"
+  bg: "#eea475"
+  number: "#163f73"
+  label: "rgba(22,40,70,.85)"
+  line: "rgba(255,255,255,.45)"
   weight: 800
 tileBg: "linear-gradient(135deg, #f3c47e 0%, #e9846c 100%)"
 tileStyle: browser
