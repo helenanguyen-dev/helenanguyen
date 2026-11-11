@@ -3,7 +3,19 @@ import Base from '../layouts/Base.astro';
 import { url } from '../lib/url';
 import { Image } from 'astro:assets';
 import portrait from '../assets/helena-portrait.jpg';
-import sushiBake from '../assets/cooking-sushi-bake-ribs.jpg';
+import foodSushiBake from '../assets/hobbies/food-sushi-bake.jpg';
+import foodShrimpBowl from '../assets/hobbies/food-shrimp-bowl.jpg';
+import foodChickenDuck from '../assets/hobbies/food-chicken-duck-rice.jpg';
+import labBench from '../assets/hobbies/lab-bench.jpg';
+import labMouseRoom from '../assets/hobbies/lab-mouse-room.jpg';
+import labSelfie from '../assets/hobbies/lab-selfie.jpg';
+import labFacs from '../assets/hobbies/lab-facs-sorter.jpg';
+import labCrystalViolet from '../assets/hobbies/lab-crystal-violet.jpg';
+import labCells from '../assets/hobbies/lab-cells.jpg';
+import placeMountHood from '../assets/hobbies/places-mount-hood.jpg';
+import placeLake from '../assets/hobbies/places-lake.jpg';
+import placeGoldenBridge from '../assets/hobbies/places-golden-bridge.jpg';
+import placePagoda from '../assets/hobbies/places-pagoda.jpg';
 import diamondHead from '../assets/hawaii-diamond-head.jpg';
 import ContactSection from '../components/ContactSection.astro';
 // Career entries. Set `project` to a case-study slug (file name in src/content/projects) to make the entry clickable.
@@ -16,11 +28,30 @@ const career = [
   { when: 'Previously', org: 'Fred Hutch Cancer Center', text: 'Built the data models, dashboards and visualizations behind research on CD8+KIR+ cells and the role of neutrophils in lung cancer, and turned the results into figures for the lab’s grant applications.', },
   { when: 'Previously', org: 'COPE Health Scholars', text: 'Optimized and streamlined admin processes for a community of 45,000+ alumni.' },
 ];
-// Hobbies. Add a `photo` to replace the placeholder tile.
-const hobbies: { label: string; caption: string; photo?: { src: ImageMetadata; alt: string } }[] = [
-  { label: 'Cooking', caption: 'Sushi bake and glazed ribs', photo: { src: sushiBake, alt: 'A baked sushi casserole in a glass dish behind a plate of glazed pork ribs topped with green onion' } },
-  { label: 'Traveling', caption: 'Hawaii, April ’25', photo: { src: diamondHead, alt: 'Diamond Head seen from a boat off Waikiki' } },
-  { label: 'Learning', caption: 'The latest skill I picked up' },
+// Hobbies. Each card opens a slideshow. The first slide is the card's cover photo.
+// `when` and `where` show under each photo; leave either empty to hide it.
+type Slide = { src: ImageMetadata; alt: string; title: string; when?: string; where?: string };
+const hobbies: { id: string; label: string; caption: string; slides: Slide[] }[] = [
+  { id: 'food', label: 'Exploring food', caption: 'Cooking at home and eating out', slides: [
+    { src: foodSushiBake, title: 'Sushi bake', when: '[Month Year]', where: '[Place]', alt: 'A homemade sushi bake in a glass dish, drizzled with spicy mayo and topped with crab' },
+    { src: foodShrimpBowl, title: 'Shrimp bowl', when: '[Month Year]', where: '[Place]', alt: 'A dark bowl of glazed shrimp topped with fish roe and herbs, chopsticks resting on the rim' },
+    { src: foodChickenDuck, title: 'Chicken and duck rice', when: '[Month Year]', where: '[Place]', alt: 'Plates of sliced poached chicken and roast duck with cucumber, rice and dipping sauces' },
+  ] },
+  { id: 'lab', label: 'New skills (in lab)', caption: 'Learning hands-on at the bench', slides: [
+    { src: labBench, title: 'My bench', when: '[Month Year]', where: 'Seattle, WA', alt: 'A busy lab bench with pipettes, an ice bucket of tubes and shelves of supplies' },
+    { src: labMouseRoom, title: 'Suited up for the animal facility', when: '[Month Year]', where: 'Seattle, WA', alt: 'Helena in a gown, gloves and safety glasses next to stacked mouse cages' },
+    { src: labSelfie, title: 'Lab days', when: '[Month Year]', where: 'Seattle, WA', alt: 'Helena making a peace sign in a lab office, a colleague waving in the background' },
+    { src: labFacs, title: 'Sorting cells on a FACS sorter', when: 'Nov 2024', where: 'Seattle, WA', alt: 'A flow cytometry sorter screen showing gating plots and a histogram' },
+    { src: labCrystalViolet, title: 'Crystal violet staining', when: 'Feb 2023', where: 'Seattle, WA', alt: 'A 12-well plate stained deep purple with crystal violet' },
+    { src: labCells, title: 'Cells under the microscope', when: '[Month Year]', where: 'Seattle, WA', alt: 'A phase-contrast micrograph of a dense layer of cultured cells' },
+  ] },
+  { id: 'places', label: 'Exploring places', caption: 'Mountains, lakes and Vietnam', slides: [
+    { src: placeMountHood, title: 'Mount Hood', when: '[Month Year]', where: 'Oregon', alt: 'Snowy Mount Hood at dusk above a dark forest and a curving road' },
+    { src: placeLake, title: 'Still water', when: '[Month Year]', where: '[Place]', alt: 'Two weathered logs leading into a mirror-still mountain lake' },
+    { src: placeGoldenBridge, title: 'Golden Bridge', when: '[Month Year]', where: 'Ba Na Hills, Vietnam', alt: 'The Golden Bridge held up by two giant stone hands above the clouds' },
+    { src: placePagoda, title: 'Pagoda in the hills', when: '[Month Year]', where: '[Ba Na Hills?], Vietnam', alt: 'A tall white pagoda rising above green trees beside a stone lotus' },
+    { src: diamondHead, title: 'Diamond Head', when: 'Apr 2025', where: 'Hawaii', alt: 'Diamond Head seen from a boat off Waikiki' },
+  ] },
 ];
 // Skills. Add a `project` slug to link a skill to the case study that shows it best.
 const skills: { name: string; project?: string }[] = [
@@ -76,16 +107,38 @@ const skills: { name: string; project?: string }[] = [
     <h2>Hobbies</h2>
     <div class="hobby-grid">
       {hobbies.map((h) => (
-        <figure>
-          {h.photo ? (
-            <Image class="hobby-img hobby-photo" src={h.photo.src} alt={h.photo.alt} widths={[400, 800]} sizes="(max-width: 760px) 100vw, 380px" />
-          ) : (
-            <div class="placeholder hobby-img">{h.label} photo</div>
-          )}
-          <figcaption><strong>{h.label}</strong><span>{h.caption}</span></figcaption>
-        </figure>
+        <button class="hobby-card" type="button" data-show={h.id} aria-haspopup="dialog">
+          <span class="hobby-cover">
+            <Image class="hobby-photo" src={h.slides[0].src} alt="" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 380px" />
+            <span class="hobby-count"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>{h.slides.length} photos</span>
+          </span>
+          <span class="hobby-text"><strong>{h.label}</strong><span>{h.caption}</span></span>
+        </button>
       ))}
     </div>
+    {hobbies.map((h) => (
+      <dialog class="show" id={`show-${h.id}`} aria-label={`${h.label} photos`}>
+        <div class="show-inner">
+          <div class="show-head">
+            <h3>{h.label}</h3>
+            <button class="show-close" type="button" aria-label="Close">&times;</button>
+          </div>
+          <div class="show-stage">
+            {h.slides.map((sl, i) => (
+              <figure class="slide" data-i={i} aria-hidden={i === 0 ? 'false' : 'true'}>
+                <Image src={sl.src} alt={sl.alt} widths={[600, 1000, 1400]} sizes="(max-width: 760px) 100vw, 900px" loading="lazy" />
+                <figcaption><strong>{sl.title}</strong>{(sl.when || sl.where) && <span>{[sl.when, sl.where].filter(Boolean).join(' · ')}</span>}</figcaption>
+              </figure>
+            ))}
+            <button class="show-nav prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg></button>
+            <button class="show-nav next" type="button" aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></button>
+          </div>
+          <div class="show-dots">
+            {h.slides.map((_, i) => <button type="button" class="dot" data-go={i} aria-label={`Photo ${i + 1}`} />)}
+          </div>
+        </div>
+      </dialog>
+    ))}
   </section>
   <section class="wrap about-contact" id="contact">
     <ContactSection heading="h2" />
@@ -123,10 +176,82 @@ const skills: { name: string; project?: string }[] = [
   .about-contact { margin-top: 96px; padding-top: 48px; border-top: 1px solid var(--line); }
   .about-contact :global(.contact-title) { margin-top: 0; }
   .hobby-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  figure { margin: 0; }
-  .hobby-img { aspect-ratio: 1; }
-  .hobby-photo { width: 100%; height: auto; object-fit: cover; border-radius: var(--radius); }
-  figcaption { display: grid; margin-top: 12px; }
-  figcaption span { color: var(--muted); font-size: 15px; }
+  .hobby-card { all: unset; box-sizing: border-box; display: grid; align-content: start; gap: 12px; cursor: pointer; border-radius: var(--radius); }
+  .hobby-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+  .hobby-cover { position: relative; display: block; aspect-ratio: 1; overflow: hidden; border-radius: var(--radius); }
+  .hobby-photo { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
+  .hobby-card:hover .hobby-photo { transform: scale(1.04); }
+  .hobby-count { position: absolute; left: 12px; bottom: 12px; display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px 6px 9px; border-radius: 999px; background: rgba(20,19,17,.62); color: #fff; font-size: 13px; backdrop-filter: blur(6px); }
+  .hobby-count svg { width: 14px; height: 14px; fill: currentColor; }
+  .hobby-text { display: grid; }
+  .hobby-text span { color: var(--muted); font-size: 15px; }
+  .show { border: 0; padding: 0; background: transparent; width: min(960px, calc(100vw - 32px)); max-width: none; max-height: none; color: #fff; }
+  .show::backdrop { background: rgba(14,13,12,.95); backdrop-filter: blur(8px); }
+  .show-inner { display: grid; gap: 14px; }
+  .show-head { display: flex; align-items: center; justify-content: space-between; }
+  .show-head h3 { margin: 0; font-weight: 300; font-size: 22px; color: #fff; }
+  .show-close { all: unset; cursor: pointer; font-size: 34px; line-height: 1; padding: 4px 10px; border-radius: 8px; color: #fff; }
+  .show-close:focus-visible, .show-nav:focus-visible, .dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .show-stage { position: relative; height: min(72vh, 680px); touch-action: pan-y; }
+  .slide { position: absolute; inset: 0; margin: 0; display: grid; grid-template-rows: 1fr auto; gap: 12px; opacity: 0; transition: opacity .6s ease; pointer-events: none; }
+  .slide[aria-hidden='false'] { opacity: 1; pointer-events: auto; }
+  .slide img { width: 100%; height: 100%; min-height: 0; object-fit: contain; }
+  .slide figcaption { display: grid; justify-items: center; text-align: center; gap: 2px; }
+  .slide figcaption strong { font-weight: 500; }
+  .slide figcaption span { color: rgba(255,255,255,.7); font-size: 14px; letter-spacing: .04em; }
+  .show-nav { all: unset; cursor: pointer; position: absolute; top: calc(50% - 40px); width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.14); transition: background .2s; }
+  .show-nav:hover { background: rgba(255,255,255,.28); }
+  .show-nav svg { width: 22px; height: 22px; fill: none; stroke: #fff; stroke-width: 2; }
+  .prev { left: 8px; } .next { right: 8px; }
+  .show-dots { display: flex; justify-content: center; gap: 8px; }
+  .dot { all: unset; cursor: pointer; width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.35); transition: background .2s, transform .2s; }
+  .dot[aria-current='true'] { background: var(--accent); transform: scale(1.25); }
+  @media (max-width: 760px) { .show-stage { height: 70vh; } .show-nav { display: none; } }
+  @media (prefers-reduced-motion: reduce) { .slide, .hobby-photo { transition: none; } }
   @media (max-width: 760px) { .intro, .two-col, .hobby-grid { grid-template-columns: 1fr; } .two-col { margin-top: 56px; } .entry { margin: 0 -12px; padding: 16px 12px; } .career li::before { top: 21px; } .skills { margin-top: 8px; grid-template-columns: 1fr; } }
 </style>
+<script>
+  const DELAY = 4500;
+  const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll<HTMLButtonElement>('.hobby-card').forEach((card) => {
+    const dlg = document.getElementById(`show-${card.dataset.show}`) as HTMLDialogElement | null;
+    if (!dlg) return;
+    const slides = [...dlg.querySelectorAll<HTMLElement>('.slide')];
+    const dots = [...dlg.querySelectorAll<HTMLButtonElement>('.dot')];
+    const stage = dlg.querySelector<HTMLElement>('.show-stage')!;
+    let i = 0, timer = 0, paused = false;
+    const show = (n: number) => {
+      i = (n + slides.length) % slides.length;
+      slides.forEach((s, k) => s.setAttribute('aria-hidden', String(k !== i)));
+      dots.forEach((d, k) => d.setAttribute('aria-current', String(k === i)));
+      const next = slides[(i + 1) % slides.length].querySelector('img');
+      if (next) next.loading = 'eager';
+    };
+    const stop = () => { clearInterval(timer); timer = 0; };
+    const play = () => { stop(); if (!still && !paused && dlg.open) timer = window.setInterval(() => show(i + 1), DELAY); };
+    const step = (n: number) => { show(n); play(); };
+    card.addEventListener('click', () => { show(0); dlg.showModal(); paused = false; play(); });
+    dlg.querySelector('.show-close')!.addEventListener('click', () => dlg.close());
+    dlg.querySelector('.prev')!.addEventListener('click', () => step(i - 1));
+    dlg.querySelector('.next')!.addEventListener('click', () => step(i + 1));
+    dots.forEach((d) => d.addEventListener('click', () => step(Number(d.dataset.go))));
+    dlg.addEventListener('close', stop);
+    dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+    dlg.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') step(i - 1);
+      if (e.key === 'ArrowRight') step(i + 1);
+    });
+    // Pause only once the pointer actually moves over the photo, so a slideshow
+    // that opens under a resting cursor still plays.
+    stage.addEventListener('mousemove', () => { if (!paused) { paused = true; stop(); } });
+    stage.addEventListener('mouseleave', () => { paused = false; play(); });
+    let x0: number | null = null;
+    stage.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+    stage.addEventListener('touchend', (e) => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 40) step(dx < 0 ? i + 1 : i - 1);
+      x0 = null;
+    });
+  });
+</script>
