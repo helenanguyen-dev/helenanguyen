@@ -10,15 +10,15 @@ tools: "Flowise, Supabase (pgvector), OpenAI embeddings, Microsoft Learn MCP"
 year: "2026"
 tags: ["RAG", "MCP", "Responsible AI"]
 order: 4
-tileLogo: ../../assets/azure-logo.png
-# Light purple to match this project's tile.
+tileLogo: ../../assets/azure-logo-white.png
+# Deep purple with glowing orbs, to match this project's tile.
 statsTheme:
-  bg: "#d6c4f4"
-  number: "#2b1f4d"
-  label: "rgba(43,31,77,.75)"
-  line: "#c2a9ec"
+  bg: "#241063"
+  number: "#ffffff"
+  label: "rgba(255,255,255,.78)"
+  line: "rgba(255,255,255,.14)"
   weight: 800
-tileBg: "linear-gradient(135deg, #c3a8ef 0%, #dccbf5 100%)"
+tileBg: "radial-gradient(circle at 88% 4%, #9fe3b8 0%, #7c6cf0 9%, #4b2bb8 17%, #2a1478 22.5%, transparent 23%), radial-gradient(circle at 34% 108%, #b28cff 0%, #8452f0 10%, #5326c9 20%, #33188a 25.5%, transparent 26%), radial-gradient(circle at 4% 112%, #a07bff 0%, #6a3be0 8%, #3c1b9c 14.5%, transparent 15%), linear-gradient(120deg, #120838 0%, #24106a 50%, #160a45 100%)"
 tileStyle: browser
 ---
 
