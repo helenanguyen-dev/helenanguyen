@@ -34,6 +34,14 @@ GreatSchools is a nonprofit whose 150,000+ school profiles help about 40 million
   <div><strong>3 days</strong><span>To build Atlas, as a team of four</span></div>
 </div>
 
+<div class="pair">
+
+![A speaker with a microphone on stage beside a screen reading Breaking Barriers Challenge 2026, with an audience of participants in the foreground](../../assets/atlas-hackathon-kickoff.jpg "Kickoff of the AWS Breaking Barriers Challenge 2026.")
+
+![Teams working on laptops at tables in a bright room with city and water views, an AWS Breaking Barriers backdrop and a projected screen behind them](../../assets/atlas-hackathon-teams.jpg "Teams building side by side over the three days.")
+
+</div>
+
 ## Meet Maria
 
 We designed around one parent. Maria works two jobs and lives in Riverview. Her son Leo starts middle school next fall. He loves drawing and painting, plays soccer on weekends, and needs teachers who notice him.
