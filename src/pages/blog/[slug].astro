@@ -18,7 +18,7 @@ const fmt = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', d
     <header>
       <time datetime={date.toISOString()}>{fmt}</time>
       <h1>{title}</h1>
-      {tags.length > 0 && <p class="tags">{tags.join(' · ')}</p>}
+      {tags.length > 0 && <ul class="tags">{tags.map((t) => <li>{t}</li>)}</ul>}
     </header>
     <div class="body"><Content /></div>
   </article>
@@ -26,7 +26,9 @@ const fmt = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', d
 <style>
   .back { display: inline-block; margin-top: 32px; color: var(--muted); text-decoration: none; font-size: 15px; }
   header { margin: 32px 0 40px; max-width: 760px; }
-  time, .tags { font-size: 14px; color: var(--muted); }
+  time { font-size: 14px; color: var(--muted); }
+  .tags { list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .tags li { font-size: 13px; color: var(--muted); border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 5px 14px; }
   h1 { font-size: clamp(30px, 4.2vw, 48px); font-weight: 300; margin: 10px 0; }
   .body { max-width: 68ch; font-size: 18px; }
   .body :global(h2) { font-size: 28px; margin-top: 40px; }
