@@ -4,6 +4,12 @@ summary: "A product concept for going from cooking video to grocery cart, and a 
 cover: ../../assets/instacart-meal-plan-filters.jpg
 coverAlt: "Meal Plan Companion filter screen with budget, difficulty, dietary tag and serving size options"
 heroStyle: duo
+# Matches the pitch deck: dark green panels with heavy light-green numbers.
+statsTheme:
+  bg: "#003d28"
+  number: "#9fce8d"
+  label: "rgba(255,255,255,.82)"
+  weight: 800
 heroPhone: ../../assets/instacart-meal-plan-mobile.png
 role: "Product Manager"
 team: "Team of four"

@@ -19,6 +19,8 @@ const projects = defineCollection({
     heroStyle: z.enum(['browser', 'duo']).default('browser'),
     // For heroStyle "duo": a phone screen shown next to the browser.
     heroPhone: image().optional(),
+    // Optional look for the big-number callouts, e.g. to match a project's deck.
+    statsTheme: z.object({ bg: z.string(), number: z.string(), label: z.string(), weight: z.number().default(300) }).optional(),
     role: z.string(),
     team: z.string().optional(),
     timeline: z.string().optional(),

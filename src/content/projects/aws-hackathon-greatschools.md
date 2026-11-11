@@ -12,7 +12,7 @@ tools: "Amazon Bedrock, OpenSearch, Rails on EC2"
 year: "2026"
 tags: ["AI Agents", "Amazon Bedrock", "EdTech"]
 order: 2
-tileBg: "linear-gradient(140deg, #4a68b8 0%, #2f4a8a 100%)"
+tileBg: "linear-gradient(135deg, #2342a8 0%, #0e1f63 100%)"
 tileStyle: logo
 tileImage: ../../assets/atlas-logo.svg
 tileText: "Atlas"

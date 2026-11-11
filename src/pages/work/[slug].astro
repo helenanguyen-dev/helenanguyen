@@ -14,7 +14,8 @@ export async function getStaticPaths() {
 }
 const { project, next } = Astro.props;
 const { Content } = await render(project);
-const { title, summary, role, year, tags, cover, coverAlt, tileBg, heroImage, heroAlt, heroStyle, heroPhone, team, timeline, tools } = project.data;
+const { title, summary, role, year, tags, cover, coverAlt, tileBg, heroImage, heroAlt, heroStyle, heroPhone, team, timeline, tools, statsTheme } = project.data;
+const caseVars = statsTheme ? `--stats-bg: ${statsTheme.bg}; --stats-number: ${statsTheme.number}; --stats-label: ${statsTheme.label}; --stats-weight: ${statsTheme.weight}; --stats-line: rgba(255,255,255,.14);` : undefined;
 const hero = heroImage ?? cover;
 const alt = heroImage ? (heroAlt ?? '') : (coverAlt ?? '');
 const facts = [
@@ -26,7 +27,7 @@ const facts = [
 const nextImg = next.data.heroImage ?? next.data.cover;
 ---
 <Base title={title} description={summary}>
-  <article class="case">
+  <article class="case" style={caseVars}>
     <header class="intro wrap">
       <a class="back" href={url('/work/')}>← All work</a>
       <h1>{title}</h1>
@@ -120,10 +121,10 @@ const nextImg = next.data.heroImage ?? next.data.cover;
   .body :global(.pair .cs-figure) { margin: 0; }
 
   /* Big numbers */
-  .body :global(.stats) { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; margin: clamp(28px, 4vw, 48px) 0; }
-  .body :global(.stats > div) { background: var(--bg); padding: clamp(20px, 3vw, 32px); }
-  .body :global(.stats strong) { display: block; font-size: clamp(32px, 4vw, 48px); font-weight: 300; letter-spacing: -0.02em; line-height: 1.1; }
-  .body :global(.stats span) { display: block; margin-top: 10px; font-size: 14px; line-height: 1.5; color: var(--muted); }
+  .body :global(.stats) { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--stats-line, var(--line)); border: 1px solid var(--stats-line, var(--line)); border-radius: 10px; overflow: hidden; margin: clamp(28px, 4vw, 48px) 0; }
+  .body :global(.stats > div) { background: var(--stats-bg, var(--bg)); padding: clamp(20px, 3vw, 32px); }
+  .body :global(.stats strong) { display: block; font-size: clamp(32px, 4vw, 48px); font-weight: var(--stats-weight, 300); color: var(--stats-number, var(--text)); letter-spacing: -0.02em; line-height: 1.1; }
+  .body :global(.stats span) { display: block; margin-top: 10px; font-size: 14px; line-height: 1.5; color: var(--stats-label, var(--muted)); }
 
   /* Pull quote */
   .body :global(blockquote) { margin: clamp(24px, 4vw, 48px) 0; padding: 0; border: 0; }
