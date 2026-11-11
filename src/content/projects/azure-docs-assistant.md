@@ -10,6 +10,13 @@ tools: "Flowise, Supabase (pgvector), OpenAI embeddings, Microsoft Learn MCP"
 year: "2026"
 tags: ["RAG", "MCP", "Responsible AI"]
 order: 4
+# Bright yellow to match this project's tile.
+statsTheme:
+  bg: "#ffd84d"
+  number: "#1c1b19"
+  label: "rgba(28,27,25,.72)"
+  line: "#e3bd2f"
+  weight: 800
 tileBg: "linear-gradient(135deg, #ffe04d 0%, #f7bc00 100%)"
 tileStyle: browser
 ---

@@ -12,6 +12,12 @@ tools: "Amazon Bedrock, OpenSearch, Rails on EC2"
 year: "2026"
 tags: ["AI Agents", "Amazon Bedrock", "EdTech"]
 order: 2
+# Matches the Team Atlas deck: deep navy cards with white numbers.
+statsTheme:
+  bg: "#1b2440"
+  number: "#ffffff"
+  label: "rgba(255,255,255,.78)"
+  weight: 800
 tileBg: "linear-gradient(135deg, #2342a8 0%, #0e1f63 100%)"
 tileStyle: logo
 tileImage: ../../assets/atlas-logo.svg

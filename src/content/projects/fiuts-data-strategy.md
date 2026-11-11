@@ -9,6 +9,12 @@ tools: "Google Forms, Google Sheets, Looker Studio"
 year: "2026"
 tags: ["Data Strategy", "Dashboards", "Nonprofit"]
 order: 1
+# Matches the FIUTS progress update: dark green cards with light-green numbers.
+statsTheme:
+  bg: "#003d28"
+  number: "#a6dc8c"
+  label: "rgba(255,255,255,.82)"
+  weight: 800
 tileBg: "linear-gradient(135deg, #f3c47e 0%, #e9846c 100%)"
 tileStyle: browser
 ---
