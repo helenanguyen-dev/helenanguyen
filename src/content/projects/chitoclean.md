@@ -15,11 +15,6 @@ order: 5
 tileBg: "linear-gradient(135deg, #1f8a8c 0%, #0b4a5a 100%)"
 tileStyle: photo
 tileImage: ../../assets/chitoclean-team.jpg
-statsTheme:
-  bg: "#0d4f5c"
-  number: "#ffffff"
-  label: "rgba(255,255,255,.78)"
-  weight: 300
 ---
 
 ## Overview
@@ -28,11 +23,6 @@ ChitoClean is a pre-seed startup from the University of Washington. We're buildi
 
 I'm one of five co-founders and the team's Chief Financial Officer. I own the financial plan and unit economics, and I set the KPIs the whole team steers by.
 
-<div class="stats">
-  <div><strong>23B+</strong><span>Plastic toothbrushes thrown away worldwide each year</span></div>
-  <div><strong>2</strong><span>UW startup challenge finals reached</span></div>
-  <div><strong>2026</strong><span>Buerk Center prototype funding recipient</span></div>
-</div>
 
 ## The problem
 
