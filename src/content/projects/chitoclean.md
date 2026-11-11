@@ -1,5 +1,5 @@
 ---
-title: "ChitoClean: leading product at a pre-seed startup"
+title: "Leading product at ChitoClean"
 summary: "A University of Washington startup where I own product direction, from the KPIs the team steers by to the unit-cost model behind our pricing."
 heroImage: ../../assets/chitoclean-team.jpg
 heroAlt: "The ChitoClean team holding the Health Innovation Challenge sign that reads ChitoClean, University of Washington"
