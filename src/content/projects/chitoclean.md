@@ -1,10 +1,10 @@
 ---
 title: "ChitoClean: a toothbrush that goes back to the soil"
-summary: "A University of Washington startup building a 100% biodegradable toothbrush from chitosan. As Chief Product Officer and CFO, I shape what we build and own the numbers that make it fundable."
+summary: "A University of Washington startup building a 100% biodegradable toothbrush from chitosan. As co-Chief Product Officer and CFO, I shape what we build and own the numbers that make it fundable."
 heroImage: ../../assets/chitoclean-team.jpg
 heroAlt: "The ChitoClean team holding the Health Innovation Challenge sign that reads ChitoClean, University of Washington"
 heroStyle: photo
-role: "Chief Product Officer and CFO"
+role: "Co-Chief Product Officer and CFO"
 team: "Five co-founders across public health, business, bioengineering and finance"
 timeline: "Nov 2025 to present"
 tools: "Product strategy, financial modeling, unit economics, pitching"
@@ -22,7 +22,7 @@ tileRound: true
 
 ChitoClean is a pre-seed startup from the University of Washington. We're building a toothbrush made from chitosan, a biopolymer that comes from chitin in shellfish shells and mushrooms. When it wears out, you put it in your compost bin, not the trash.
 
-I'm one of five co-founders. As Chief Product Officer (on the non-technical side) and CFO, I own product direction, the financial plan and unit economics, and the KPIs the whole team steers by.
+I'm one of five co-founders. As co-Chief Product Officer (on the non-technical side) and CFO, I own product direction, the financial plan and unit economics, and the KPIs the whole team steers by.
 
 
 ## The problem
