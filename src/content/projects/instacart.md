@@ -20,6 +20,7 @@ order: 3
 tileBg: "linear-gradient(135deg, #0b5a3c 0%, #003d28 100%)"
 tileStyle: phone
 tileImage: ../../assets/instacart-meal-plan-mobile.png
+tileLogo: ../../assets/instacart-logo.png
 ---
 
 ## Overview
