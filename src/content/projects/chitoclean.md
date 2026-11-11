@@ -1,12 +1,12 @@
 ---
 title: "ChitoClean: a toothbrush that goes back to the soil"
-summary: "A University of Washington startup building a 100% biodegradable toothbrush from chitosan. As co-Chief Product Officer and CFO, I shape what we build and own the numbers that make it fundable."
+summary: "A University of Washington startup building a 100% biodegradable toothbrush from chitosan. As co-Chief Product Officer and CFO, I shaped what we built and owned the numbers that made it fundable."
 heroImage: ../../assets/chitoclean-team.jpg
 heroAlt: "The ChitoClean team holding the Health Innovation Challenge sign that reads ChitoClean, University of Washington"
 heroStyle: photo
 role: "Co-Chief Product Officer and CFO"
 team: "Five co-founders across public health, business, bioengineering and finance"
-timeline: "Nov 2025 to present"
+timeline: "Nov 2025 to June 2026"
 tools: "Product strategy, financial modeling, unit economics, pitching"
 year: "2026"
 tags: ["Startup", "Sustainability", "Biomaterials"]
@@ -20,9 +20,9 @@ tileLogo: ../../assets/chitoclean-logo.png
 
 ## Overview
 
-ChitoClean is a pre-seed startup from the University of Washington. We're building a toothbrush made from chitosan, a biopolymer that comes from chitin in shellfish shells and mushrooms. When it wears out, you put it in your compost bin, not the trash.
+ChitoClean is a pre-seed startup from the University of Washington. We set out to build a toothbrush made from chitosan, a biopolymer that comes from chitin in shellfish shells and mushrooms. When it wears out, you put it in your compost bin, not the trash.
 
-I'm one of five co-founders. As co-Chief Product Officer (on the non-technical side) and CFO, I own product direction, the financial plan and unit economics, and the KPIs the whole team steers by.
+I was one of five co-founders, from November 2025 to June 2026. As co-Chief Product Officer (on the non-technical side) and CFO, I owned product direction, the financial plan and unit economics, and the KPIs the whole team steered by.
 
 
 ## The problem
@@ -44,19 +44,19 @@ ChitoClean is a toothbrush whose handle and bristles are both made from chitosan
 
 Chitosan also brings oral-health benefits. It's naturally antimicrobial, and studies of chitosan-bristle brushes have found less gum bleeding and inflammation. It can be made from seafood waste, so the material itself is upcycled.
 
-We're in R&D now, testing chitosan blends for durability, water resistance and how fast they biodegrade. Water resistance is the hardest part, since chitosan softens when wet.
+When I left, the team was in R&D, testing chitosan blends for durability, water resistance and how fast they biodegrade. Water resistance is the hardest part, since chitosan softens when wet.
 
 ## My role: product and the numbers
 
-A team of scientists, engineers and business people can easily pull in three directions. My job is to tie everyone's work back to whether the business can last.
+A team of scientists, engineers and business people can easily pull in three directions. My job was to tie everyone's work back to whether the business can last.
 
-**Three KPIs for every team.** I set up one framework that every decision has to move: customer acquisition cost, cost of goods sold, and adoption rate.
+**Three KPIs for every team.** I set up one framework that every decision had to move: customer acquisition cost, cost of goods sold, and adoption rate.
 
 **A financial plan built from the bottom up.** I built our 18-month financial plan and a unit-cost model, starting from the cost of research-grade chitosan per batch and adding labor, quality control and packaging. That model set our pricing and margins, and it showed judges and funders exactly where their money would go.
 
 ## Results
 
-The plan helped carry ChitoClean to the finals of two UW startup challenges, including the 2026 Environmental Innovation Challenge. We were also chosen for 2026 prototype funding from UW's Buerk Center for Entrepreneurship, which pays for the R&D we're doing now.
+The plan helped carry ChitoClean to the finals of two UW startup challenges, including the 2026 Environmental Innovation Challenge. We were also chosen for 2026 prototype funding from UW's Buerk Center for Entrepreneurship, which funds the team's R&D.
 
 ## What I learned
 
