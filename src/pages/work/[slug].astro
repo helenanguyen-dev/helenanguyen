@@ -98,7 +98,8 @@ const nextImg = next.data.heroImage ?? next.data.cover;
   @media (min-width: 900px) {
     .body :global(.cs-section) { grid-template-columns: minmax(180px, 3fr) minmax(0, 7fr); }
     .body :global(.cs-section > *) { grid-column: 2; }
-    .body :global(.cs-section > h2) { grid-column: 1; grid-row: 1 / span 40; align-self: start; position: sticky; top: 32px; }
+    .body :global(.cs-section > .cs-head) { grid-column: 1; grid-row: 1 / span var(--head-rows, 1); }
+    .body :global(.cs-head > h2) { position: sticky; top: 32px; }
     .body :global(.cs-section > .cs-figure), .body :global(.cs-section > .stats), .body :global(.cs-section > .pair), .body :global(.cs-section > blockquote) { grid-column: 1 / -1; }
   }
   .body :global(h2) { font-size: clamp(24px, 2.4vw, 30px); font-weight: 300; line-height: 1.25; margin: 0 0 24px; }
