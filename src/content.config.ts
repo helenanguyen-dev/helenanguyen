@@ -13,6 +13,8 @@ const projects = defineCollection({
     tileStyle: z.enum(['browser', 'phone', 'logo', 'photo']).default('browser'),
     tileImage: image().optional(),
     tileText: z.string().optional(),
+    // Round logos (e.g. a circular badge) get a round shadow instead of a rounded square.
+    tileRound: z.boolean().default(false),
     // Optional brand logo shown under the phone on a "phone" tile.
     tileLogo: image().optional(),
     // Optional second logo, shown as "tileLogo × tileLogoPartner".

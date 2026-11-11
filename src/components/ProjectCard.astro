@@ -5,10 +5,10 @@ import { url } from '../lib/url';
 import BrandLockup from './BrandLockup.astro';
 interface Props {
   slug: string; title: string; cover?: ImageMetadata; coverAlt?: string;
-  tileBg: string; tileStyle: 'browser' | 'phone' | 'logo' | 'photo'; tileImage?: ImageMetadata; tileText?: string; tileLogo?: ImageMetadata; tileLogoPartner?: ImageMetadata;
+  tileBg: string; tileStyle: 'browser' | 'phone' | 'logo' | 'photo'; tileImage?: ImageMetadata; tileText?: string; tileRound?: boolean; tileLogo?: ImageMetadata; tileLogoPartner?: ImageMetadata;
   role?: string; year?: string;
 }
-const { slug, title, cover, coverAlt, tileBg, tileStyle, tileImage, tileText, tileLogo, tileLogoPartner, role, year } = Astro.props;
+const { slug, title, cover, coverAlt, tileBg, tileStyle, tileImage, tileText, tileRound, tileLogo, tileLogoPartner, role, year } = Astro.props;
 const meta = [role, year].filter(Boolean).join(' · ');
 const img = tileImage ?? cover;
 ---
@@ -22,7 +22,7 @@ const img = tileImage ?? cover;
     ) : tileStyle === 'logo' && img ? (
       <div class="logo-stack">
         <div class="logo-lockup">
-          <Image class="logo" src={img} alt="" width={160} height={160} />
+          <Image class:list={['logo', { round: tileRound }]} src={img} alt="" width={224} height={224} />
           {tileText && <span class="wordmark">{tileText}</span>}
         </div>
         {tileLogo && <BrandLockup class="brand partner-row" logo={tileLogo} partner={tileLogoPartner} />}
@@ -86,6 +86,7 @@ const img = tileImage ?? cover;
   .card:hover .phone { transform: translateY(-6px) scale(1.02); }
   .logo-lockup { display: flex; align-items: center; gap: clamp(14px, 2.5vw, 26px); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
   .logo { width: clamp(64px, 9vw, 112px); height: auto; border-radius: 22%; box-shadow: 0 18px 40px -16px rgba(10, 20, 60, .5); }
+  .logo.round { border-radius: 50%; }
   .wordmark { font-family: var(--font-display); font-weight: 400; font-size: clamp(40px, 6vw, 76px); color: #fff; letter-spacing: -0.01em; }
   .empty { color: rgba(255,255,255,.85); font-size: 14px; }
   .card:hover .browser, .card:hover .logo-lockup { transform: translateY(-6px) scale(1.02); }
