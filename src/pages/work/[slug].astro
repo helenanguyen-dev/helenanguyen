@@ -45,6 +45,7 @@ const nextImg = next.data.heroImage ?? next.data.cover;
             <Image src={hero} alt={alt} widths={[800, 1400, 1600]} sizes="(max-width: 1200px) 90vw, 900px" loading="eager" />
           </figure>
         )}
+        {heroStyle === 'photo' && tileLogo && <BrandLockup class="hero-badge" logo={tileLogo} partner={tileLogoPartner} eager />}
         {hero && heroStyle !== 'photo' && (
           <div class="browser">
             <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -105,7 +106,9 @@ const nextImg = next.data.heroImage ?? next.data.cover;
   .duo .phone-col { margin-bottom: 0; }
   /* Photo hero: the whole photo, framed and centered, nothing cropped at the panel edge */
   .hero:has(.photo) { padding-bottom: clamp(36px, 7vw, 104px); }
-  .hero-stage.photo { justify-content: center; align-items: center; }
+  .hero-stage.photo { flex-direction: column; justify-content: center; align-items: center; }
+  .photo :global(.hero-badge) { height: clamp(72px, 10vw, 120px); }
+  .photo :global(.hero-badge img) { border-radius: 50%; box-shadow: 0 14px 30px -12px rgba(0,0,0,.45); }
   .photo-frame { margin: 0; width: min(100%, 900px); background: #fff; padding: clamp(6px, 1vw, 10px); border-radius: 10px; box-shadow: 0 30px 80px -24px rgba(10, 30, 40, .55); }
   .photo-frame :global(img) { display: block; width: 100%; height: auto; border-radius: 6px; }
   /* Browser hero with a logo: screen centered, logo underneath */

@@ -13,9 +13,9 @@ tags: ["Startup", "Sustainability", "Biomaterials"]
 order: 5
 # Deep sea teal: a nod to the shells chitosan comes from.
 tileBg: "linear-gradient(135deg, #1f8a8c 0%, #0b4a5a 100%)"
-tileStyle: logo
-tileImage: ../../assets/chitoclean-logo.png
-tileRound: true
+tileStyle: photo
+tileImage: ../../assets/chitoclean-team.jpg
+tileLogo: ../../assets/chitoclean-logo.png
 ---
 
 ## Overview
