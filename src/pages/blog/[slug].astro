@@ -30,5 +30,13 @@ const fmt = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', d
   h1 { font-size: clamp(30px, 4.2vw, 48px); font-weight: 300; margin: 10px 0; }
   .body { max-width: 68ch; font-size: 18px; }
   .body :global(h2) { font-size: 28px; margin-top: 40px; }
+  .body :global(h2) { font-weight: 300; }
+  .body :global(li) { margin-bottom: 10px; }
+  .body :global(li strong), .body :global(p strong) { font-weight: 600; }
+  .body :global(table) { width: 100%; border-collapse: collapse; font-size: 15px; margin: 28px 0; display: block; overflow-x: auto; }
+  .body :global(th) { text-align: left; font-weight: 600; padding: 10px 14px 10px 0; border-bottom: 1px solid var(--muted); vertical-align: bottom; }
+  .body :global(td) { padding: 14px 14px 14px 0; border-bottom: 1px solid var(--line); vertical-align: top; line-height: 1.5; }
+  .body :global(td:first-child) { font-weight: 600; white-space: nowrap; }
+  .body :global(a) { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 3px; }
   .body :global(code) { font-size: 0.9em; background: var(--surface); border: 1px solid var(--line); padding: 1px 6px; border-radius: 6px; }
 </style>

@@ -3,6 +3,7 @@ title: "Why I'm starting this blog"
 description: "A short first post: what I'll write about here and why."
 date: 2026-11-09
 tags: ["Personal"]
+draft: true
 ---
 
 This is a sample post. Replace it with your first real one.
