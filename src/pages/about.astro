@@ -3,9 +3,7 @@ import Base from '../layouts/Base.astro';
 import { url } from '../lib/url';
 import { Image } from 'astro:assets';
 import portrait from '../assets/helena-portrait.jpg';
-import tacoBowl from '../assets/cooking-taco-bowl.jpg';
 import brokenRice from '../assets/cooking-broken-rice.jpg';
-import waikiki from '../assets/hawaii-waikiki.jpg';
 import diamondHead from '../assets/hawaii-diamond-head.jpg';
 // Career entries. Set `project` to a case-study slug (file name in src/content/projects) to make the entry clickable.
 const career = [
@@ -16,16 +14,10 @@ const career = [
   { when: 'Previously', org: 'Fred Hutch Cancer Center', text: 'Built the data models, dashboards and visualizations behind research on CD8+KIR+ cells and the role of neutrophils in lung cancer, and turned the results into figures for the lab’s grant applications.', },
   { when: 'Previously', org: 'COPE Health Scholars', text: 'Optimized and streamlined admin processes for a community of 45,000+ alumni.' },
 ];
-// Hobbies. `photos` stack on the card (first one on top); hover fans them out.
-const hobbies: { label: string; caption: string; photos?: { src: ImageMetadata; alt: string }[] }[] = [
-  { label: 'Cooking', caption: 'Taco bowl and Vietnamese broken rice', photos: [
-    { src: brokenRice, alt: 'Vietnamese broken rice with grilled short ribs, cucumber and cherry tomatoes' },
-    { src: tacoBowl, alt: 'Taco bowl with seasoned beef, pico de gallo, guacamole and blue corn chips' },
-  ] },
-  { label: 'Traveling', caption: 'Hawaii, April ’25', photos: [
-    { src: diamondHead, alt: 'Diamond Head seen from a boat off Waikiki' },
-    { src: waikiki, alt: 'The Waikiki skyline and Diamond Head across the ocean' },
-  ] },
+// Hobbies. Add a `photo` to replace the placeholder tile.
+const hobbies: { label: string; caption: string; photo?: { src: ImageMetadata; alt: string } }[] = [
+  { label: 'Cooking', caption: 'Vietnamese broken rice', photo: { src: brokenRice, alt: 'Vietnamese broken rice with grilled short ribs, cucumber and cherry tomatoes' } },
+  { label: 'Traveling', caption: 'Hawaii, April ’25', photo: { src: diamondHead, alt: 'Diamond Head seen from a boat off Waikiki' } },
   { label: 'Learning', caption: 'The latest skill I picked up' },
 ];
 // Skills. Add a `project` slug to link a skill to the case study that shows it best.
@@ -83,12 +75,8 @@ const skills: { name: string; project?: string }[] = [
     <div class="hobby-grid">
       {hobbies.map((h) => (
         <figure>
-          {h.photos ? (
-            <div class="hobby-img stack" tabindex="0" aria-label={`${h.label} photos`}>
-              {h.photos.map((ph) => (
-                <Image class="stack-photo" src={ph.src} alt={ph.alt} widths={[400, 800]} sizes="(max-width: 760px) 100vw, 380px" />
-              ))}
-            </div>
+          {h.photo ? (
+            <Image class="hobby-img hobby-photo" src={h.photo.src} alt={h.photo.alt} widths={[400, 800]} sizes="(max-width: 760px) 100vw, 380px" />
           ) : (
             <div class="placeholder hobby-img">{h.label} photo</div>
           )}
@@ -129,21 +117,9 @@ const skills: { name: string; project?: string }[] = [
   .hobbies { margin-top: 96px; }
   .hobby-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
   figure { margin: 0; }
-  .hobby-img { aspect-ratio: 1; transition: transform .3s; }
-  figure:nth-child(2) .hobby-img { transform: rotate(1.5deg); }
-  figure:nth-child(odd) .hobby-img { transform: rotate(-1.5deg); }
-  figure:hover .hobby-img { transform: rotate(0) scale(1.02); }
-  .stack { position: relative; display: grid; }
-  .stack-photo { grid-area: 1 / 1; width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); box-shadow: 0 6px 20px rgb(0 0 0 / .12); transition: transform .35s; }
-  .stack-photo:first-child { z-index: 2; }
-  .stack-photo:nth-child(2) { z-index: 1; transform: rotate(5deg) translate(8px, -10px); }
-  /* Hover (or tap, via focus) shuffles the back photo to the front */
-  figure:hover .stack-photo:first-child, figure:focus-within .stack-photo:first-child { z-index: 1; transform: rotate(-5deg) translate(-16px, 6px) scale(.96); }
-  figure:hover .stack-photo:nth-child(2), figure:focus-within .stack-photo:nth-child(2) { z-index: 2; transform: rotate(1deg); }
-  .stack:focus-visible { outline: none; }
-  .stack:focus-visible .stack-photo:nth-child(2) { outline: 2px solid var(--accent); outline-offset: 3px; }
-  figure:has(.stack) { padding-top: 6px; }
-  figcaption { display: grid; margin-top: 16px; }
+  .hobby-img { aspect-ratio: 1; }
+  .hobby-photo { width: 100%; height: auto; object-fit: cover; border-radius: var(--radius); }
+  figcaption { display: grid; margin-top: 12px; }
   figcaption span { color: var(--muted); font-size: 15px; }
   @media (max-width: 760px) { .intro, .two-col, .hobby-grid { grid-template-columns: 1fr; } .two-col { margin-top: 56px; } .entry { margin: 0 -12px; padding: 16px 12px; } .career li::before { top: 21px; } .skills { margin-top: 8px; grid-template-columns: 1fr; } }
 </style>
