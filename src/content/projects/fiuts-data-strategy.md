@@ -17,6 +17,7 @@ statsTheme:
   weight: 800
 tileBg: "linear-gradient(135deg, #f3c47e 0%, #e9846c 100%)"
 tileStyle: browser
+tileLogo: ../../assets/fiuts-logo.png
 ---
 
 ## Overview
