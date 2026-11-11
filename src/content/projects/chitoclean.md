@@ -1,15 +1,15 @@
 ---
-title: "Leading product at ChitoClean"
-summary: "A University of Washington startup where I own product direction, from the KPIs the team steers by to the unit-cost model behind our pricing."
+title: "ChitoClean: a toothbrush that goes back to the soil"
+summary: "A University of Washington startup building a 100% biodegradable toothbrush from chitosan. As CFO, I own the numbers that turn a lab idea into a fundable business."
 heroImage: ../../assets/chitoclean-team.jpg
 heroAlt: "The ChitoClean team holding the Health Innovation Challenge sign that reads ChitoClean, University of Washington"
 heroStyle: photo
-role: "Product Lead"
-team: "Engineering, science and business leads, and me"
+role: "Chief Financial Officer"
+team: "Five co-founders across public health, business, bioengineering and finance"
 timeline: "Nov 2025 to present"
-tools: "Financial modeling, KPI framework, pitch"
-year: "2025"
-tags: ["Startup", "Health Innovation", "Product Strategy"]
+tools: "Financial modeling, unit economics, KPI framework, pitching"
+year: "2026"
+tags: ["Startup", "Sustainability", "Biomaterials"]
 order: 5
 # Deep sea teal: a nod to the shells chitosan comes from.
 tileBg: "linear-gradient(135deg, #1f8a8c 0%, #0b4a5a 100%)"
@@ -24,34 +24,47 @@ statsTheme:
 
 ## Overview
 
-ChitoClean is a pre-seed startup out of the University of Washington. [One or two sentences on what ChitoClean makes and who it's for.]
+ChitoClean is a pre-seed startup from the University of Washington. We're building a toothbrush made from chitosan, a biopolymer that comes from chitin in shellfish shells and mushrooms. When it wears out, you put it in your compost bin, not the trash.
 
-I joined as Product Lead in November 2025. My job is to keep engineering, science and business pointed at the same goal, and to turn a promising idea into a plan that people will fund.
+I'm one of five co-founders and the team's Chief Financial Officer. I own the financial plan and unit economics, and I set the KPIs the whole team steers by.
 
 <div class="stats">
+  <div><strong>23B+</strong><span>Plastic toothbrushes thrown away worldwide each year</span></div>
   <div><strong>2</strong><span>UW startup challenge finals reached</span></div>
-  <div><strong>$1.53</strong><span>Cost of goods per unit, from my model</span></div>
-  <div><strong>18 months</strong><span>Financial plan, including a $922K MVP budget</span></div>
+  <div><strong>2026</strong><span>Buerk Center prototype funding recipient</span></div>
 </div>
 
-## Three numbers to steer by
+## The problem
 
-A startup with scientists, engineers and business people can easily pull three ways. I set up one framework of three KPIs that every team shares:
+The plastic toothbrush has barely changed since the 1930s, and nearly every one ever made still exists. Americans throw away more than a billion a year. They can't be recycled through normal programs, and they shed microplastics for centuries.
 
-1. **Customer acquisition cost.** What it takes to win each customer.
-2. **Cost of goods sold.** What each unit costs us to make.
-3. **Adoption rate.** Whether people who try it keep using it.
+The "green" options fall short too:
 
-Each of them ties a team's work to whether the business can last.
+1. **Bamboo brushes** still use nylon bristles, which have to be pulled out before composting, and bamboo farming drives land use.
+2. **PLA bioplastic brushes** only break down in industrial composters, which most people can't reach, so they end up in landfills anyway.
 
-## Pricing from the bottom up
+Eco-conscious shoppers end up asking whether they're just trading one environmental problem for another.
 
-I built an 18-month financial plan and a unit-cost model. It puts the cost of goods at $1.53 per unit and the MVP budget at $922K. From there we set pricing and margins on real numbers, not guesses, and could show judges and funders exactly where their money would go.
+## The solution
 
-## Pitching it
+ChitoClean is a toothbrush whose handle and bristles are both made from chitosan. It looks and feels like the brush people already use, and it breaks down in a home compost bin or garden soil.
 
-That plan carried us to the finals of two UW startup challenges, including the Hollomon Health Innovation Challenge, and won us grant funding for our prototype.
+Chitosan also brings oral-health benefits. It's naturally antimicrobial, and studies of chitosan-bristle brushes have found less gum bleeding and inflammation. It can be made from seafood waste, so the material itself is upcycled.
+
+We're in R&D now, testing chitosan blends for durability, water resistance and how fast they biodegrade. Water resistance is the hardest part, since chitosan softens when wet.
+
+## My role: making the numbers work
+
+A team of scientists, engineers and business people can easily pull in three directions. My job is to tie everyone's work back to whether the business can last.
+
+**Three KPIs for every team.** I set up one framework that every decision has to move: customer acquisition cost, cost of goods sold, and adoption rate.
+
+**A financial plan built from the bottom up.** I built our 18-month financial plan and a unit-cost model, starting from the cost of research-grade chitosan per batch and adding labor, quality control and packaging. That model set our pricing and margins, and it showed judges and funders exactly where their money would go.
+
+## Results
+
+The plan helped carry ChitoClean to the finals of two UW startup challenges, including the 2026 Environmental Innovation Challenge. We were also chosen for 2026 prototype funding from UW's Buerk Center for Entrepreneurship, which pays for the R&D we're doing now.
 
 ## What I learned
 
-[Lessons from leading product at an early startup.]
+[Lessons from being CFO of an early-stage startup.]
