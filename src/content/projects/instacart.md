@@ -11,7 +11,7 @@ timeline: "2025"
 year: "2025"
 tags: ["Product Thinking", "Product Strategy", "AI"]
 order: 3
-tileBg: "linear-gradient(135deg, #7cc68f 0%, #2f8a57 100%)"
+tileBg: "linear-gradient(135deg, #0b5a3c 0%, #003d28 100%)"
 tileStyle: phone
 tileImage: ../../assets/instacart-meal-plan-mobile.png
 ---
