@@ -45,7 +45,7 @@ const skills: { name: string; project?: string }[] = [
         {career.map((c) => {
           const Tag = c.project ? 'a' : 'div';
           return (
-            <li>
+            <li class:list={[{ now: c.when === 'Currently' }]}>
               <Tag class="entry" href={c.project ? url(`/work/${c.project}/`) : undefined}>
                 <span class="when">{c.when}</span>
                 <strong class="org">{c.org}</strong>
@@ -87,7 +87,12 @@ const skills: { name: string; project?: string }[] = [
   .portrait-img { width: 100%; height: auto; object-fit: cover; border-radius: var(--radius); }
   .two-col { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; margin-top: 96px; }
   h2 { font-size: 30px; }
-  .career { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  .career { list-style: none; padding: 0 0 0 34px; margin: 0; display: grid; gap: 8px; position: relative; }
+  .career::before { content: ''; position: absolute; left: 5px; top: 30px; bottom: 30px; width: 1px; background: var(--line); }
+  .career li { position: relative; }
+  .career li::before { content: ''; position: absolute; left: -34px; top: 25px; width: 11px; height: 11px; box-sizing: border-box; border-radius: 50%; border: 1.5px solid var(--accent); background: var(--bg); z-index: 1; }
+  .career li.now::before { background: var(--accent); }
+  .career li:last-child::after { content: ''; position: absolute; left: -34px; width: 11px; top: 36px; bottom: -40px; background: var(--bg); }
   .entry { display: grid; gap: 4px; padding: 20px; margin: 0 -20px; border-radius: var(--radius); text-decoration: none; transition: background .2s; }
   a.entry:hover { background: var(--surface); }
   .when { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
@@ -111,5 +116,5 @@ const skills: { name: string; project?: string }[] = [
   figure:hover .hobby-img { transform: rotate(0) scale(1.02); }
   figcaption { display: grid; margin-top: 12px; }
   figcaption span { color: var(--muted); font-size: 15px; }
-  @media (max-width: 760px) { .intro, .two-col, .hobby-grid { grid-template-columns: 1fr; } .two-col { margin-top: 56px; } .entry { margin: 0 -12px; padding: 16px 12px; } .skills { margin-top: 8px; grid-template-columns: 1fr; } }
+  @media (max-width: 760px) { .intro, .two-col, .hobby-grid { grid-template-columns: 1fr; } .two-col { margin-top: 56px; } .entry { margin: 0 -12px; padding: 16px 12px; } .career li::before { top: 21px; } .skills { margin-top: 8px; grid-template-columns: 1fr; } }
 </style>
