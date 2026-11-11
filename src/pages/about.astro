@@ -20,11 +20,11 @@ const hobbies = [
 // Skills. Add a `project` slug to link a skill to the case study that shows it best.
 const skills: { name: string; project?: string }[] = [
   { name: 'Product Management', project: 'instacart' },
-  { name: 'Data Analysis', },
-  { name: 'AI Strategy', project: 'aws-hackathon-greatschools' },
-  { name: 'SQL & Python' },
-  { name: 'Experimentation' },
-  { name: 'Stakeholder Management' },
+  { name: 'Responsible AI', project: 'aws-hackathon-greatschools' },
+  { name: 'AI Agents & RAG', project: 'azure-docs-assistant' },
+  { name: 'Data Strategy', project: 'fiuts-data-strategy' },
+  { name: 'Dashboards & BI', project: 'fiuts-data-strategy' },
+  { name: 'Launch Planning', project: 'instacart' },
 ];
 ---
 <Base title="About">
@@ -99,7 +99,7 @@ const skills: { name: string; project?: string }[] = [
   .why { font-family: var(--font-display); font-size: 22px; line-height: 1.35; margin-top: 24px; max-width: 34ch; }
   .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .skills { list-style: none; padding: 0; margin: 72px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 20px 32px; align-content: start; }
-  .skills li { font-family: var(--font-display); font-weight: 300; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.15; color: var(--muted); }
+  .skills li { font-family: var(--font-display); font-weight: 300; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.15; color: var(--text); }
   .skills a { text-decoration: none; color: var(--text); background: linear-gradient(var(--accent), var(--accent)) 0 100% / 0 2px no-repeat; transition: background-size .3s, color .2s; }
   .skills a:hover { color: var(--accent); background-size: 100% 2px; }
   .hobbies { margin-top: 96px; }
