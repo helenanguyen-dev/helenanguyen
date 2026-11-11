@@ -6,8 +6,10 @@ import BrandLockup from './BrandLockup.astro';
 interface Props {
   slug: string; title: string; cover?: ImageMetadata; coverAlt?: string;
   tileBg: string; tileStyle: 'browser' | 'phone' | 'logo'; tileImage?: ImageMetadata; tileText?: string; tileLogo?: ImageMetadata; tileLogoPartner?: ImageMetadata;
+  role?: string; year?: string;
 }
-const { slug, title, cover, coverAlt, tileBg, tileStyle, tileImage, tileText, tileLogo, tileLogoPartner } = Astro.props;
+const { slug, title, cover, coverAlt, tileBg, tileStyle, tileImage, tileText, tileLogo, tileLogoPartner, role, year } = Astro.props;
+const meta = [role, year].filter(Boolean).join(' · ');
 const img = tileImage ?? cover;
 ---
 <a class="card" href={url(`/work/${slug}/`)}>
@@ -45,6 +47,7 @@ const img = tileImage ?? cover;
       <span class="empty">Project image</span>
     )}
   </div>
+  {meta && <p class="meta">{meta}</p>}
   <h3>{title}</h3>
 </a>
 <style>
@@ -81,6 +84,8 @@ const img = tileImage ?? cover;
   .wordmark { font-family: var(--font-display); font-weight: 400; font-size: clamp(40px, 6vw, 76px); color: #fff; letter-spacing: -0.01em; }
   .empty { color: rgba(255,255,255,.85); font-size: 14px; }
   .card:hover .browser, .card:hover .logo-lockup { transform: translateY(-6px) scale(1.02); }
+  .meta { font-size: 12px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); text-align: center; margin: 20px 0 0; }
+  .meta + h3 { margin-top: 8px; }
   h3 { font-family: var(--font-display); font-weight: 300; font-size: clamp(20px, 2.2vw, 26px); text-align: center; margin: 22px 0 0; transition: color .2s; }
   .card:hover h3 { color: var(--accent); }
 </style>
