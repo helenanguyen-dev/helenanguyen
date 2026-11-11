@@ -1,0 +1,18 @@
+---
+// One brand logo, or two joined by "×" (e.g. AWS × GreatSchools). Height comes from the parent's CSS.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+interface Props { logo: ImageMetadata; partner?: ImageMetadata; class?: string; eager?: boolean }
+const { logo, partner, class: cls, eager } = Astro.props;
+const loading = eager ? 'eager' : 'lazy';
+---
+<span class:list={['lockup', cls]} aria-hidden="true">
+  <Image src={logo} alt="" height={160} loading={loading} />
+  {partner && <span class="x">×</span>}
+  {partner && <Image src={partner} alt="" height={160} loading={loading} />}
+</span>
+<style>
+  .lockup { display: flex; align-items: center; justify-content: center; gap: .55em; font-size: inherit; }
+  .lockup :global(img) { display: block; height: 100%; width: auto; }
+  .x { color: #fff; font-family: var(--font-display); font-weight: 300; line-height: 1; font-size: 1.6em; }
+</style>

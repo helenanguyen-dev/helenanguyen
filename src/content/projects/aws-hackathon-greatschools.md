@@ -22,6 +22,8 @@ tileBg: "linear-gradient(135deg, #2342a8 0%, #0e1f63 100%)"
 tileStyle: logo
 tileImage: ../../assets/atlas-logo.svg
 tileText: "Atlas"
+tileLogo: ../../assets/aws-logo-white.png
+tileLogoPartner: ../../assets/greatschools-logo-white.png
 ---
 
 ## Overview
