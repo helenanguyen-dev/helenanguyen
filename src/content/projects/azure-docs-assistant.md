@@ -11,14 +11,14 @@ year: "2026"
 tags: ["RAG", "MCP", "Responsible AI"]
 order: 4
 tileLogo: ../../assets/azure-logo.png
-# Bright yellow to match this project's tile.
+# Light purple to match this project's tile.
 statsTheme:
-  bg: "#ffd84d"
-  number: "#1c1b19"
-  label: "rgba(28,27,25,.72)"
-  line: "#e3bd2f"
+  bg: "#d6c4f4"
+  number: "#2b1f4d"
+  label: "rgba(43,31,77,.75)"
+  line: "#c2a9ec"
   weight: 800
-tileBg: "linear-gradient(135deg, #ffe04d 0%, #f7bc00 100%)"
+tileBg: "linear-gradient(135deg, #c3a8ef 0%, #dccbf5 100%)"
 tileStyle: browser
 ---
 
