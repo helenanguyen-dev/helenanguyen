@@ -39,13 +39,9 @@ An expanded Recipes tab with four steps:
 3. **Fill the cart.** Ingredients are matched to products at the shopper's store, with quantities and alternatives they can adjust.
 4. **Check out** as usual.
 
-<div class="pair">
-
 ![Recipe curation list: recipes that match the shopper's filter tags, next to short creator videos](../../assets/instacart-meal-plan-curation.jpg "Step 2: recipes that match the filters, shown as short creator videos.")
 
-![Recipe page with AI-matched ingredients, selected tags and a one-tap cart total](../../assets/instacart-meal-plan-recipe.jpg "Step 3: ingredients matched to the shopper's store, with a one-tap cart total.")
-
-</div>
+![Recipe page with AI-matched ingredients, selected tags and a one-tap cart total](../../assets/instacart-meal-plan-recipe-full.jpg "Step 3: ingredients matched to the shopper's store, with a one-tap cart total.")
 
 I pushed to keep version 1.0 small: a limited set of filters and a curated recipe database, with deeper personalization based on purchase history saved for later releases. The riskiest assumption was that people would watch a video and then buy, so the MVP is built to test exactly that.
 
