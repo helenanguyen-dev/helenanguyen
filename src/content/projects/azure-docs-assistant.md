@@ -19,6 +19,8 @@ statsTheme:
   weight: 800
 tileBg: "linear-gradient(135deg, #ffe04d 0%, #f7bc00 100%)"
 tileStyle: browser
+# Same diagram, padded to the 16:10 screen so the whole pipeline shows.
+tileImage: ../../assets/azure-docs-assistant-tile.jpg
 ---
 
 ## Overview
