@@ -22,6 +22,8 @@ tileBg: "linear-gradient(135deg, #2342a8 0%, #0e1f63 100%)"
 tileStyle: logo
 tileImage: ../../assets/atlas-logo.svg
 tileText: "Atlas"
+tileLogo: ../../assets/aws-logo-white.png
+tileLogoPartner: ../../assets/greatschools-logo-white.png
 ---
 
 ## Overview
@@ -32,6 +34,14 @@ GreatSchools is a nonprofit whose 150,000+ school profiles help about 40 million
   <div><strong>150,000+</strong><span>School profiles on GreatSchools</span></div>
   <div><strong>~40M</strong><span>Families who use it each year</span></div>
   <div><strong>3 days</strong><span>To build Atlas, as a team of four</span></div>
+</div>
+
+<div class="pair">
+
+![A speaker with a microphone on stage beside a screen reading Breaking Barriers Challenge 2026, with an audience of participants in the foreground](../../assets/atlas-hackathon-kickoff.jpg "Kickoff of the AWS Breaking Barriers Challenge 2026.")
+
+![Teams working on laptops at tables in a bright room with city and water views, an AWS Breaking Barriers backdrop and a projected screen behind them](../../assets/atlas-hackathon-teams.jpg "Teams building side by side over the three days.")
+
 </div>
 
 ## Meet Maria

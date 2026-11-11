@@ -3,6 +3,7 @@ import { url } from '../../lib/url';
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import { Image } from 'astro:assets';
+import BrandLockup from '../../components/BrandLockup.astro';
 
 export async function getStaticPaths() {
   const projects = (await getCollection('projects', ({ data }) => !data.draft))
@@ -14,7 +15,7 @@ export async function getStaticPaths() {
 }
 const { project, next } = Astro.props;
 const { Content } = await render(project);
-const { title, summary, role, year, tags, cover, coverAlt, tileBg, heroImage, heroAlt, heroStyle, heroPhone, team, timeline, tools, statsTheme } = project.data;
+const { title, summary, role, year, tags, cover, coverAlt, tileBg, heroImage, heroAlt, heroStyle, heroPhone, tileLogo, tileLogoPartner, team, timeline, tools, statsTheme } = project.data;
 const caseVars = statsTheme ? `--stats-bg: ${statsTheme.bg}; --stats-number: ${statsTheme.number}; --stats-label: ${statsTheme.label}; --stats-weight: ${statsTheme.weight}; --stats-line: ${statsTheme.line};` : undefined;
 const hero = heroImage ?? cover;
 const alt = heroImage ? (heroAlt ?? '') : (coverAlt ?? '');
@@ -38,16 +39,26 @@ const nextImg = next.data.heroImage ?? next.data.cover;
     </header>
 
     <div class="hero" style={`background: ${tileBg}`}>
-      <div class={`hero-stage ${heroStyle}`}>
-        {hero && (
+      <div class={`hero-stage ${heroStyle}${heroStyle === 'browser' && tileLogo ? ' with-logo' : ''}`}>
+        {hero && heroStyle === 'photo' && (
+          <figure class="photo-frame">
+            <Image src={hero} alt={alt} widths={[800, 1400, 1600]} sizes="(max-width: 1200px) 90vw, 900px" loading="eager" />
+          </figure>
+        )}
+        {heroStyle === 'photo' && tileLogo && <BrandLockup class="hero-badge" logo={tileLogo} partner={tileLogoPartner} eager />}
+        {hero && heroStyle !== 'photo' && (
           <div class="browser">
             <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
             <Image src={hero} alt={alt} widths={[800, 1400, 2000]} sizes="(max-width: 1200px) 90vw, 1040px" loading="eager" />
           </div>
         )}
+        {heroStyle === 'browser' && tileLogo && <BrandLockup class="hero-logo-wide" logo={tileLogo} partner={tileLogoPartner} eager />}
         {heroStyle === 'duo' && heroPhone && (
-          <div class="phone" aria-hidden="true">
-            <Image src={heroPhone} alt="" width={480} loading="eager" />
+          <div class="phone-col">
+            <div class="phone" aria-hidden="true">
+              <Image src={heroPhone} alt="" width={480} loading="eager" />
+            </div>
+            {tileLogo && <Image class="hero-logo" src={tileLogo} alt="" width={460} loading="eager" />}
           </div>
         )}
       </div>
@@ -88,7 +99,27 @@ const nextImg = next.data.heroImage ?? next.data.cover;
   .bar i { width: 10px; height: 10px; border-radius: 50%; background: #d3d3d9; }
   .browser :global(img) { width: 100%; height: auto; max-height: 640px; object-fit: cover; object-position: top left; }
   .duo .browser { flex-basis: 70%; }
-  .phone { flex: 0 0 auto; width: clamp(110px, 22%, 230px); margin-bottom: clamp(24px, 4vw, 56px); background: #fff; border: 7px solid #fff; border-radius: 30px; overflow: hidden; box-shadow: 0 30px 70px -20px rgba(10, 40, 20, .55); }
+  /* Duo hero: both screens float centered in the panel, nothing cropped at the edge */
+  .hero:has(.duo) { padding-bottom: clamp(36px, 7vw, 104px); }
+  .duo { align-items: center; }
+  .duo .browser { border-radius: 12px; }
+  .duo .phone-col { margin-bottom: 0; }
+  /* Photo hero: the whole photo, framed and centered, nothing cropped at the panel edge */
+  .hero:has(.photo) { padding-bottom: clamp(36px, 7vw, 104px); }
+  .hero-stage.photo { flex-direction: column; justify-content: center; align-items: center; }
+  .photo :global(.hero-badge) { height: clamp(72px, 10vw, 120px); }
+  .photo :global(.hero-badge img) { border-radius: 50%; box-shadow: 0 14px 30px -12px rgba(0,0,0,.45); }
+  .photo-frame { margin: 0; width: min(100%, 900px); background: #fff; padding: clamp(6px, 1vw, 10px); border-radius: 10px; box-shadow: 0 30px 80px -24px rgba(10, 30, 40, .55); }
+  .photo-frame :global(img) { display: block; width: 100%; height: auto; border-radius: 6px; }
+  /* Browser hero with a logo: screen centered, logo underneath */
+  .hero:has(.with-logo) { padding-bottom: clamp(36px, 6vw, 88px); }
+  .hero-stage.with-logo { flex-direction: column; align-items: center; background: none; box-shadow: none; border-radius: 0; overflow: visible; }
+  .with-logo .browser { flex: none; width: min(100%, 760px); border-radius: 12px; }
+  .with-logo .browser :global(img) { max-height: none; }
+  .with-logo :global(.hero-logo-wide) { height: clamp(40px, 6vw, 72px); font-size: clamp(12px, 1.6vw, 20px); }
+  .phone-col { flex: 0 0 auto; width: clamp(110px, 22%, 230px); display: flex; flex-direction: column; align-items: center; gap: clamp(14px, 2.4vw, 28px); margin-bottom: clamp(24px, 4vw, 56px); }
+  .phone-col :global(.hero-logo) { width: 92%; height: auto; display: block; }
+  .phone { width: 100%; background: #fff; border: 7px solid #fff; border-radius: 30px; overflow: hidden; box-shadow: 0 30px 70px -20px rgba(10, 40, 20, .55); }
   .phone :global(img) { width: 100%; height: auto; border-radius: 22px; }
 
   /* Body: each section puts its heading in a side column */
@@ -98,7 +129,8 @@ const nextImg = next.data.heroImage ?? next.data.cover;
   @media (min-width: 900px) {
     .body :global(.cs-section) { grid-template-columns: minmax(180px, 3fr) minmax(0, 7fr); }
     .body :global(.cs-section > *) { grid-column: 2; }
-    .body :global(.cs-section > h2) { grid-column: 1; grid-row: 1 / span 40; align-self: start; position: sticky; top: 32px; }
+    .body :global(.cs-section > .cs-head) { grid-column: 1; grid-row: 1 / span var(--head-rows, 1); }
+    .body :global(.cs-head > h2) { position: sticky; top: 32px; }
     .body :global(.cs-section > .cs-figure), .body :global(.cs-section > .stats), .body :global(.cs-section > .pair), .body :global(.cs-section > blockquote) { grid-column: 1 / -1; }
   }
   .body :global(h2) { font-size: clamp(24px, 2.4vw, 30px); font-weight: 300; line-height: 1.25; margin: 0 0 24px; }

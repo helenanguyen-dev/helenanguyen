@@ -10,13 +10,19 @@ const projects = defineCollection({
     coverAlt: z.string().optional(),
     // Work-card tile: a colored background with a screen or a logo centered on it.
     tileBg: z.string().default('linear-gradient(135deg, #f0c27b 0%, #e8836b 100%)'),
-    tileStyle: z.enum(['browser', 'phone', 'logo']).default('browser'),
+    tileStyle: z.enum(['browser', 'phone', 'logo', 'photo']).default('browser'),
     tileImage: image().optional(),
     tileText: z.string().optional(),
+    // Round logos (e.g. a circular badge) get a round shadow instead of a rounded square.
+    tileRound: z.boolean().default(false),
+    // Optional brand logo shown under the phone on a "phone" tile.
+    tileLogo: image().optional(),
+    // Optional second logo, shown as "tileLogo × tileLogoPartner".
+    tileLogoPartner: image().optional(),
     // Case study hero: a large colored panel (tileBg) with a screen on it.
     heroImage: image().optional(),
     heroAlt: z.string().optional(),
-    heroStyle: z.enum(['browser', 'duo']).default('browser'),
+    heroStyle: z.enum(['browser', 'duo', 'photo']).default('browser'),
     // For heroStyle "duo": a phone screen shown next to the browser.
     heroPhone: image().optional(),
     // Optional look for the big-number callouts, e.g. to match a project's deck.
