@@ -21,17 +21,17 @@ const nav = [
     <meta name="description" content={description} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
-    <link rel="icon" href={url("/favicon.ico?v=2")} sizes="any" />
-    <link rel="icon" href={url("/favicon.svg?v=2")} type="image/svg+xml" />
-    <link rel="icon" href={url("/favicon-32.png?v=2")} type="image/png" sizes="32x32" />
-    <link rel="apple-touch-icon" href={url("/apple-touch-icon.png?v=2")} />
+    <link rel="icon" href={url("/favicon.ico?v=3")} sizes="any" />
+    <link rel="icon" href={url("/favicon.svg?v=3")} type="image/svg+xml" />
+    <link rel="icon" href={url("/favicon-32.png?v=3")} type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href={url("/apple-touch-icon.png?v=3")} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,800;1,400&display=swap" rel="stylesheet" />
   </head>
   <body>
     <header class="site-header wrap">
-      <a href={url("/")} class="logo"><img src={url("/favicon.svg?v=2")} alt="" width="30" height="30" />Helena Nguyen<span>.</span></a>
+      <a href={url("/")} class="logo"><img src={url("/favicon.svg?v=3")} alt="" width="30" height="30" />Helena Nguyen<span>.</span></a>
       <nav aria-label="Main">
         {nav.map((item) => (
           <a href={url(item.href)} aria-current={path.startsWith(url(item.href)) ? 'page' : undefined}>{item.label}</a>
