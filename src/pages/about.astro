@@ -99,7 +99,7 @@ const skills: { name: string; project?: string }[] = [
   .career li { position: relative; }
   .career li::before { content: ''; position: absolute; left: -34px; top: 25px; width: 11px; height: 11px; box-sizing: border-box; border-radius: 50%; border: 1.5px solid var(--accent); background: var(--bg); z-index: 1; }
   .career li.now::before { background: var(--accent); }
-  .career li:last-child::after { content: ''; position: absolute; left: -34px; width: 11px; top: 36px; bottom: -40px; background: var(--bg); }
+  .career li:last-child::after { content: ''; position: absolute; left: -34px; width: 11px; top: 36px; bottom: 0; background: var(--bg); }
   .entry { display: grid; gap: 4px; padding: 20px; margin: 0 -20px; border-radius: var(--radius); text-decoration: none; transition: background .2s; }
   a.entry:hover { background: var(--surface); }
   .when { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
