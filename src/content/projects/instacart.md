@@ -3,7 +3,11 @@ title: "Meal Plan Companion for Instacart"
 summary: "A product concept for going from cooking video to grocery cart, and a look at how I think through a product problem, from opportunity to launch."
 cover: ../../assets/instacart-meal-plan-filters.jpg
 coverAlt: "Meal Plan Companion filter screen with budget, difficulty, dietary tag and serving size options"
+heroStyle: duo
+heroPhone: ../../assets/instacart-meal-plan-mobile.png
 role: "Product Manager"
+team: "Team of four"
+timeline: "2025"
 year: "2025"
 tags: ["Product Thinking", "Product Strategy", "AI"]
 order: 3
@@ -35,11 +39,23 @@ An expanded Recipes tab with four steps:
 3. **Fill the cart.** Ingredients are matched to products at the shopper's store, with quantities and alternatives they can adjust.
 4. **Check out** as usual.
 
-![Recipe page with AI-matched ingredients, selected tags and a one-tap cart total](../../assets/instacart-meal-plan-recipe.jpg)
+<div class="pair">
+
+![Recipe curation list: recipes that match the shopper's filter tags, next to short creator videos](../../assets/instacart-meal-plan-curation.jpg "Step 2: recipes that match the filters, shown as short creator videos.")
+
+![Recipe page with AI-matched ingredients, selected tags and a one-tap cart total](../../assets/instacart-meal-plan-recipe.jpg "Step 3: ingredients matched to the shopper's store, with a one-tap cart total.")
+
+</div>
 
 I pushed to keep version 1.0 small: a limited set of filters and a curated recipe database, with deeper personalization based on purchase history saved for later releases. The riskiest assumption was that people would watch a video and then buy, so the MVP is built to test exactly that.
 
 ## Key decisions and trade-offs
+
+<div class="stats">
+  <div><strong>8.25 / 10</strong><span>Score for the hybrid option, ahead of buy (7.25) and build (7)</span></div>
+  <div><strong>$833K</strong><span>Estimated cost of the MVP</span></div>
+  <div><strong>~4 months</strong><span>To launch the MVP, across five phases</span></div>
+</div>
 
 **Build, buy or hybrid?** We scored all three options across eight weighted criteria, including cost, integration, data ownership, UX control and time to market. The hybrid option won (8.25 of 10, against 7.25 for buy and 7 for build). It keeps customer data and the experience in-house while reusing proven components to move faster.
 
@@ -56,6 +72,8 @@ I owned the user stories for the TikTok integration and revised them over three 
 I also tightened the acceptance criteria for edge cases. If no video matches every filter, the system relaxes the match step by step, from three of four filters to half to a quarter. If TikTok is down, shoppers get a clear message and still see recipe cards.
 
 ## Planning the launch
+
+![Five phases to launch: ideation, research and planning (2 weeks), project charter approval (1 week), feature design and development (12 weeks), pilot testing (2 weeks), and improvement and deployment (2 weeks)](../../assets/instacart-roadmap.jpg "The MVP plan: five phases, about four months.")
 
 A feature lands well only if the whole company is ready for it. The launch plan covers customer service scripts for missing ingredients and substitutions, operations checks with store partners, compliance review of creator content, dashboards for recipe-to-cart conversion, and an education plan of in-app tips and help articles.
 

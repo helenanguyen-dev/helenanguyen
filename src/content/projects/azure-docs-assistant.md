@@ -3,7 +3,10 @@ title: "Azure Docs Assistant: from custom RAG to MCP"
 summary: "An assistant that answers Azure architecture questions from Microsoft's own documentation, rebuilt from a hand-made retrieval pipeline into an agent that calls the Microsoft Learn MCP server."
 cover: ../../assets/azure-docs-assistant-cover.jpg
 coverAlt: "Diagram of the assistant: a question goes to an agent, the agent calls the Microsoft Learn MCP server, and a cited answer comes back"
+heroImage: ../../assets/azure-docs-mcp-showcase.jpg
+heroAlt: "The Azure Docs Assistant showcase page: an Azure docs assistant that always shows its work, and how a question becomes a grounded answer"
 role: "Builder and product owner"
+tools: "Flowise, Supabase (pgvector), OpenAI embeddings, Microsoft Learn MCP"
 year: "2026"
 tags: ["RAG", "MCP", "Responsible AI"]
 order: 4
@@ -17,7 +20,13 @@ Cloud documentation is huge, and a general chatbot will happily answer from memo
 
 I built it three times. Each version fixed the biggest gap in the one before, and the last one replaced my own retrieval pipeline with a live connection to Microsoft's documentation through the Model Context Protocol (MCP).
 
-**Built with:** Flowise, OpenAI embeddings, Supabase (pgvector), and the Microsoft Learn MCP server. **Code:** [github.com/helenanguyen-dev/azure_rag](https://github.com/helenanguyen-dev/azure_rag)
+<div class="stats">
+  <div><strong>3</strong><span>Versions, each fixing the last one's biggest gap</span></div>
+  <div><strong>127</strong><span>Curated Azure documents in the RAG version</span></div>
+  <div><strong>6</strong><span>Azure services in scope, from App Service to RBAC</span></div>
+</div>
+
+**Code:** [github.com/helenanguyen-dev/azure_rag](https://github.com/helenanguyen-dev/azure_rag)
 
 ## The problem
 
@@ -33,6 +42,8 @@ I scoped the second version to the six Azure services I had already designed wit
 - **Chunking that follows the docs.** A Markdown-aware splitter keeps each section, like "Networking" or "Security recommendations", in one piece, so a chunk answers one question well instead of half of two.
 - **Tagged by service.** Every chunk carries its service name, so a question about App Service networking can search just the App Service and Virtual Network chunks.
 - **A pipeline you can see.** Docs, splitter, embeddings, a Supabase vector store, then a retrieval chain, all wired up in Flowise with an embeddable chat window.
+
+![The version 2 demo page: how a question gets answered, from GitHub docs through a Markdown splitter, OpenAI embeddings and Supabase to a retrieval chain, and the six services it knows](../../assets/azure-docs-v2-demo.jpg "The version 2 demo page shows each step of the pipeline and exactly what the assistant knows.")
 
 ### Guardrails
 
@@ -53,6 +64,8 @@ MCP is an open standard that lets a model call outside tools and data sources, i
 2. **The agent picks a tool.** It calls a documentation search instead of answering from memory.
 3. **The MCP server searches Microsoft Learn** and returns current excerpts with their URLs.
 4. **A grounded answer comes back,** using only what the tool returned, with the source cited.
+
+![Diagram: a question goes to an agent, the agent calls the Microsoft Learn MCP server, and a grounded answer comes back with its source](../../assets/azure-docs-assistant-cover.jpg "The agent picks a tool instead of answering from memory.")
 
 The server offers three tools: **search** the docs, **fetch** a full page when a snippet isn't enough, and **find code samples** for a service or API.
 

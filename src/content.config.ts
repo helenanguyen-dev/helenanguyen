@@ -13,7 +13,16 @@ const projects = defineCollection({
     tileStyle: z.enum(['browser', 'phone', 'logo']).default('browser'),
     tileImage: image().optional(),
     tileText: z.string().optional(),
+    // Case study hero: a large colored panel (tileBg) with a screen on it.
+    heroImage: image().optional(),
+    heroAlt: z.string().optional(),
+    heroStyle: z.enum(['browser', 'duo']).default('browser'),
+    // For heroStyle "duo": a phone screen shown next to the browser.
+    heroPhone: image().optional(),
     role: z.string(),
+    team: z.string().optional(),
+    timeline: z.string().optional(),
+    tools: z.string().optional(),
     year: z.string(),
     tags: z.array(z.string()).default([]),
     order: z.number().default(0),

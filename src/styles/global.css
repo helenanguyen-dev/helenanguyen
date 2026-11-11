@@ -6,6 +6,7 @@
   --muted: #6b675f;
   --line: #e2ddd3;
   --accent: #e8562a;
+  --panel: #ece7df;
   --font-display: 'Montserrat', system-ui, sans-serif;
   --font-body: 'Montserrat', system-ui, -apple-system, sans-serif;
   --max: 1120px;
@@ -20,6 +21,7 @@
     --muted: #a39e94;
     --line: #2f2d29;
     --accent: #ff7a4d;
+    --panel: #24221f;
   }
 }
 *, *::before, *::after { box-sizing: border-box; }

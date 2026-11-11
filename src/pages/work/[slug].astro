@@ -5,41 +5,143 @@ import Base from '../../layouts/Base.astro';
 import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
-  const projects = await getCollection('projects', ({ data }) => !data.draft);
-  return projects.map((p) => ({ params: { slug: p.id }, props: { project: p } }));
+  const projects = (await getCollection('projects', ({ data }) => !data.draft))
+    .sort((a, b) => a.data.order - b.data.order);
+  return projects.map((p, i) => ({
+    params: { slug: p.id },
+    props: { project: p, next: projects[(i + 1) % projects.length] },
+  }));
 }
-const { project } = Astro.props;
+const { project, next } = Astro.props;
 const { Content } = await render(project);
-const { title, summary, role, year, tags, cover, coverAlt } = project.data;
+const { title, summary, role, year, tags, cover, coverAlt, tileBg, heroImage, heroAlt, heroStyle, heroPhone, team, timeline, tools } = project.data;
+const hero = heroImage ?? cover;
+const alt = heroImage ? (heroAlt ?? '') : (coverAlt ?? '');
+const facts = [
+  { label: 'Role', value: role },
+  { label: team ? 'Team' : null, value: team },
+  { label: 'Timeline', value: timeline ?? year },
+  { label: tools ? 'Tools' : 'Focus', value: tools ?? tags.join(', ') },
+].filter((f) => f.label && f.value);
+const nextImg = next.data.heroImage ?? next.data.cover;
 ---
 <Base title={title} description={summary}>
-  <article class="wrap">
-    <a class="back" href={url("/work/")}>← All work</a>
-    <h1>{title}</h1>
-    <p class="lead">{summary}</p>
-    <dl class="facts">
-      <div><dt>Role</dt><dd>{role}</dd></div>
-      <div><dt>Year</dt><dd>{year}</dd></div>
-      <div><dt>Focus</dt><dd>{tags.join(', ')}</dd></div>
-    </dl>
-    {cover ? <Image class="cover cover-img" src={cover} alt={coverAlt ?? ''} widths={[800, 1400, 2000]} sizes="(max-width: 1120px) 100vw, 1080px" /> : <div class="placeholder cover">Cover image</div>}
-    <div class="body"><Content /></div>
+  <article class="case">
+    <header class="intro wrap">
+      <a class="back" href={url('/work/')}>← All work</a>
+      <h1>{title}</h1>
+      <p class="lead">{summary}</p>
+      <dl class="facts">
+        {facts.map((f) => <div><dt>{f.label}</dt><dd>{f.value}</dd></div>)}
+      </dl>
+    </header>
+
+    <div class="hero" style={`background: ${tileBg}`}>
+      <div class={`hero-stage ${heroStyle}`}>
+        {hero && (
+          <div class="browser">
+            <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+            <Image src={hero} alt={alt} widths={[800, 1400, 2000]} sizes="(max-width: 1200px) 90vw, 1040px" loading="eager" />
+          </div>
+        )}
+        {heroStyle === 'duo' && heroPhone && (
+          <div class="phone" aria-hidden="true">
+            <Image src={heroPhone} alt="" width={480} loading="eager" />
+          </div>
+        )}
+      </div>
+    </div>
+
+    <div class="body wrap"><Content /></div>
+
+    <a class="next wrap" href={url(`/work/${next.id}/`)}>
+      <div class="next-tile" style={`background: ${next.data.tileBg}`}>
+        {nextImg && <Image class="next-img" src={nextImg} alt="" width={900} />}
+      </div>
+      <div class="next-text">
+        <span class="next-label">Next project</span>
+        <span class="next-title">{next.data.title} <span aria-hidden="true">→</span></span>
+      </div>
+    </a>
   </article>
 </Base>
+
 <style>
-  .back { display: inline-block; margin-top: 32px; color: var(--muted); text-decoration: none; font-size: 15px; }
-  h1 { font-size: clamp(30px, 4.2vw, 48px); font-weight: 300; margin: 24px 0 16px; max-width: 18ch; }
-  .lead { font-size: 21px; color: var(--muted); max-width: 55ch; }
-  .facts { display: flex; flex-wrap: wrap; gap: 40px; margin: 32px 0; padding: 24px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  dt { font-size: 13px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
-  dd { margin: 4px 0 0; }
-  .cover { aspect-ratio: 16 / 9; margin-bottom: 48px; }
-  .cover-img { width: 100%; height: auto; aspect-ratio: auto; border-radius: var(--radius); border: 1px solid var(--line); }
-  .body { max-width: 68ch; }
-  .body :global(h2) { font-size: 30px; margin-top: 48px; }
-  .body :global(table) { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 16px; display: block; overflow-x: auto; }
-  .body :global(th), .body :global(td) { text-align: left; padding: 10px 14px 10px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
-  .body :global(th) { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
-  .body :global(blockquote) { border-left: 3px solid var(--accent); margin: 24px 0; padding-left: 20px; color: var(--muted); }
-  .body :global(img) { display: block; width: 100%; height: auto; margin: 32px 0 12px; border-radius: var(--radius); border: 1px solid var(--line); }
+  /* Intro */
+  .intro { padding-top: 24px; }
+  .back { display: inline-block; color: var(--muted); text-decoration: none; font-size: 14px; transition: color .2s; }
+  .back:hover { color: var(--text); }
+  h1 { font-size: clamp(34px, 5vw, 56px); font-weight: 300; letter-spacing: -0.02em; line-height: 1.1; margin: clamp(40px, 7vw, 88px) 0 24px; max-width: 20ch; }
+  .lead { font-size: clamp(18px, 1.8vw, 21px); font-weight: 300; line-height: 1.6; color: var(--muted); max-width: 52ch; margin: 0; }
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 24px 40px; margin: clamp(40px, 6vw, 72px) 0 clamp(40px, 6vw, 64px); padding-top: 28px; border-top: 1px solid var(--line); }
+  dt { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
+  dd { margin: 8px 0 0; font-size: 15px; line-height: 1.55; }
+
+  /* Hero: a large colored panel with the product on it */
+  .hero { position: relative; overflow: hidden; max-width: 1360px; margin: 0 auto; padding: clamp(36px, 7vw, 104px) clamp(16px, 6vw, 96px) 0; }
+  @media (min-width: 1400px) { .hero { border-radius: 6px; } }
+  .hero::after { content: ''; position: absolute; inset: 0; background: radial-gradient(110% 70% at 85% 0%, rgba(255,255,255,.2), transparent 60%); pointer-events: none; }
+  .hero-stage { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; display: flex; align-items: flex-end; justify-content: center; gap: clamp(16px, 3vw, 40px); }
+  .browser { flex: 1 1 auto; min-width: 0; background: #fff; border-radius: 12px 12px 0 0; overflow: hidden; box-shadow: 0 30px 80px -24px rgba(15, 20, 40, .5); }
+  .bar { display: flex; gap: 7px; padding: 12px 16px; background: #f1f1f3; border-bottom: 1px solid #e4e4e8; }
+  .bar i { width: 10px; height: 10px; border-radius: 50%; background: #d3d3d9; }
+  .browser :global(img) { width: 100%; height: auto; max-height: 640px; object-fit: cover; object-position: top left; }
+  .duo .browser { flex-basis: 70%; }
+  .phone { flex: 0 0 auto; width: clamp(110px, 22%, 230px); margin-bottom: clamp(24px, 4vw, 56px); background: #fff; border: 7px solid #fff; border-radius: 30px; overflow: hidden; box-shadow: 0 30px 70px -20px rgba(10, 40, 20, .55); }
+  .phone :global(img) { width: 100%; height: auto; border-radius: 22px; }
+
+  /* Body: each section puts its heading in a side column */
+  .body { counter-reset: section; padding-top: clamp(56px, 9vw, 120px); }
+  .body :global(.cs-section) { counter-increment: section; display: grid; grid-template-columns: minmax(0, 1fr); column-gap: clamp(32px, 6vw, 96px); padding: clamp(40px, 6vw, 72px) 0; border-top: 1px solid var(--line); }
+  .body :global(.cs-section:first-child) { border-top: 0; padding-top: 0; }
+  @media (min-width: 900px) {
+    .body :global(.cs-section) { grid-template-columns: minmax(180px, 3fr) minmax(0, 7fr); }
+    .body :global(.cs-section > *) { grid-column: 2; }
+    .body :global(.cs-section > h2) { grid-column: 1; grid-row: 1 / span 40; align-self: start; position: sticky; top: 32px; }
+    .body :global(.cs-section > .cs-figure), .body :global(.cs-section > .stats), .body :global(.cs-section > .pair), .body :global(.cs-section > blockquote) { grid-column: 1 / -1; }
+  }
+  .body :global(h2) { font-size: clamp(24px, 2.4vw, 30px); font-weight: 300; line-height: 1.25; margin: 0 0 24px; }
+  .body :global(h2)::before { content: counter(section, decimal-leading-zero); display: block; font-size: 13px; font-weight: 500; letter-spacing: .12em; color: var(--accent); margin-bottom: 14px; }
+  .body :global(h3) { font-size: 19px; font-weight: 500; margin: 40px 0 12px; }
+  .body :global(p), .body :global(li) { font-size: 17px; line-height: 1.8; }
+  .body :global(.cs-section > p:first-of-type) { margin-top: 0; }
+  .body :global(p) { max-width: 64ch; }
+  .body :global(ul), .body :global(ol) { padding-left: 1.2em; max-width: 64ch; }
+  .body :global(li) { margin: 8px 0; }
+  .body :global(li::marker) { color: var(--muted); }
+  .body :global(strong) { font-weight: 600; }
+  .body :global(a) { text-decoration-color: var(--accent); text-underline-offset: 3px; }
+
+  /* Figures: wide, on a soft panel, with a caption */
+  .body :global(.cs-figure) { margin: clamp(32px, 5vw, 56px) 0; }
+  .body :global(.cs-figure img) { width: 100%; height: auto; border-radius: 10px; background: var(--panel); box-shadow: 0 1px 0 var(--line), 0 20px 50px -30px rgba(20, 20, 30, .35); }
+  .body :global(figcaption) { font-size: 14px; line-height: 1.6; color: var(--muted); margin-top: 14px; max-width: 70ch; }
+  .body :global(.pair) { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: clamp(16px, 3vw, 32px); margin: clamp(32px, 5vw, 56px) 0; }
+  .body :global(.pair .cs-figure) { margin: 0; }
+
+  /* Big numbers */
+  .body :global(.stats) { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; margin: clamp(28px, 4vw, 48px) 0; }
+  .body :global(.stats > div) { background: var(--bg); padding: clamp(20px, 3vw, 32px); }
+  .body :global(.stats strong) { display: block; font-size: clamp(32px, 4vw, 48px); font-weight: 300; letter-spacing: -0.02em; line-height: 1.1; }
+  .body :global(.stats span) { display: block; margin-top: 10px; font-size: 14px; line-height: 1.5; color: var(--muted); }
+
+  /* Pull quote */
+  .body :global(blockquote) { margin: clamp(24px, 4vw, 48px) 0; padding: 0; border: 0; }
+  .body :global(blockquote p) { font-size: clamp(24px, 3vw, 36px); font-weight: 300; line-height: 1.35; letter-spacing: -0.01em; max-width: 30ch; color: var(--text); margin: 0; }
+  .body :global(blockquote p + p) { font-size: 15px; color: var(--muted); margin-top: 16px; letter-spacing: 0; }
+
+  /* Tables */
+  .body :global(table) { width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 15px; display: block; overflow-x: auto; }
+  .body :global(th), .body :global(td) { text-align: left; padding: 14px 20px 14px 0; border-bottom: 1px solid var(--line); vertical-align: top; line-height: 1.6; }
+  .body :global(th) { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+
+  /* Next project */
+  .next { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: center; margin-top: clamp(40px, 6vw, 80px); padding-top: clamp(40px, 6vw, 72px); border-top: 1px solid var(--line); text-decoration: none; color: inherit; }
+  @media (min-width: 760px) { .next { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(32px, 5vw, 64px); } }
+  .next-tile { aspect-ratio: 16 / 10; border-radius: 6px; overflow: hidden; display: grid; place-items: end center; padding: 8% 10% 0; }
+  .next-tile :global(.next-img) { width: 100%; height: 100%; object-fit: cover; object-position: top left; border-radius: 8px 8px 0 0; box-shadow: 0 24px 50px -18px rgba(20, 20, 40, .45); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+  .next:hover :global(.next-img) { transform: translateY(-6px); }
+  .next-label { display: block; font-size: 12px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .next-title { display: block; font-size: clamp(24px, 3vw, 36px); font-weight: 300; line-height: 1.25; transition: color .2s; }
+  .next:hover .next-title { color: var(--accent); }
 </style>
