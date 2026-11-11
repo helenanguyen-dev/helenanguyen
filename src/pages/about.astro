@@ -5,6 +5,7 @@ import { Image } from 'astro:assets';
 import portrait from '../assets/helena-portrait.jpg';
 import brokenRice from '../assets/cooking-broken-rice.jpg';
 import diamondHead from '../assets/hawaii-diamond-head.jpg';
+import ContactSection from '../components/ContactSection.astro';
 // Career entries. Set `project` to a case-study slug (file name in src/content/projects) to make the entry clickable.
 const career = [
   { when: 'Currently', org: 'University of Washington', text: "Finishing my master's in Information Management, focused on AI, business intelligence, and product and program management." },
@@ -85,6 +86,9 @@ const skills: { name: string; project?: string }[] = [
       ))}
     </div>
   </section>
+  <section class="wrap about-contact" id="contact">
+    <ContactSection heading="h2" />
+  </section>
 </Base>
 <style>
   .intro { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: center; padding-top: 48px; }
@@ -115,6 +119,8 @@ const skills: { name: string; project?: string }[] = [
   .skills a { text-decoration: none; color: var(--text); background: linear-gradient(var(--accent), var(--accent)) 0 100% / 0 2px no-repeat; transition: background-size .3s, color .2s; }
   .skills a:hover { color: var(--accent); background-size: 100% 2px; }
   .hobbies { margin-top: 96px; }
+  .about-contact { margin-top: 96px; padding-top: 48px; border-top: 1px solid var(--line); }
+  .about-contact :global(.contact-title) { margin-top: 0; }
   .hobby-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
   figure { margin: 0; }
   .hobby-img { aspect-ratio: 1; }

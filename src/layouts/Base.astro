@@ -9,9 +9,9 @@ const site = Astro.site ?? 'https://helenanguyen-dev.github.io';
 const ogImage = new URL(url('/og-image.png?v=3'), site).href;
 const canonical = new URL(path, site).href;
 const nav = [
+  { href: '/about/', label: 'About' },
   { href: '/work/', label: 'Work' },
   { href: '/blog/', label: 'Blog' },
-  { href: '/about/', label: 'About' },
   { href: '/contact/', label: 'Contact' },
 ];
 ---
