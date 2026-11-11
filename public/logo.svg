@@ -12,7 +12,7 @@
 <path d="M70 120 C66 160 82 210 116 236 C130 246 150 246 164 234 C194 210 206 170 204 124 C202 86 180 60 140 58 C100 58 74 84 70 120Z" fill="#f4d3b8"/>
 <path d="M60 160 C54 110 72 54 118 32 C126 28 134 26 140 26 C138 40 136 52 134 62 C112 76 88 108 76 156 C70 158 64 160 60 160Z" fill="#221d1f"/>
 <path d="M140 26 C176 30 204 62 212 104 C214 122 212 136 208 148 C198 112 176 80 136 62 C138 50 140 38 140 26Z" fill="#221d1f"/>
-<path d="M150 170 C146 182 150 186 156 184" fill="none" stroke-width="3.5"/>
+<path d="M152 170 C156 182 152 186 146 184" fill="none" stroke-width="3.5"/>
 <ellipse cx="114" cy="146" rx="6" ry="7.5" fill="#221d1f" stroke="none"/><ellipse cx="176" cy="146" rx="6" ry="7.5" fill="#221d1f" stroke="none"/><path d="M100 128 L126 126" fill="none" stroke-width="4"/><path d="M164 126 L190 128" fill="none" stroke-width="4"/>
 <path d="M120 200 C128 212 146 214 158 198" fill="none" stroke-width="4"/>
 <ellipse cx="98" cy="186" rx="10" ry="6" fill="#ef9a7e" stroke="none" opacity=".55"/>
