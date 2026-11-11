@@ -33,23 +33,23 @@ const career = [
 type Slide = { src: ImageMetadata; alt: string; title: string; when?: string; where?: string };
 const hobbies: { id: string; label: string; caption: string; slides: Slide[] }[] = [
   { id: 'food', label: 'Exploring food', caption: 'Cooking at home and eating out', slides: [
-    { src: foodSushiBake, title: 'Sushi bake', when: '[Month Year]', where: '[Place]', alt: 'A homemade sushi bake in a glass dish, drizzled with spicy mayo and topped with crab' },
-    { src: foodShrimpBowl, title: 'Shrimp bowl', when: '[Month Year]', where: '[Place]', alt: 'A dark bowl of glazed shrimp topped with fish roe and herbs, chopsticks resting on the rim' },
-    { src: foodChickenDuck, title: 'Chicken and duck rice', when: '[Month Year]', where: '[Place]', alt: 'Plates of sliced poached chicken and roast duck with cucumber, rice and dipping sauces' },
+    { src: foodSushiBake, title: 'Sushi bake', alt: 'A homemade sushi bake in a glass dish, drizzled with spicy mayo and topped with crab' },
+    { src: foodShrimpBowl, title: 'Shrimp bowl', alt: 'A dark bowl of glazed shrimp topped with fish roe and herbs, chopsticks resting on the rim' },
+    { src: foodChickenDuck, title: 'Chicken and duck rice', alt: 'Plates of sliced poached chicken and roast duck with cucumber, rice and dipping sauces' },
   ] },
   { id: 'lab', label: 'New skills (in lab)', caption: 'Flow cytometry and cell sorting', slides: [
-    { src: labBench, title: 'My bench', when: '[Month Year]', where: 'Seattle, WA', alt: 'A busy lab bench with pipettes, an ice bucket of tubes and shelves of supplies' },
-    { src: labMouseRoom, title: 'Suited up for the animal facility', when: '[Month Year]', where: 'Seattle, WA', alt: 'Helena in a gown, gloves and safety glasses next to stacked mouse cages' },
-    { src: labSelfie, title: 'Lab days', when: '[Month Year]', where: 'Seattle, WA', alt: 'Helena making a peace sign in a lab office, a colleague waving in the background' },
+    { src: labBench, title: 'My bench', where: 'Seattle, WA', alt: 'A busy lab bench with pipettes, an ice bucket of tubes and shelves of supplies' },
+    { src: labMouseRoom, title: 'Suited up for the animal facility', where: 'Seattle, WA', alt: 'Helena in a gown, gloves and safety glasses next to stacked mouse cages' },
+    { src: labSelfie, title: 'Lab days', where: 'Seattle, WA', alt: 'Helena making a peace sign in a lab office, a colleague waving in the background' },
     { src: labFacs, title: 'Sorting cells on a FACS sorter', when: 'Nov 2024', where: 'Seattle, WA', alt: 'A flow cytometry sorter screen showing gating plots and a histogram' },
     { src: labCrystalViolet, title: 'Crystal violet staining', when: 'Feb 2023', where: 'Seattle, WA', alt: 'A 12-well plate stained deep purple with crystal violet' },
-    { src: labCells, title: 'Cells under the microscope', when: '[Month Year]', where: 'Seattle, WA', alt: 'A phase-contrast micrograph of a dense layer of cultured cells' },
+    { src: labCells, title: 'Cells under the microscope', where: 'Seattle, WA', alt: 'A phase-contrast micrograph of a dense layer of cultured cells' },
   ] },
   { id: 'places', label: 'Exploring places', caption: 'Exploring a new state and new countries', slides: [
     { src: placeMountHood, title: 'Mount Hood', when: 'Sep 2025', where: 'Oregon', alt: 'Snowy Mount Hood at dusk above a dark forest and a curving road' },
     { src: placeLake, title: 'Talapus Lake', when: 'Sep 2024', where: 'Washington', alt: 'Two weathered logs leading into a mirror-still mountain lake' },
-    { src: placeGoldenBridge, title: 'Golden Bridge', when: '[Month Year]', where: 'Ba Na Hills, Vietnam', alt: 'The Golden Bridge held up by two giant stone hands above the clouds' },
-    { src: placePagoda, title: 'Pagoda in the hills', when: '[Month Year]', where: '[Ba Na Hills?], Vietnam', alt: 'A tall white pagoda rising above green trees beside a stone lotus' },
+    { src: placeGoldenBridge, title: 'Golden Bridge', where: 'Ba Na Hills, Vietnam', alt: 'The Golden Bridge held up by two giant stone hands above the clouds' },
+    { src: placePagoda, title: 'Pagoda in the hills', where: 'Vietnam', alt: 'A tall white pagoda rising above green trees beside a stone lotus' },
     { src: diamondHead, title: 'Diamond Head', when: 'Apr 2025', where: 'Hawaii', alt: 'Diamond Head seen from a boat off Waikiki' },
   ] },
 ];
