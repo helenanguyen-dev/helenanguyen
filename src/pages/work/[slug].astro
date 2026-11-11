@@ -91,6 +91,11 @@ const nextImg = next.data.heroImage ?? next.data.cover;
   .bar i { width: 10px; height: 10px; border-radius: 50%; background: #d3d3d9; }
   .browser :global(img) { width: 100%; height: auto; max-height: 640px; object-fit: cover; object-position: top left; }
   .duo .browser { flex-basis: 70%; }
+  /* Duo hero: both screens float centered in the panel, nothing cropped at the edge */
+  .hero:has(.duo) { padding-bottom: clamp(36px, 7vw, 104px); }
+  .duo { align-items: center; }
+  .duo .browser { border-radius: 12px; }
+  .duo .phone-col { margin-bottom: 0; }
   .phone-col { flex: 0 0 auto; width: clamp(110px, 22%, 230px); display: flex; flex-direction: column; align-items: center; gap: clamp(14px, 2.4vw, 28px); margin-bottom: clamp(24px, 4vw, 56px); }
   .phone-col :global(.hero-logo) { width: 92%; height: auto; display: block; }
   .phone { width: 100%; background: #fff; border: 7px solid #fff; border-radius: 30px; overflow: hidden; box-shadow: 0 30px 70px -20px rgba(10, 40, 20, .55); }
