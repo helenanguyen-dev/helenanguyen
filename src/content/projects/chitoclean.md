@@ -56,10 +56,14 @@ A team of scientists, engineers and business people can easily pull in three dir
 
 The plan helped carry ChitoClean to the finals of two UW startup challenges, including the 2026 Environmental Innovation Challenge. We were also chosen for 2026 prototype funding from UW's Buerk Center for Entrepreneurship, which pays for the R&D we're doing now.
 
+![The ChitoClean booth: our challenge sign, trays of toothbrush samples, and a black "Recycle? or trash?" board for visitors](../../assets/chitoclean-booth.jpg "Our booth at the Health Innovation Challenge, with a \"Recycle or trash?\" game for visitors.")
+
 ## What I learned
 
 **Wear many hats at once.** A five-person startup means countless meetings, conversations and disagreements. What kept us moving was a shared goal: getting a better toothbrush into the world.
 
 **Learn what you weren't trained for.** I came in from research and product, not finance. I learned financial modeling and how supply chains work by doing them, with a lot of help from UW finance professors and the Buerk Center.
+
+![A speaker at a Buerk Center for Entrepreneurship event at the UW Foster School of Business](../../assets/chitoclean-buerk-event.jpg "A Buerk Center event at UW Foster. The center's mentors and events taught me much of what I know about startups.")
 
 **The PM skills transfer.** Understanding the problem, understanding the people, and moving a product forward work the same way in a startup as anywhere else. ChitoClean made those skills sharper.
