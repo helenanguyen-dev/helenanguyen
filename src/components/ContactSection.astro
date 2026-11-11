@@ -1,0 +1,26 @@
+---
+// Replace with your Formspree form ID once the account exists (formspree.io → New form).
+const FORM_ACTION = 'https://formspree.io/f/YOUR_FORM_ID';
+interface Props { heading?: 'h1' | 'h2' }
+const { heading = 'h1' } = Astro.props;
+const Heading = heading;
+---
+<div class="contact">
+  <Heading class="contact-title">Let's talk.</Heading>
+  <p class="lead">Have a project, role, or question? Send a note and I'll get back to you.</p>
+  <form action={FORM_ACTION} method="POST">
+    <label>Name<input name="name" required autocomplete="name" /></label>
+    <label>Email<input type="email" name="email" required autocomplete="email" /></label>
+    <label>Message<textarea name="message" rows="6" required></textarea></label>
+    <button class="btn" type="submit">Send message</button>
+  </form>
+</div>
+<style>
+  .contact-title { font-size: clamp(30px, 4.2vw, 48px); font-weight: 300; margin: 48px 0 12px; }
+  .lead { color: var(--muted); font-size: 19px; margin-bottom: 40px; }
+  form { display: grid; gap: 20px; max-width: 560px; }
+  label { display: grid; gap: 6px; font-size: 14px; color: var(--muted); }
+  input, textarea { font: inherit; color: var(--text); background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+  input:focus, textarea:focus { outline: 2px solid var(--accent); border-color: transparent; }
+  button { border: 0; cursor: pointer; justify-self: start; font: inherit; }
+</style>
