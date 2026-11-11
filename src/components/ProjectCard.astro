@@ -5,7 +5,7 @@ import { url } from '../lib/url';
 import BrandLockup from './BrandLockup.astro';
 interface Props {
   slug: string; title: string; cover?: ImageMetadata; coverAlt?: string;
-  tileBg: string; tileStyle: 'browser' | 'phone' | 'logo'; tileImage?: ImageMetadata; tileText?: string; tileLogo?: ImageMetadata; tileLogoPartner?: ImageMetadata;
+  tileBg: string; tileStyle: 'browser' | 'phone' | 'logo' | 'photo'; tileImage?: ImageMetadata; tileText?: string; tileLogo?: ImageMetadata; tileLogoPartner?: ImageMetadata;
   role?: string; year?: string;
 }
 const { slug, title, cover, coverAlt, tileBg, tileStyle, tileImage, tileText, tileLogo, tileLogoPartner, role, year } = Astro.props;
@@ -14,7 +14,12 @@ const img = tileImage ?? cover;
 ---
 <a class="card" href={url(`/work/${slug}/`)}>
   <div class="tile" style={`background: ${tileBg}`}>
-    {tileStyle === 'logo' && img ? (
+    {tileStyle === 'photo' && img ? (
+      <div class="photo-stack">
+        <Image class="photo" src={img} alt="" width={900} />
+        {tileLogo && <BrandLockup class="brand" logo={tileLogo} partner={tileLogoPartner} />}
+      </div>
+    ) : tileStyle === 'logo' && img ? (
       <div class="logo-stack">
         <div class="logo-lockup">
           <Image class="logo" src={img} alt="" width={160} height={160} />
@@ -84,6 +89,11 @@ const img = tileImage ?? cover;
   .wordmark { font-family: var(--font-display); font-weight: 400; font-size: clamp(40px, 6vw, 76px); color: #fff; letter-spacing: -0.01em; }
   .empty { color: rgba(255,255,255,.85); font-size: 14px; }
   .card:hover .browser, .card:hover .logo-lockup { transform: translateY(-6px) scale(1.02); }
+  /* Photo tile: a whole event photo, framed like a print and centered */
+  .tile:has(.photo-stack) { container-type: size; }
+  .photo-stack { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5%; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+  .photo-stack :global(.photo) { display: block; height: 72cqh; width: auto; max-width: 84cqw; object-fit: contain; border: 6px solid #fff; border-radius: 6px; box-shadow: 0 24px 50px -18px rgba(10, 30, 40, .5); }
+  .card:hover .photo-stack { transform: translateY(-6px) scale(1.02); }
   .meta { font-size: 12px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); text-align: center; margin: 20px 0 0; }
   .meta + h3 { margin-top: 8px; }
   h3 { font-family: var(--font-display); font-weight: 300; font-size: clamp(20px, 2.2vw, 26px); text-align: center; margin: 22px 0 0; transition: color .2s; }
