@@ -38,6 +38,19 @@ I built it three times. Each version fixed the biggest gap in the one before, an
 
 **Code:** [github.com/helenanguyen-dev/azure_rag](https://github.com/helenanguyen-dev/azure_rag)
 
+## Try it live
+
+This is the MCP version, running for real. Ask it an Azure question and it searches Microsoft Learn through MCP, then answers with links to the pages it used.
+
+<div class="live-demo" data-chatflow="9d62b6ef-945d-4f3b-a73d-664eaeb93f02" data-host="https://cloud.flowiseai.com">
+  <div class="live-demo-start">
+    <p class="live-demo-title">Azure Docs Assistant</p>
+    <p class="live-demo-copy">Answers come from Microsoft's documentation, with sources. Please don't type anything personal: questions go to Flowise and OpenAI to be answered.</p>
+    <button type="button" class="live-demo-button">Start the assistant</button>
+    <p class="live-demo-limit">Limited to a few questions per minute so the demo stays up for everyone.</p>
+  </div>
+</div>
+
 ## The problem
 
 1. **Answers from memory.** A model without sources can sound sure about a setting that changed last year.

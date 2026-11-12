@@ -47,7 +47,7 @@ function sections(tree) {
 //    stats, pair, quote), or it slides over it. A sticky element can't leave
 //    its parent, so wrap the h2 in a div that only spans the rows before that
 //    block.
-const FULL = ['cs-figure', 'stats', 'pair'];
+const FULL = ['cs-figure', 'stats', 'pair', 'live-demo'];
 const isFull = (n) =>
   n.type === 'element' &&
   (n.tagName === 'blockquote' || (n.properties?.className || []).some((c) => FULL.includes(c)));

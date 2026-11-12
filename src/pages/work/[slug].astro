@@ -78,6 +78,58 @@ const nextImg = next.data.heroImage ?? next.data.cover;
   </article>
 </Base>
 
+<script>
+  // Live demo: load the Flowise chat only after a visitor clicks, so nothing
+  // is sent anywhere (and no usage is spent) just by opening the page.
+  const EMBED = 'https://cdn.jsdelivr.net/npm/flowise-embed@3.1.6/dist/web.js';
+  document.querySelectorAll<HTMLElement>('.live-demo').forEach((box, i) => {
+    const button = box.querySelector<HTMLButtonElement>('.live-demo-button');
+    button?.addEventListener('click', async () => {
+      button.disabled = true;
+      button.textContent = 'Loading…';
+      try {
+        const { default: Chatbot } = await import(/* @vite-ignore */ EMBED);
+        const id = `live-demo-${i}`;
+        const chat = document.createElement('flowise-fullchatbot');
+        chat.id = id;
+        box.replaceChildren(chat);
+        Chatbot.initFull({
+          id,
+          chatflowid: box.dataset.chatflow,
+          apiHost: box.dataset.host,
+          pageTitle: document.title, // the embed renames the tab otherwise
+          theme: {
+            customCSS: '* { font-family: Montserrat, system-ui, sans-serif !important; }',
+            chatWindow: {
+              showTitle: true,
+              title: 'Azure Docs Assistant',
+              titleBackgroundColor: '#241063',
+              titleTextColor: '#ffffff',
+              welcomeMessage: 'Hi! Ask me about Azure. I answer from Microsoft Learn and link my sources.',
+              starterPrompts: [
+                'How do I restrict access to an App Service app by IP address?',
+                'What is the difference between the hot, cool and archive tiers in Blob Storage?',
+                'When should I use a custom role instead of a built-in role?',
+              ],
+              backgroundColor: '#ffffff',
+              fontSize: 15,
+              botMessage: { backgroundColor: '#f3f1fb', textColor: '#1c1b19' },
+              userMessage: { backgroundColor: '#241063', textColor: '#ffffff' },
+              textInput: { placeholder: 'Ask an Azure question', sendButtonColor: '#241063', maxChars: 300, maxCharsWarningMessage: 'Please keep questions under 300 characters.' },
+              footer: { showFooter: false },
+            },
+          },
+        });
+      } catch {
+        button.disabled = false;
+        button.textContent = 'Try again';
+        const note = box.querySelector('.live-demo-limit');
+        if (note) note.textContent = 'The demo could not load right now. Please try again in a minute.';
+      }
+    });
+  });
+</script>
+
 <style>
   /* Intro */
   .intro { padding-top: 24px; }
@@ -131,7 +183,7 @@ const nextImg = next.data.heroImage ?? next.data.cover;
     .body :global(.cs-section > *) { grid-column: 2; }
     .body :global(.cs-section > .cs-head) { grid-column: 1; grid-row: 1 / span var(--head-rows, 1); }
     .body :global(.cs-head > h2) { position: sticky; top: 32px; }
-    .body :global(.cs-section > .cs-figure), .body :global(.cs-section > .stats), .body :global(.cs-section > .pair), .body :global(.cs-section > blockquote) { grid-column: 1 / -1; }
+    .body :global(.cs-section > .cs-figure), .body :global(.cs-section > .stats), .body :global(.cs-section > .pair), .body :global(.cs-section > blockquote), .body :global(.cs-section > .live-demo) { grid-column: 1 / -1; }
   }
   .body :global(h2) { font-size: clamp(24px, 2.4vw, 30px); font-weight: 300; line-height: 1.25; margin: 0 0 24px; }
   .body :global(h2)::before { content: counter(section, decimal-leading-zero); display: block; font-size: 13px; font-weight: 500; letter-spacing: .12em; color: var(--accent); margin-bottom: 14px; }
@@ -157,6 +209,18 @@ const nextImg = next.data.heroImage ?? next.data.cover;
   .body :global(.stats > div) { background: var(--stats-bg, var(--bg)); padding: clamp(20px, 3vw, 32px); }
   .body :global(.stats strong) { display: block; font-size: clamp(32px, 4vw, 48px); font-weight: var(--stats-weight, 300); color: var(--stats-number, var(--text)); letter-spacing: -0.02em; line-height: 1.1; }
   .body :global(.stats span) { display: block; margin-top: 10px; font-size: 14px; line-height: 1.5; color: var(--stats-label, var(--muted)); }
+
+  /* Live demo: a calm start panel; the chat only loads when a visitor asks for it */
+  .body :global(.live-demo) { margin: clamp(28px, 4vw, 48px) 0; border-radius: 12px; overflow: hidden; background: var(--stats-bg, var(--panel)); color: #fff; box-shadow: 0 30px 80px -40px rgba(20, 10, 60, .6); }
+  .body :global(.live-demo-start) { padding: clamp(32px, 6vw, 72px) clamp(20px, 5vw, 64px); text-align: center; }
+  .body :global(.live-demo-start p) { margin-left: auto; margin-right: auto; }
+  .body :global(.live-demo-title) { font-size: clamp(22px, 2.6vw, 30px); font-weight: 300; margin: 0 0 12px; color: #fff; }
+  .body :global(.live-demo-copy) { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,.8); max-width: 52ch; margin: 0 0 28px; }
+  .body :global(.live-demo-button) { font: inherit; font-size: 15px; font-weight: 500; color: #241063; background: #fff; border: 0; border-radius: 999px; padding: 14px 28px; cursor: pointer; transition: transform .2s, box-shadow .2s; }
+  .body :global(.live-demo-button:hover) { transform: translateY(-2px); box-shadow: 0 10px 24px -10px rgba(0,0,0,.5); }
+  .body :global(.live-demo-button:disabled) { opacity: .7; cursor: wait; transform: none; }
+  .body :global(.live-demo-limit) { font-size: 13px; color: rgba(255,255,255,.6); margin: 20px 0 0; }
+  .body :global(.live-demo flowise-fullchatbot) { display: block; height: min(640px, 80vh); }
 
   /* Pull quote */
   .body :global(blockquote) { margin: clamp(24px, 4vw, 48px) 0; padding: 0; border: 0; }
