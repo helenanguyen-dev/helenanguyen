@@ -6,7 +6,7 @@ coverAlt: "Diagram of the assistant: a question goes to an agent, the agent call
 heroImage: ../../assets/azure-docs-mcp-showcase.jpg
 heroAlt: "The Azure Docs Assistant showcase page: an Azure docs assistant that always shows its work, and how a question becomes a grounded answer"
 role: "Builder and product owner"
-tools: "Flowise, Supabase (pgvector), OpenAI embeddings, Microsoft Learn MCP"
+tools: "Flowise, Supabase (pgvector), OpenAI, Microsoft Learn MCP, Python (FastAPI)"
 year: "2026"
 tags: ["RAG", "MCP", "Responsible AI"]
 order: 4
@@ -37,6 +37,19 @@ I built it three times. Each version fixed the biggest gap in the one before, an
 </div>
 
 **Code:** [github.com/helenanguyen-dev/azure_rag](https://github.com/helenanguyen-dev/azure_rag)
+
+## Try it live
+
+This is the assistant running for real, on a small Python service I built as version 3. Ask it an Azure question and it searches Microsoft Learn through MCP, then answers with links to the pages it used.
+
+<div class="live-demo" data-api="https://helenanguyen-dev-azure-docs-assistant.hf.space">
+  <div class="live-demo-start">
+    <p class="live-demo-title">Azure Docs Assistant</p>
+    <p class="live-demo-copy">Answers come from Microsoft's documentation, with sources. Please don't type anything personal: questions go to OpenAI and Microsoft Learn to be answered.</p>
+    <button type="button" class="live-demo-button">Start the assistant</button>
+    <p class="live-demo-limit">Limited to a few questions per minute so the demo stays up for everyone.</p>
+  </div>
+</div>
 
 ## The problem
 
