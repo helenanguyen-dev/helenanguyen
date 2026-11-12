@@ -1,6 +1,6 @@
 ---
-// Replace with your Formspree form ID once the account exists (formspree.io → New form).
-const FORM_ACTION = 'https://formspree.io/f/YOUR_FORM_ID';
+// Formspree delivers submissions to Helena's inbox. The form ID is safe to be public.
+const FORM_ACTION = 'https://formspree.io/f/xqpqkddo';
 interface Props { heading?: 'h1' | 'h2' }
 const { heading = 'h1' } = Astro.props;
 const Heading = heading;
@@ -8,13 +8,44 @@ const Heading = heading;
 <div class="contact">
   <Heading class="contact-title">Let's talk.</Heading>
   <p class="lead">Have a project, role, or question? Send a note and I'll get back to you.</p>
-  <form action={FORM_ACTION} method="POST">
+  <form class="contact-form" action={FORM_ACTION} method="POST">
+    <input type="hidden" name="_subject" value="New message from your website" />
+    <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
     <label>Name<input name="name" required autocomplete="name" /></label>
     <label>Email<input type="email" name="email" required autocomplete="email" /></label>
     <label>Message<textarea name="message" rows="6" required></textarea></label>
     <button class="btn" type="submit">Send message</button>
+    <p class="status" role="status" aria-live="polite"></p>
   </form>
 </div>
+<script>
+  // Send without leaving the page; falls back to a normal POST if JS is off.
+  document.querySelectorAll<HTMLFormElement>('form.contact-form').forEach((form) => {
+    const status = form.querySelector<HTMLElement>('.status')!;
+    const button = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      button.disabled = true;
+      status.textContent = 'Sending…';
+      status.classList.remove('error');
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        });
+        if (!res.ok) throw new Error(String(res.status));
+        form.reset();
+        status.textContent = "Thanks! Your message is on its way. I'll get back to you soon.";
+      } catch {
+        status.classList.add('error');
+        status.textContent = 'Something went wrong. Please try again in a moment.';
+      } finally {
+        button.disabled = false;
+      }
+    });
+  });
+</script>
 <style>
   .contact-title { font-size: clamp(30px, 4.2vw, 48px); font-weight: 300; margin: 48px 0 12px; }
   .lead { color: var(--muted); font-size: 19px; margin-bottom: 40px; }
@@ -22,5 +53,9 @@ const Heading = heading;
   label { display: grid; gap: 6px; font-size: 14px; color: var(--muted); }
   input, textarea { font: inherit; color: var(--text); background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
   input:focus, textarea:focus { outline: 2px solid var(--accent); border-color: transparent; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .status { margin: 0; min-height: 1.5em; color: var(--muted); font-size: 15px; }
+  .status.error { color: #c0392b; }
+  button:disabled { opacity: .6; cursor: default; }
   button { border: 0; cursor: pointer; justify-self: start; font: inherit; }
 </style>
