@@ -12,6 +12,7 @@ statsTheme:
   weight: 800
 heroPhone: ../../assets/instacart-meal-plan-mobile.png
 role: "Product Manager"
+kind: "Product concept"
 team: "Team of four"
 timeline: "2025"
 year: "2025"

@@ -15,11 +15,12 @@ export async function getStaticPaths() {
 }
 const { project, next } = Astro.props;
 const { Content } = await render(project);
-const { title, summary, role, year, tags, cover, coverAlt, tileBg, heroImage, heroAlt, heroStyle, heroPhone, tileLogo, tileLogoPartner, team, timeline, tools, statsTheme } = project.data;
+const { title, summary, role, kind, year, tags, cover, coverAlt, tileBg, heroImage, heroAlt, heroStyle, heroPhone, tileLogo, tileLogoPartner, team, timeline, tools, statsTheme } = project.data;
 const caseVars = statsTheme ? `--stats-bg: ${statsTheme.bg}; --stats-number: ${statsTheme.number}; --stats-label: ${statsTheme.label}; --stats-weight: ${statsTheme.weight}; --stats-line: ${statsTheme.line};` : undefined;
 const hero = heroImage ?? cover;
 const alt = heroImage ? (heroAlt ?? '') : (coverAlt ?? '');
 const facts = [
+  { label: kind ? 'Type' : null, value: kind },
   { label: 'Role', value: role },
   { label: team ? 'Team' : null, value: team },
   { label: 'Timeline', value: timeline ?? year },

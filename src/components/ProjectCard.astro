@@ -6,10 +6,10 @@ import BrandLockup from './BrandLockup.astro';
 interface Props {
   slug: string; title: string; cover?: ImageMetadata; coverAlt?: string;
   tileBg: string; tileStyle: 'browser' | 'phone' | 'logo' | 'photo'; tileImage?: ImageMetadata; tileText?: string; tileRound?: boolean; tileLogo?: ImageMetadata; tileLogoPartner?: ImageMetadata;
-  role?: string; year?: string;
+  role?: string; kind?: string; year?: string;
 }
-const { slug, title, cover, coverAlt, tileBg, tileStyle, tileImage, tileText, tileRound, tileLogo, tileLogoPartner, role, year } = Astro.props;
-const meta = [role, year].filter(Boolean).join(' · ');
+const { slug, title, cover, coverAlt, tileBg, tileStyle, tileImage, tileText, tileRound, tileLogo, tileLogoPartner, role, kind, year } = Astro.props;
+const meta = [kind, role, year].filter(Boolean).join(' · ');
 const img = tileImage ?? cover;
 ---
 <a class="card" href={url(`/work/${slug}/`)}>

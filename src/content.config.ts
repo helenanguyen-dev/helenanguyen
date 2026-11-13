@@ -28,6 +28,8 @@ const projects = defineCollection({
     // Optional look for the big-number callouts, e.g. to match a project's deck.
     statsTheme: z.object({ bg: z.string(), number: z.string(), label: z.string(), line: z.string().default('rgba(255,255,255,.14)'), weight: z.number().default(300) }).optional(),
     role: z.string(),
+    // Marks work that isn't a real role, e.g. "Product concept". Shown on the card and case study.
+    kind: z.string().optional(),
     team: z.string().optional(),
     timeline: z.string().optional(),
     tools: z.string().optional(),
