@@ -19,12 +19,12 @@ import placePagoda from '../assets/hobbies/places-pagoda.jpg';
 import diamondHead from '../assets/hawaii-diamond-head.jpg';
 import ContactSection from '../components/ContactSection.astro';
 // Career entries. Set `project` to a case-study slug (file name in src/content/projects) to make the entry clickable.
-const career = [
+const career: { when: string; kind?: string; org: string; text: string; project?: string }[] = [
   { when: 'Currently', org: 'University of Washington', text: "Finishing my master's in Information Management, focused on AI, business intelligence, and product and program management." },
   { when: 'Currently', org: 'FIUTS · Data Intern', text: 'At this nonprofit that fosters intercultural connection to strengthen international diplomacy, I analyze its data strategy and reimagine how data is collected and analyzed to improve future events.', project: 'fiuts-data-strategy' },
   { when: 'Recently', org: 'GreatSchools x AWS Hackathon · Product Manager', text: 'Led product for Atlas, an AI agent that turns a parent’s own words into a ranked, evidence-checked list of schools. Built in 3 days with a team of 4.', project: 'aws-hackathon-greatschools' },
   { when: 'Recently', org: 'ChitoClean · Co-Chief Product Officer and CFO', text: 'Co-founded a UW startup building a 100% biodegradable toothbrush from chitosan. I owned product direction and the financial plan, and our team won 2026 prototype funding from the Buerk Center.', project: 'chitoclean' },
-  { when: 'Recently', org: 'Meal Plan Companion for Instacart · Product Manager', text: 'Product concept for going from cooking video to grocery cart. Worked through strategy, trade-offs, the business case, user stories and the launch plan with a team of 4.', project: 'instacart' },
+  { when: 'Recently', kind: 'Product concept', org: 'Meal Plan Companion for Instacart · Product Manager', text: 'A product concept, not a shipped product, for going from cooking video to grocery cart. Worked through strategy, trade-offs, the business case, user stories and the launch plan with a team of 4.', project: 'instacart' },
   { when: 'Previously', org: 'Fred Hutch Cancer Center', text: 'Built the data models, dashboards and visualizations behind research on CD8+KIR+ cells and the role of neutrophils in lung cancer, and turned the results into figures for the lab’s grant applications.', },
   { when: 'Previously', org: 'COPE Health Scholars', text: 'Optimized and streamlined admin processes for a community of 45,000+ alumni.' },
 ];
@@ -55,11 +55,12 @@ const hobbies: { id: string; label: string; caption: string; slides: Slide[] }[]
 ];
 // Skills. Add a `project` slug to link a skill to the case study that shows it best.
 const skills: { name: string; project?: string }[] = [
-  { name: 'Product Management', project: 'instacart' },
+  { name: 'Product Management', project: 'chitoclean' },
   { name: 'Responsible AI', project: 'aws-hackathon-greatschools' },
   { name: 'AI Agents & RAG', project: 'azure-docs-assistant' },
   { name: 'Data Strategy', project: 'fiuts-data-strategy' },
-  { name: 'Dashboards & BI', project: 'fiuts-data-strategy' },
+  // Will link to the Fred Hutch case study once it's written. Unlinked for now so no two skills share a case study.
+  { name: 'Dashboards & BI' },
   { name: 'Launch Planning', project: 'instacart' },
 ];
 ---
@@ -69,7 +70,7 @@ const skills: { name: string; project?: string }[] = [
       <p class="eyebrow">Hey there!</p>
       <h1>I'm Helena.</h1>
       <p>I'm a product manager and data analyst who started in biochemistry, where I fell in love with data and what it can reveal. Since then I've helped ship products and projects across consumer, life sciences and technology.</p>
-      <p>Today I'm focused on helping companies adopt AI responsibly and effectively, and on rethinking what they can do with the data they already have.</p>
+      <p>Today I'm focused on helping companies adopt AI responsibly and effectively, and on getting more out of the data they already have. At FIUTS, I defined a data strategy that unites three systems into one source of truth, and I'm leading the move of 1,000+ records dating back to 2017.</p>
       <p>Growing up across languages and cultures taught me to adapt fast and to work well with very different people. Outside work and school, I'm usually cooking, planning the next trip, or picking up a new skill. I care deeply about technology that gives people more time for the things they love.</p>
     </div>
     <Image class="portrait portrait-img" src={portrait} alt="Helena Nguyen" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 440px" />
@@ -83,7 +84,7 @@ const skills: { name: string; project?: string }[] = [
           return (
             <li class:list={[{ now: c.when === 'Currently' }]}>
               <Tag class="entry" href={c.project ? url(`/work/${c.project}/`) : undefined}>
-                <span class="when">{c.when}</span>
+                <span class="when">{c.when}{c.kind && <> · <span class="kind">{c.kind}</span></>}</span>
                 <strong class="org">{c.org}</strong>
                 <span class="text">{c.text}</span>
                 {c.project && <span class="more">See the project <span aria-hidden="true">→</span></span>}
@@ -162,6 +163,7 @@ const skills: { name: string; project?: string }[] = [
   a.entry:hover { background: var(--surface); }
   .when { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
   .org { font-size: 20px; }
+  .kind { color: var(--accent); }
   .text { color: var(--muted); }
   .more { font-size: 14px; color: var(--accent); opacity: 0; transform: translateX(-6px); transition: opacity .2s, transform .2s; }
   a.entry:hover .more, a.entry:focus-visible .more { opacity: 1; transform: none; }
