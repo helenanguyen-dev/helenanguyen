@@ -2,11 +2,11 @@
 import { defineConfig } from 'astro/config';
 import rehypeCaseStudy from './src/lib/rehype-case-study.mjs';
 
-// Project site: served at https://helenanguyen-dev.github.io/helenanguyen/
-// If the repo moves to helenanguyen-dev.github.io (or a custom domain), set base to '/'.
+// Served at the custom domain https://helenanguyen.me (see public/CNAME).
+// The old https://helenanguyen-dev.github.io/helenanguyen/ address redirects here.
 export default defineConfig({
-  site: 'https://helenanguyen-dev.github.io',
-  base: '/helenanguyen/',
+  site: 'https://helenanguyen.me',
+  base: '/',
   markdown: {
     rehypePlugins: [rehypeCaseStudy],
   },

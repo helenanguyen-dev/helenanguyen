@@ -5,7 +5,7 @@ interface Props { title?: string; description?: string; }
 const { title, description = 'Portfolio of Helena Nguyen, product manager and data analyst.' } = Astro.props;
 const pageTitle = title ? `${title} · Helena Nguyen` : 'Helena Nguyen';
 const path = Astro.url.pathname;
-const site = Astro.site ?? 'https://helenanguyen-dev.github.io';
+const site = Astro.site ?? 'https://helenanguyen.me';
 const ogImage = new URL(url('/og-image.png?v=3'), site).href;
 const canonical = new URL(path, site).href;
 const nav = [
@@ -67,7 +67,7 @@ const nav = [
   .site-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-top: 24px; padding-bottom: 24px; }
   .logo { font-family: var(--font-display); font-size: 20px; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; }
   .logo img { display: block; width: 30px; height: 30px; margin-right: 10px; }
-  .logo .sig { display: block; height: 48px; aspect-ratio: 900 / 232; background: var(--text); -webkit-mask: url('/helenanguyen/signature.png') center / contain no-repeat; mask: url('/helenanguyen/signature.png') center / contain no-repeat; }
+  .logo .sig { display: block; height: 48px; aspect-ratio: 900 / 232; background: var(--text); -webkit-mask: url('/signature.png') center / contain no-repeat; mask: url('/signature.png') center / contain no-repeat; }
   @media (max-width: 480px) { .logo .sig { height: 40px; } }
   nav { display: flex; gap: clamp(14px, 3vw, 28px); }
   nav a { text-decoration: none; color: var(--muted); font-size: 15px; transition: color .2s; }
